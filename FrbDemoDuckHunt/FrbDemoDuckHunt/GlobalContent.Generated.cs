@@ -12,7 +12,7 @@ using FlatRedBall.Localization;
 
 namespace FrbDemoDuckHunt
 {
-	public static class GlobalContent
+	public static partial class GlobalContent
 	{
 		
 		[System.Obsolete("Use GetFile instead")]
