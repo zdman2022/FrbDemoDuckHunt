@@ -25,6 +25,7 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FlatRedBall.Math;
 
 namespace FrbDemoDuckHunt.Screens
 {
@@ -36,6 +37,7 @@ namespace FrbDemoDuckHunt.Screens
 		#endif
 		
 		private FrbDemoDuckHunt.Entities.Dog DogInstance;
+		private PositionedObjectList<Duck> DuckList;
 
 		public GameScreen()
 			: base("GameScreen")
@@ -48,6 +50,7 @@ namespace FrbDemoDuckHunt.Screens
 			LoadStaticContent(ContentManagerName);
 			DogInstance = new FrbDemoDuckHunt.Entities.Dog(ContentManagerName, false);
 			DogInstance.Name = "DogInstance";
+			DuckList = new PositionedObjectList<Duck>();
 			
 			
 			PostInitialize();
@@ -75,6 +78,14 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				
 				DogInstance.Activity();
+				for (int i = DuckList.Count - 1; i > -1; i--)
+				{
+					if (i < DuckList.Count)
+					{
+						// We do the extra if-check because activity could destroy any number of entities
+						DuckList[i].Activity();
+					}
+				}
 			}
 			else
 			{
@@ -100,6 +111,10 @@ namespace FrbDemoDuckHunt.Screens
 				DogInstance.Destroy();
 				DogInstance.Detach();
 			}
+			for (int i = DuckList.Count - 1; i > -1; i--)
+			{
+				DuckList[i].Destroy();
+			}
 
 			base.Destroy();
 
@@ -122,6 +137,10 @@ namespace FrbDemoDuckHunt.Screens
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			DogInstance.ConvertToManuallyUpdated();
+			for (int i = 0; i < DuckList.Count; i++)
+			{
+				DuckList[i].ConvertToManuallyUpdated();
+			}
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{

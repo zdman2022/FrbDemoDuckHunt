@@ -117,6 +117,10 @@
     <Compile Include="Entities\Dog.Generated.cs">
       <DependentUpon>Dog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Duck.cs" />
+    <Compile Include="Entities\Duck.Generated.cs">
+      <DependentUpon>Duck.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="Performance\IEntityFactory.Generated.cs" />
     <Compile Include="Performance\IPoolable.Generated.cs" />

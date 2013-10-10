@@ -50,6 +50,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <None Include="Entities\Duck\SceneFile.scnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>SceneFile</Name>
+    </None>
     <None Include="GlobalContent\DogHunt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>DogHunt</Name>
