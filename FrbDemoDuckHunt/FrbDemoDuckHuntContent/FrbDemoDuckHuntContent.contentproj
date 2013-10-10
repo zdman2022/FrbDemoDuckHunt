@@ -54,6 +54,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <Compile Include="GlobalContent\WhiteNumbers.fnt">
+      <Name>WhiteNumbers</Name>
+    </Compile>
     <None Include="GlobalContent\DogHunt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>DogHunt</Name>
