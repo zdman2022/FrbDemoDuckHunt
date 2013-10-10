@@ -61,11 +61,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>DogHunt</Name>
     </None>
+    <Compile Include="GlobalContent\DuckHuntFont.fnt">
+      <Name>DuckHuntFont</Name>
+    </Compile>
     <None Include="GlobalContent\GreenNumbers.fnt">
       <Name>GreenNumbers</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlobalContent\DuckHuntFont_0.tga">
+      <Name>DuckHuntFont_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
