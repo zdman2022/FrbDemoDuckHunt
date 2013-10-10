@@ -47,11 +47,83 @@ namespace FrbDemoDuckHunt.Entities
 		#if DEBUG
 		static bool HasBeenLoadedWithGlobalContentManager = false;
 		#endif
+		public enum VariableState
+		{
+			Uninitialized = 0, //This exists so that the first set call actually does something
+			Unknown = 1, //This exists so that if the entity is actually a child entity and has set a child state, you will get this
+			Sniffing = 2, 
+			Walking = 3, 
+			Happy = 4, 
+			Jumping = 5, 
+			OneDuck = 6, 
+			TwoDucks = 7, 
+			Laughing = 8
+		}
+		protected int mCurrentState = 0;
+		public VariableState CurrentState
+		{
+			get
+			{
+				if (Enum.IsDefined(typeof(VariableState), mCurrentState))
+				{
+					return (VariableState)mCurrentState;
+				}
+				else
+				{
+					return VariableState.Unknown;
+				}
+			}
+			set
+			{
+				mCurrentState = (int)value;
+				switch(CurrentState)
+				{
+					case  VariableState.Uninitialized:
+						break;
+					case  VariableState.Unknown:
+						break;
+					case  VariableState.Sniffing:
+						CurrentChain = "Sniffing";
+						break;
+					case  VariableState.Walking:
+						CurrentChain = "Walking";
+						break;
+					case  VariableState.Happy:
+						CurrentChain = "Happy";
+						break;
+					case  VariableState.Jumping:
+						CurrentChain = "Jumping";
+						break;
+					case  VariableState.OneDuck:
+						CurrentChain = "OneDuck";
+						break;
+					case  VariableState.TwoDucks:
+						CurrentChain = "TwoDucks";
+						break;
+					case  VariableState.Laughing:
+						CurrentChain = "Laugh";
+						break;
+				}
+			}
+		}
 		static object mLockObject = new object();
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static FlatRedBall.Graphics.Animation.AnimationChainList AnimationChainListFile;
+		protected static FlatRedBall.Scene SceneFile;
 		
+		private FlatRedBall.Sprite VisibleInstance;
+		public string CurrentChain
+		{
+			get
+			{
+				return VisibleInstance.CurrentChainName;
+			}
+			set
+			{
+				VisibleInstance.CurrentChainName = value;
+			}
+		}
 		protected Layer LayerProvidedByContainer = null;
 
         public Dog(string contentManagerName) :
@@ -73,6 +145,7 @@ namespace FrbDemoDuckHunt.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
+			VisibleInstance = SceneFile.Sprites.FindByName("doghunt1").Clone();
 			
 			PostInitialize();
 			if (addToManagers)
@@ -106,6 +179,10 @@ namespace FrbDemoDuckHunt.Entities
 			// Generated Destroy
 			SpriteManager.RemovePositionedObject(this);
 			
+			if (VisibleInstance != null)
+			{
+				VisibleInstance.Detach(); SpriteManager.RemoveSprite(VisibleInstance);
+			}
 
 
 			CustomDestroy();
@@ -116,6 +193,11 @@ namespace FrbDemoDuckHunt.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			if (VisibleInstance.Parent == null)
+			{
+				VisibleInstance.CopyAbsoluteToRelative();
+				VisibleInstance.AttachTo(this, false);
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -135,17 +217,20 @@ namespace FrbDemoDuckHunt.Entities
 			RotationX = 0;
 			RotationY = 0;
 			RotationZ = 0;
+			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
 			X = oldX;
 			Y = oldY;
 			Z = oldZ;
 			RotationX = oldRotationX;
 			RotationY = oldRotationY;
 			RotationZ = oldRotationZ;
+			CurrentChain = "Walking";
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			this.ForceUpdateDependenciesDeep();
 			SpriteManager.ConvertToManuallyUpdated(this);
+			SpriteManager.ConvertToManuallyUpdated(VisibleInstance);
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -181,6 +266,11 @@ namespace FrbDemoDuckHunt.Entities
 					registerUnload = true;
 				}
 				AnimationChainListFile = FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/dog/animationchainlistfile.achx", ContentManagerName);
+				if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/entities/dog/scenefile.scnx", ContentManagerName))
+				{
+					registerUnload = true;
+				}
+				SceneFile = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/entities/dog/scenefile.scnx", ContentManagerName);
 			}
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
@@ -208,6 +298,217 @@ namespace FrbDemoDuckHunt.Entities
 				{
 					AnimationChainListFile= null;
 				}
+				if (SceneFile != null)
+				{
+					SceneFile.RemoveFromManagers(ContentManagerName != "Global");
+					SceneFile= null;
+				}
+			}
+		}
+		static VariableState mLoadingState = VariableState.Uninitialized;
+		public static VariableState LoadingState
+		{
+			get
+			{
+				return mLoadingState;
+			}
+			set
+			{
+				mLoadingState = value;
+			}
+		}
+		public FlatRedBall.Instructions.Instruction InterpolateToState (VariableState stateToInterpolateTo, double secondsToTake)
+		{
+			switch(stateToInterpolateTo)
+			{
+				case  VariableState.Sniffing:
+					break;
+				case  VariableState.Walking:
+					break;
+				case  VariableState.Happy:
+					break;
+				case  VariableState.Jumping:
+					break;
+				case  VariableState.OneDuck:
+					break;
+				case  VariableState.TwoDucks:
+					break;
+				case  VariableState.Laughing:
+					break;
+			}
+			var instruction = new FlatRedBall.Instructions.DelegateInstruction<VariableState>(StopStateInterpolation, stateToInterpolateTo);
+			instruction.TimeToExecute = FlatRedBall.TimeManager.CurrentTime + secondsToTake;
+			this.Instructions.Add(instruction);
+			return instruction;
+		}
+		public void StopStateInterpolation (VariableState stateToStop)
+		{
+			switch(stateToStop)
+			{
+				case  VariableState.Sniffing:
+					break;
+				case  VariableState.Walking:
+					break;
+				case  VariableState.Happy:
+					break;
+				case  VariableState.Jumping:
+					break;
+				case  VariableState.OneDuck:
+					break;
+				case  VariableState.TwoDucks:
+					break;
+				case  VariableState.Laughing:
+					break;
+			}
+			CurrentState = stateToStop;
+		}
+		public void InterpolateBetween (VariableState firstState, VariableState secondState, float interpolationValue)
+		{
+			#if DEBUG
+			if (float.IsNaN(interpolationValue))
+			{
+				throw new Exception("interpolationValue cannot be NaN");
+			}
+			#endif
+			switch(firstState)
+			{
+				case  VariableState.Sniffing:
+					if (interpolationValue < 1)
+					{
+						this.CurrentChain = "Sniffing";
+					}
+					break;
+				case  VariableState.Walking:
+					if (interpolationValue < 1)
+					{
+						this.CurrentChain = "Walking";
+					}
+					break;
+				case  VariableState.Happy:
+					if (interpolationValue < 1)
+					{
+						this.CurrentChain = "Happy";
+					}
+					break;
+				case  VariableState.Jumping:
+					if (interpolationValue < 1)
+					{
+						this.CurrentChain = "Jumping";
+					}
+					break;
+				case  VariableState.OneDuck:
+					if (interpolationValue < 1)
+					{
+						this.CurrentChain = "OneDuck";
+					}
+					break;
+				case  VariableState.TwoDucks:
+					if (interpolationValue < 1)
+					{
+						this.CurrentChain = "TwoDucks";
+					}
+					break;
+				case  VariableState.Laughing:
+					if (interpolationValue < 1)
+					{
+						this.CurrentChain = "Laugh";
+					}
+					break;
+			}
+			switch(secondState)
+			{
+				case  VariableState.Sniffing:
+					if (interpolationValue >= 1)
+					{
+						this.CurrentChain = "Sniffing";
+					}
+					break;
+				case  VariableState.Walking:
+					if (interpolationValue >= 1)
+					{
+						this.CurrentChain = "Walking";
+					}
+					break;
+				case  VariableState.Happy:
+					if (interpolationValue >= 1)
+					{
+						this.CurrentChain = "Happy";
+					}
+					break;
+				case  VariableState.Jumping:
+					if (interpolationValue >= 1)
+					{
+						this.CurrentChain = "Jumping";
+					}
+					break;
+				case  VariableState.OneDuck:
+					if (interpolationValue >= 1)
+					{
+						this.CurrentChain = "OneDuck";
+					}
+					break;
+				case  VariableState.TwoDucks:
+					if (interpolationValue >= 1)
+					{
+						this.CurrentChain = "TwoDucks";
+					}
+					break;
+				case  VariableState.Laughing:
+					if (interpolationValue >= 1)
+					{
+						this.CurrentChain = "Laugh";
+					}
+					break;
+			}
+			if (interpolationValue < 1)
+			{
+				mCurrentState = (int)firstState;
+			}
+			else
+			{
+				mCurrentState = (int)secondState;
+			}
+		}
+		public static void PreloadStateContent (VariableState state, string contentManagerName)
+		{
+			ContentManagerName = contentManagerName;
+			switch(state)
+			{
+				case  VariableState.Sniffing:
+					{
+						object throwaway = "Sniffing";
+					}
+					break;
+				case  VariableState.Walking:
+					{
+						object throwaway = "Walking";
+					}
+					break;
+				case  VariableState.Happy:
+					{
+						object throwaway = "Happy";
+					}
+					break;
+				case  VariableState.Jumping:
+					{
+						object throwaway = "Jumping";
+					}
+					break;
+				case  VariableState.OneDuck:
+					{
+						object throwaway = "OneDuck";
+					}
+					break;
+				case  VariableState.TwoDucks:
+					{
+						object throwaway = "TwoDucks";
+					}
+					break;
+				case  VariableState.Laughing:
+					{
+						object throwaway = "Laugh";
+					}
+					break;
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
@@ -217,6 +518,8 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "AnimationChainListFile":
 					return AnimationChainListFile;
+				case  "SceneFile":
+					return SceneFile;
 			}
 			return null;
 		}
@@ -226,6 +529,8 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "AnimationChainListFile":
 					return AnimationChainListFile;
+				case  "SceneFile":
+					return SceneFile;
 			}
 			return null;
 		}
@@ -235,6 +540,8 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "AnimationChainListFile":
 					return AnimationChainListFile;
+				case  "SceneFile":
+					return SceneFile;
 			}
 			return null;
 		}
@@ -247,9 +554,15 @@ namespace FrbDemoDuckHunt.Entities
 		public virtual void SetToIgnorePausing ()
 		{
 			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(this);
+			FlatRedBall.Instructions.InstructionManager.IgnorePausingFor(VisibleInstance);
 		}
 		public virtual void MoveToLayer (Layer layerToMoveTo)
 		{
+			if (LayerProvidedByContainer != null)
+			{
+				LayerProvidedByContainer.Remove(VisibleInstance);
+			}
+			SpriteManager.AddToLayer(VisibleInstance, layerToMoveTo);
 			LayerProvidedByContainer = layerToMoveTo;
 		}
 

@@ -25,12 +25,114 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
+      <States>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>CurrentChain</Member>
+              <ValueAsString>Sniffing</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>Sniffing</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>CurrentChain</Member>
+              <ValueAsString>Walking</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>Walking</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>CurrentChain</Member>
+              <ValueAsString>Happy</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>Happy</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>CurrentChain</Member>
+              <ValueAsString>Jumping</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>Jumping</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>CurrentChain</Member>
+              <ValueAsString>OneDuck</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>OneDuck</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>CurrentChain</Member>
+              <ValueAsString>TwoDucks</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>TwoDucks</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>CurrentChain</Member>
+              <ValueAsString>Laugh</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>Laughing</Name>
+        </StateSave>
+      </States>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>string</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>CurrentChain</Name>
+          <Type>string</Type>
+          <DefaultValue xsi:type="xsd:string">Walking</DefaultValue>
+          <SourceObject>VisibleInstance</SourceObject>
+          <SourceObjectProperty>CurrentChainName</SourceObjectProperty>
+        </CustomVariable>
+      </CustomVariables>
       <Name>Entities\Dog</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <SourceType>File</SourceType>
+          <SourceFile>Entities/Dog/SceneFile.scnx</SourceFile>
+          <SourceName>doghunt1 (Sprite)</SourceName>
+          <InstanceName>VisibleInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
       <ReferencedFiles>
         <ReferencedFileSave>
           <Name>Entities/Dog/AnimationChainListFile.achx</Name>
           <IsSharedStatic>true</IsSharedStatic>
           <RuntimeType>FlatRedBall.Graphics.Animation.AnimationChainList</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>Entities/Dog/SceneFile.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
         </ReferencedFileSave>
       </ReferencedFiles>
       <Is2D>true</Is2D>
