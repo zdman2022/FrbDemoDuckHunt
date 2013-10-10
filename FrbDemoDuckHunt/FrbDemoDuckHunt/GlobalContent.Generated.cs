@@ -16,6 +16,10 @@ namespace FrbDemoDuckHunt
 	{
 		
 		public static Microsoft.Xna.Framework.Graphics.Texture2D DogHunt { get; set; }
+		public static FlatRedBall.Graphics.BitmapFont DuckHuntFont { get; set; }
+		public static Microsoft.Xna.Framework.Graphics.Texture2D DuckHuntFont_0 { get; set; }
+		public static FlatRedBall.Graphics.BitmapFont GreenNumbers { get; set; }
+		public static FlatRedBall.Graphics.BitmapFont WhiteNumbers { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -23,6 +27,14 @@ namespace FrbDemoDuckHunt
 			{
 				case  "DogHunt":
 					return DogHunt;
+				case  "DuckHuntFont":
+					return DuckHuntFont;
+				case  "DuckHuntFont_0":
+					return DuckHuntFont_0;
+				case  "GreenNumbers":
+					return GreenNumbers;
+				case  "WhiteNumbers":
+					return WhiteNumbers;
 			}
 			return null;
 		}
@@ -32,6 +44,14 @@ namespace FrbDemoDuckHunt
 			{
 				case  "DogHunt":
 					return DogHunt;
+				case  "DuckHuntFont":
+					return DuckHuntFont;
+				case  "DuckHuntFont_0":
+					return DuckHuntFont_0;
+				case  "GreenNumbers":
+					return GreenNumbers;
+				case  "WhiteNumbers":
+					return WhiteNumbers;
 			}
 			return null;
 		}
@@ -42,6 +62,10 @@ namespace FrbDemoDuckHunt
 		{
 			
 			DogHunt = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/doghunt.png", ContentManagerName);
+			DuckHuntFont = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/duckhuntfont.fnt", ContentManagerName);
+			DuckHuntFont_0 = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/duckhuntfont_0.tga", ContentManagerName);
+			GreenNumbers = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/greennumbers.fnt", ContentManagerName);
+			WhiteNumbers = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/whitenumbers.fnt", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)
