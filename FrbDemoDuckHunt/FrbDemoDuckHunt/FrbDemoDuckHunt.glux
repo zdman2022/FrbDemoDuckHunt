@@ -190,16 +190,6 @@
       <HasPublicProperty>true</HasPublicProperty>
     </ReferencedFileSave>
     <ReferencedFileSave>
-      <Name>GlobalContent/DuckHuntFont.fnt</Name>
-      <IsSharedStatic>true</IsSharedStatic>
-      <HasPublicProperty>true</HasPublicProperty>
-    </ReferencedFileSave>
-    <ReferencedFileSave>
-      <Name>GlobalContent/DuckHuntFont_0.tga</Name>
-      <IsSharedStatic>true</IsSharedStatic>
-      <HasPublicProperty>true</HasPublicProperty>
-    </ReferencedFileSave>
-    <ReferencedFileSave>
       <Name>GlobalContent/GreenNumbers.fnt</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>

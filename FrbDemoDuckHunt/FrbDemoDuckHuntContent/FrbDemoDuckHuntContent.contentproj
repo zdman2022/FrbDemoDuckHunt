@@ -66,14 +66,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>DogHunt</Name>
     </None>
-    <None Include="GlobalContent\DuckHuntFont.fnt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>DuckHuntFont</Name>
-    </None>
-    <None Include="GlobalContent\DuckHuntFont_0.tga">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>DuckHuntFont_0</Name>
-    </None>
     <None Include="GlobalContent\GreenNumbers.fnt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>GreenNumbers</Name>
