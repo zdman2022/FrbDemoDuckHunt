@@ -54,6 +54,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <None Include="GlobalContent\dhunttitle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>dhunttitle</Name>
+    </None>
+    <None Include="GlobalContent\dhunttitlepointer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>dhunttitlepointer</Name>
+    </None>
     <None Include="GlobalContent\DogHunt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>DogHunt</Name>

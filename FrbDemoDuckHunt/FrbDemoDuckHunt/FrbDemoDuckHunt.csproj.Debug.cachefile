@@ -1,5 +1,11 @@
 Content\Entities\Dog\AnimationChainListFile.achx
 Content\Entities\Dog\SceneFile.scnx
 Content\Entities\Duck\SceneFile.scnx
+Content\GlobalContent\dhunttitle.png
+Content\GlobalContent\dhunttitlepointer.png
 Content\GlobalContent\DogHunt.png
+Content\GlobalContent\DuckHuntFont.fnt
+Content\GlobalContent\DuckHuntFont_0.tga
+Content\GlobalContent\GreenNumbers.fnt
+Content\GlobalContent\WhiteNumbers.fnt
 redball.BMP

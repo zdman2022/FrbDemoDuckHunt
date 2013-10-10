@@ -20,6 +20,8 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Graphics.Texture2D DuckHuntFont_0 { get; set; }
 		public static FlatRedBall.Graphics.BitmapFont GreenNumbers { get; set; }
 		public static FlatRedBall.Graphics.BitmapFont WhiteNumbers { get; set; }
+		public static Microsoft.Xna.Framework.Graphics.Texture2D dhunttitle { get; set; }
+		public static Microsoft.Xna.Framework.Graphics.Texture2D dhunttitlepointer { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -35,6 +37,10 @@ namespace FrbDemoDuckHunt
 					return GreenNumbers;
 				case  "WhiteNumbers":
 					return WhiteNumbers;
+				case  "dhunttitle":
+					return dhunttitle;
+				case  "dhunttitlepointer":
+					return dhunttitlepointer;
 			}
 			return null;
 		}
@@ -52,6 +58,10 @@ namespace FrbDemoDuckHunt
 					return GreenNumbers;
 				case  "WhiteNumbers":
 					return WhiteNumbers;
+				case  "dhunttitle":
+					return dhunttitle;
+				case  "dhunttitlepointer":
+					return dhunttitlepointer;
 			}
 			return null;
 		}
@@ -66,6 +76,8 @@ namespace FrbDemoDuckHunt
 			DuckHuntFont_0 = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/duckhuntfont_0.tga", ContentManagerName);
 			GreenNumbers = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/greennumbers.fnt", ContentManagerName);
 			WhiteNumbers = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/whitenumbers.fnt", ContentManagerName);
+			dhunttitle = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/dhunttitle.png", ContentManagerName);
+			dhunttitlepointer = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/dhunttitlepointer.png", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)
