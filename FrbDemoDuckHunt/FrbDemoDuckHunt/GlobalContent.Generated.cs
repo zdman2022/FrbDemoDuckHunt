@@ -23,6 +23,21 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Graphics.Texture2D dhunttitle { get; set; }
 		public static Microsoft.Xna.Framework.Graphics.Texture2D dhunttitlepointer { get; set; }
 		public static Dictionary<string, InterfaceConstants> InterfaceConstants { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song ClayFiringSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song ClayPigeonFalling { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song ClayPigeonRising { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song ClayShootingThemeSong { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song DogBarkSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song DogLaughingSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song DuckHittingtheGround { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song DuckHuntEndofRound { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song DuckHuntThemeSong { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song DuckRelease { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song MainThemeSong { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song PerfectScoreSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song RoundIntroduction { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song ShotSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Media.Song WingFlapSoundEffect { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -40,6 +55,36 @@ namespace FrbDemoDuckHunt
 					return dhunttitlepointer;
 				case  "InterfaceConstants":
 					return InterfaceConstants;
+				case  "ClayFiringSoundEffect":
+					return ClayFiringSoundEffect;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
+				case  "ClayPigeonRising":
+					return ClayPigeonRising;
+				case  "ClayShootingThemeSong":
+					return ClayShootingThemeSong;
+				case  "DogBarkSoundEffect":
+					return DogBarkSoundEffect;
+				case  "DogLaughingSoundEffect":
+					return DogLaughingSoundEffect;
+				case  "DuckHittingtheGround":
+					return DuckHittingtheGround;
+				case  "DuckHuntEndofRound":
+					return DuckHuntEndofRound;
+				case  "DuckHuntThemeSong":
+					return DuckHuntThemeSong;
+				case  "DuckRelease":
+					return DuckRelease;
+				case  "MainThemeSong":
+					return MainThemeSong;
+				case  "PerfectScoreSoundEffect":
+					return PerfectScoreSoundEffect;
+				case  "RoundIntroduction":
+					return RoundIntroduction;
+				case  "ShotSoundEffect":
+					return ShotSoundEffect;
+				case  "WingFlapSoundEffect":
+					return WingFlapSoundEffect;
 			}
 			return null;
 		}
@@ -59,6 +104,36 @@ namespace FrbDemoDuckHunt
 					return dhunttitlepointer;
 				case  "InterfaceConstants":
 					return InterfaceConstants;
+				case  "ClayFiringSoundEffect":
+					return ClayFiringSoundEffect;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
+				case  "ClayPigeonRising":
+					return ClayPigeonRising;
+				case  "ClayShootingThemeSong":
+					return ClayShootingThemeSong;
+				case  "DogBarkSoundEffect":
+					return DogBarkSoundEffect;
+				case  "DogLaughingSoundEffect":
+					return DogLaughingSoundEffect;
+				case  "DuckHittingtheGround":
+					return DuckHittingtheGround;
+				case  "DuckHuntEndofRound":
+					return DuckHuntEndofRound;
+				case  "DuckHuntThemeSong":
+					return DuckHuntThemeSong;
+				case  "DuckRelease":
+					return DuckRelease;
+				case  "MainThemeSong":
+					return MainThemeSong;
+				case  "PerfectScoreSoundEffect":
+					return PerfectScoreSoundEffect;
+				case  "RoundIntroduction":
+					return RoundIntroduction;
+				case  "ShotSoundEffect":
+					return ShotSoundEffect;
+				case  "WingFlapSoundEffect":
+					return WingFlapSoundEffect;
 			}
 			return null;
 		}
@@ -85,6 +160,21 @@ namespace FrbDemoDuckHunt
 					InterfaceConstants = temporaryCsvObject;
 				}
 			}
+			ClayFiringSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/clayfiringsoundeffect", ContentManagerName);
+			ClayPigeonFalling = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/claypigeonfalling", ContentManagerName);
+			ClayPigeonRising = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/claypigeonrising", ContentManagerName);
+			ClayShootingThemeSong = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/clayshootingthemesong", ContentManagerName);
+			DogBarkSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/dogbarksoundeffect", ContentManagerName);
+			DogLaughingSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/doglaughingsoundeffect", ContentManagerName);
+			DuckHittingtheGround = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/duckhittingtheground", ContentManagerName);
+			DuckHuntEndofRound = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/duckhuntendofround", ContentManagerName);
+			DuckHuntThemeSong = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/duckhuntthemesong", ContentManagerName);
+			DuckRelease = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/duckrelease", ContentManagerName);
+			MainThemeSong = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/mainthemesong", ContentManagerName);
+			PerfectScoreSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/perfectscoresoundeffect", ContentManagerName);
+			RoundIntroduction = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/roundintroduction", ContentManagerName);
+			ShotSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/shotsoundeffect", ContentManagerName);
+			WingFlapSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/wingflapsoundeffect", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)

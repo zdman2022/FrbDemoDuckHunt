@@ -104,6 +104,83 @@
       <Name>WhiteNumbers</Name>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlobalContent\ClayFiringSoundEffect.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>ClayFiringSoundEffect</Name>
+    </Compile>
+    <Compile Include="GlobalContent\ClayPigeonFalling.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>ClayPigeonFalling</Name>
+    </Compile>
+    <Compile Include="GlobalContent\ClayPigeonRising.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>ClayPigeonRising</Name>
+    </Compile>
+    <Compile Include="GlobalContent\ClayShootingThemeSong.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>ClayShootingThemeSong</Name>
+    </Compile>
+    <Compile Include="GlobalContent\DogBarkSoundEffect.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>DogBarkSoundEffect</Name>
+    </Compile>
+    <Compile Include="GlobalContent\DogLaughingSoundEffect.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>DogLaughingSoundEffect</Name>
+    </Compile>
+    <Compile Include="GlobalContent\DuckHittingtheGround.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>DuckHittingtheGround</Name>
+    </Compile>
+    <Compile Include="GlobalContent\DuckHuntEndofRound.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>DuckHuntEndofRound</Name>
+    </Compile>
+    <Compile Include="GlobalContent\DuckHuntThemeSong.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>DuckHuntThemeSong</Name>
+    </Compile>
+    <Compile Include="GlobalContent\DuckRelease.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>DuckRelease</Name>
+    </Compile>
+    <Compile Include="GlobalContent\MainThemeSong.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>MainThemeSong</Name>
+    </Compile>
+    <Compile Include="GlobalContent\PerfectScoreSoundEffect.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>PerfectScoreSoundEffect</Name>
+    </Compile>
+    <Compile Include="GlobalContent\RoundIntroduction.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>RoundIntroduction</Name>
+    </Compile>
+    <Compile Include="GlobalContent\ShotSoundEffect.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>ShotSoundEffect</Name>
+    </Compile>
+    <Compile Include="GlobalContent\WingFlapSoundEffect.mp3">
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Name>WingFlapSoundEffect</Name>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
