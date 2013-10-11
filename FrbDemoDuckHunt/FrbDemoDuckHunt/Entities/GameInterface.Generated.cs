@@ -52,8 +52,29 @@ namespace FrbDemoDuckHunt.Entities
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static FlatRedBall.Graphics.Animation.AnimationChainList InterfaceAnimations;
 		
-		public int MaxShots;
-		public int AvailableShots;
+		public int MaxShots = 3;
+		public event EventHandler BeforeAvailableShotsSet;
+		public event EventHandler AfterAvailableShotsSet;
+		int mAvailableShots = 3;
+		public int AvailableShots
+		{
+			set
+			{
+				if (BeforeAvailableShotsSet != null)
+				{
+					BeforeAvailableShotsSet(this, null);
+				}
+				mAvailableShots = value;
+				if (AfterAvailableShotsSet != null)
+				{
+					AfterAvailableShotsSet(this, null);
+				}
+			}
+			get
+			{
+				return mAvailableShots;
+			}
+		}
 		public event EventHandler BeforeScoreSet;
 		public event EventHandler AfterScoreSet;
 		int mScore = 0;
@@ -141,6 +162,7 @@ namespace FrbDemoDuckHunt.Entities
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
 			this.AfterScoreSet += OnAfterScoreSet;
+			this.AfterAvailableShotsSet += OnAfterAvailableShotsSet;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -166,6 +188,8 @@ namespace FrbDemoDuckHunt.Entities
 			RotationX = oldRotationX;
 			RotationY = oldRotationY;
 			RotationZ = oldRotationZ;
+			MaxShots = 3;
+			AvailableShots = 3;
 			Score = 0;
 		}
 		public virtual void ConvertToManuallyUpdated ()

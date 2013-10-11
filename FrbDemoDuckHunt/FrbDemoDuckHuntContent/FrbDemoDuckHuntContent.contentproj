@@ -67,6 +67,10 @@
       <Name>ui</Name>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Entities\GameInterface\VolumeBar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>VolumeBar</Name>
+    </None>
     <None Include="GlobalContent\dhunttitle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>dhunttitle</Name>

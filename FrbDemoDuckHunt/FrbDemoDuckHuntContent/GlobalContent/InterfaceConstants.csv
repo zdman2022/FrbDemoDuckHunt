@@ -2,3 +2,5 @@
 GameInterfaceXml,Content\Entities\GameInterface\ui.xml
 GameInterfaceMainLayout,MainLayout
 GameInterfaceScoreValue,ScoreValue
+GameInterfaceShot,Shot
+GameInterfaceShotContainer,ShotsContainer
