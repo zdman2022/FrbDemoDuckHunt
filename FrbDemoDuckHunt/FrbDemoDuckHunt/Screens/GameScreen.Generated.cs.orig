@@ -142,6 +142,7 @@ namespace FrbDemoDuckHunt.Screens
 				ShotInstance.Destroy();
 				ShotInstance.Detach();
 			}
+
 			base.Destroy();
 
 			CustomDestroy();
