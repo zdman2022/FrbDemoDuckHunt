@@ -65,6 +65,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\Xna4Pc\FlatRedBall.dll</HintPath>
     </Reference>
+    <Reference Include="FrbUi, Version=1.1.5031.40783, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\FrbUi\FrbUi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -196,10 +200,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FrbUi\FrbUi.csproj">
-      <Project>{7235175c-356e-4756-9d68-5889abc79a24}</Project>
-      <Name>FrbUi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FrbDemoDuckHuntContent\FrbDemoDuckHuntContent.contentproj">
       <Project>{64B23BEF-DD26-4B81-AAA6-D9F46B0140B4}</Project>
       <Name>FrbDemoDuckHuntContent %28Content%29</Name>
