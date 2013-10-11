@@ -134,7 +134,6 @@ namespace FrbDemoDuckHunt.Screens
 				GameInterfaceInstance.Detach();
 			}
 
-
 			base.Destroy();
 
 			CustomDestroy();
@@ -185,7 +184,6 @@ namespace FrbDemoDuckHunt.Screens
 			CameraSetup.ResetCamera(SpriteManager.Camera);
 			DogInstance.AddToManagers(mLayer);
 			DogInstance.CurrentState = FrbDemoDuckHunt.Entities.Dog.VariableState.OneDuck;
-			GameInterfaceInstance.AddToManagers(mLayer);
 			if (DogInstance.Parent == null)
 			{
 				DogInstance.X = 20f;
@@ -219,6 +217,7 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				BackgroundInstance.RelativeZ = -1f;
 			}
+			GameInterfaceInstance.AddToManagers(mLayer);
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

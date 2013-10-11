@@ -63,7 +63,7 @@
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
-         <NamedObjectSave>
+        <NamedObjectSave>
           <SourceType>Entity</SourceType>
           <SourceClassType>Entities\GameInterface</SourceClassType>
           <InstanceName>GameInterfaceInstance</InstanceName>
@@ -529,9 +529,9 @@
   <SyncedProjects />
   <StartUpScreen>Screens\GameScreen</StartUpScreen>
   <In2D>true</In2D>
-  <SetResolution>false</SetResolution>
-  <ResolutionWidth>800</ResolutionWidth>
-  <ResolutionHeight>600</ResolutionHeight>
+  <SetResolution>true</SetResolution>
+  <ResolutionWidth>768</ResolutionWidth>
+  <ResolutionHeight>720</ResolutionHeight>
   <SetOrthogonalResolution>true</SetOrthogonalResolution>
   <OrthogonalWidth>256</OrthogonalWidth>
   <OrthogonalHeight>240</OrthogonalHeight>
@@ -543,6 +543,6 @@
   <IgnoredDirectories />
   <CustomClasses />
   <TranslatedFiles />
-  <ApplyToFixedResolutionPlatforms>true</ApplyToFixedResolutionPlatforms>
+  <ApplyToFixedResolutionPlatforms>false</ApplyToFixedResolutionPlatforms>
   <ExternallyBuiltFileDirectory>../../</ExternallyBuiltFileDirectory>
 </GlueProjectSave>
