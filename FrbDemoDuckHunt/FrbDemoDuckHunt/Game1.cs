@@ -47,6 +47,7 @@ namespace FrbDemoDuckHunt
 			GlobalContent.Initialize();
 			CameraSetup.SetupCamera(SpriteManager.Camera, graphics);
             FlatRedBallServices.GraphicsOptions.TextureFilter = TextureFilter.Point;
+            this.IsMouseVisible = true;
 			FlatRedBall.Screens.ScreenManager.Start(typeof(FrbDemoDuckHunt.Screens.GameScreen));
 
             base.Initialize();
