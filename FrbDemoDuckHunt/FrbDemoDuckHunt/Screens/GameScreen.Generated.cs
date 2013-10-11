@@ -40,6 +40,7 @@ namespace FrbDemoDuckHunt.Screens
 		private PositionedObjectList<Duck> DuckList;
 		private FrbDemoDuckHunt.Entities.Background BackgroundInstance;
 		private FrbDemoDuckHunt.Entities.GameInterface GameInterfaceInstance;
+		private FrbDemoDuckHunt.Entities.Shot ShotInstance;
 
 		public GameScreen()
 			: base("GameScreen")
@@ -57,6 +58,8 @@ namespace FrbDemoDuckHunt.Screens
 			BackgroundInstance.Name = "BackgroundInstance";
 			GameInterfaceInstance = new FrbDemoDuckHunt.Entities.GameInterface(ContentManagerName, false);
 			GameInterfaceInstance.Name = "GameInterfaceInstance";
+			ShotInstance = new FrbDemoDuckHunt.Entities.Shot(ContentManagerName, false);
+			ShotInstance.Name = "ShotInstance";
 			
 			
 			PostInitialize();
@@ -94,6 +97,7 @@ namespace FrbDemoDuckHunt.Screens
 				}
 				BackgroundInstance.Activity();
 				GameInterfaceInstance.Activity();
+				ShotInstance.Activity();
 			}
 			else
 			{
@@ -133,7 +137,11 @@ namespace FrbDemoDuckHunt.Screens
 				GameInterfaceInstance.Destroy();
 				GameInterfaceInstance.Detach();
 			}
-
+			if (ShotInstance != null)
+			{
+				ShotInstance.Destroy();
+				ShotInstance.Detach();
+			}
 
 			base.Destroy();
 
@@ -185,7 +193,6 @@ namespace FrbDemoDuckHunt.Screens
 			CameraSetup.ResetCamera(SpriteManager.Camera);
 			DogInstance.AddToManagers(mLayer);
 			DogInstance.CurrentState = FrbDemoDuckHunt.Entities.Dog.VariableState.OneDuck;
-			GameInterfaceInstance.AddToManagers(mLayer);
 			if (DogInstance.Parent == null)
 			{
 				DogInstance.X = 20f;
@@ -219,6 +226,8 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				BackgroundInstance.RelativeZ = -1f;
 			}
+			GameInterfaceInstance.AddToManagers(mLayer);
+			ShotInstance.AddToManagers(mLayer);
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -229,6 +238,7 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			BackgroundInstance.ConvertToManuallyUpdated();
 			GameInterfaceInstance.ConvertToManuallyUpdated();
+			ShotInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -249,6 +259,7 @@ namespace FrbDemoDuckHunt.Screens
 			FrbDemoDuckHunt.Entities.Dog.LoadStaticContent(contentManagerName);
 			FrbDemoDuckHunt.Entities.Background.LoadStaticContent(contentManagerName);
 			FrbDemoDuckHunt.Entities.GameInterface.LoadStaticContent(contentManagerName);
+			FrbDemoDuckHunt.Entities.Shot.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

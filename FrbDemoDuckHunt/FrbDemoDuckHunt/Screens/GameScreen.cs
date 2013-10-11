@@ -33,16 +33,16 @@ namespace FrbDemoDuckHunt.Screens
 
         private void DogOneDuck()
         {
-            DogInstance.OneDuck((new Random()).Next(-75, 75), DogTwoDucks);
+            ShotInstance.Shoot(() => { DogInstance.OneDuck((new Random()).Next(-75, 75), DogTwoDucks); });
         }
 
         private void DogTwoDucks()
         {
-            DogInstance.TwoDucks((new Random()).Next(-75, 75), DogLaugh);
+            ShotInstance.Shoot(() => { DogInstance.TwoDucks((new Random()).Next(-75, 75), DogLaugh); });
         }
         private void DogLaugh()
         {
-            DogInstance.Laugh(DogOneDuck);
+            ShotInstance.Shoot(() => { DogInstance.Laugh(DogOneDuck); });
         }
 		void CustomInitialize()
 		{
