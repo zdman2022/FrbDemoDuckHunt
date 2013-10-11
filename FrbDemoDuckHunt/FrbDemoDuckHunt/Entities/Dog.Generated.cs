@@ -124,6 +124,16 @@ namespace FrbDemoDuckHunt.Entities
 				VisibleInstance.CurrentChainName = value;
 			}
 		}
+		public float WalkingSpeed = 20f;
+		public float JumpingXSpeed = 5f;
+		public float JumpingYSpeed = 75f;
+		public float JumpingYDeceleration = -350f;
+		public float DogDuckMoveSpeed = 86f;
+		public float WalkingStartY = -48f;
+		public float WalkingStartX = -95f;
+		public float DuckStartY = -60f;
+		public float DuckMaxStartX = 40f;
+		public float DuckMinStartX = -50f;
 		protected Layer LayerProvidedByContainer = null;
 
         public Dog(string contentManagerName) :
@@ -225,6 +235,44 @@ namespace FrbDemoDuckHunt.Entities
 			RotationY = oldRotationY;
 			RotationZ = oldRotationZ;
 			CurrentChain = "Walking";
+			if (Parent == null)
+			{
+				X = 0f;
+			}
+			else
+			{
+				RelativeX = 0f;
+			}
+			if (Parent == null)
+			{
+				Y = 0f;
+			}
+			else
+			{
+				RelativeY = 0f;
+			}
+			if (Parent == null)
+			{
+				Z = 0f;
+			}
+			else if (Parent is Camera)
+			{
+				RelativeZ = 0f - 40.0f;
+			}
+			else
+			{
+				RelativeZ = 0f;
+			}
+			WalkingSpeed = 20f;
+			JumpingXSpeed = 5f;
+			JumpingYSpeed = 75f;
+			JumpingYDeceleration = -350f;
+			DogDuckMoveSpeed = 86f;
+			WalkingStartY = -48f;
+			WalkingStartX = -95f;
+			DuckStartY = -60f;
+			DuckMaxStartX = 40f;
+			DuckMinStartX = -50f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

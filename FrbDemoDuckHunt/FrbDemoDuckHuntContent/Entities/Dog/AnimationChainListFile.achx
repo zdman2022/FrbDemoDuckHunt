@@ -12,8 +12,8 @@
       <FrameLength>0.15</FrameLength>
       <LeftCoordinate>0.5505226</LeftCoordinate>
       <RightCoordinate>0.646341443</RightCoordinate>
-      <TopCoordinate>0.0177304968</TopCoordinate>
-      <BottomCoordinate>0.159574464</BottomCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>0.170212761</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
@@ -23,9 +23,9 @@
       <TextureName>../../GlobalContent/DogHunt.png</TextureName>
       <FrameLength>0.15</FrameLength>
       <LeftCoordinate>0.452961683</LeftCoordinate>
-      <RightCoordinate>0.5452962</RightCoordinate>
-      <TopCoordinate>0.0177304968</TopCoordinate>
-      <BottomCoordinate>0.159574464</BottomCoordinate>
+      <RightCoordinate>0.5487805</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>0.170212761</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
@@ -40,8 +40,8 @@
       <FrameLength>0.15</FrameLength>
       <LeftCoordinate>0.5505226</LeftCoordinate>
       <RightCoordinate>0.646341443</RightCoordinate>
-      <TopCoordinate>0.0177304968</TopCoordinate>
-      <BottomCoordinate>0.159574464</BottomCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>0.170212761</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
@@ -50,10 +50,10 @@
       <FlipVertical>false</FlipVertical>
       <TextureName>../../GlobalContent/DogHunt.png</TextureName>
       <FrameLength>0.15</FrameLength>
-      <LeftCoordinate>0.655052245</LeftCoordinate>
-      <RightCoordinate>0.743902445</RightCoordinate>
-      <TopCoordinate>0.0106382975</TopCoordinate>
-      <BottomCoordinate>0.163120568</BottomCoordinate>
+      <LeftCoordinate>0.6498258</LeftCoordinate>
+      <RightCoordinate>0.7456446</RightCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>0.170212761</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
@@ -64,8 +64,8 @@
       <FrameLength>0.15</FrameLength>
       <LeftCoordinate>0.749128938</LeftCoordinate>
       <RightCoordinate>0.8414634</RightCoordinate>
-      <TopCoordinate>0.0212765951</TopCoordinate>
-      <BottomCoordinate>0.163120568</BottomCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>0.170212761</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
@@ -76,8 +76,8 @@
       <FrameLength>0.15</FrameLength>
       <LeftCoordinate>0.848432064</LeftCoordinate>
       <RightCoordinate>0.9390244</RightCoordinate>
-      <TopCoordinate>0.0106382975</TopCoordinate>
-      <BottomCoordinate>0.163120568</BottomCoordinate>
+      <TopCoordinate>0</TopCoordinate>
+      <BottomCoordinate>0.170212761</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
@@ -90,8 +90,8 @@
       <FlipVertical>false</FlipVertical>
       <TextureName>../../GlobalContent/DogHunt.png</TextureName>
       <FrameLength>0.15</FrameLength>
-      <LeftCoordinate>0.454703838</LeftCoordinate>
-      <RightCoordinate>0.5470383</RightCoordinate>
+      <LeftCoordinate>0.452961683</LeftCoordinate>
+      <RightCoordinate>0.5487805</RightCoordinate>
       <TopCoordinate>0.212765962</TopCoordinate>
       <BottomCoordinate>0.382978737</BottomCoordinate>
       <RelativeX>0</RelativeX>

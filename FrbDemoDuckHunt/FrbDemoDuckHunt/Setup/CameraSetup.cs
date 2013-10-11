@@ -14,7 +14,7 @@ namespace FrbDemoDuckHunt
 	{
 			internal static void SetupCamera (Camera cameraToSetUp, GraphicsDeviceManager graphicsDeviceManager)
 			{
-				cameraToSetUp.UsePixelCoordinates();
+				cameraToSetUp.UsePixelCoordinates(false, 256, 240);
 			}
 			internal static void ResetCamera (Camera cameraToReset)
 			{

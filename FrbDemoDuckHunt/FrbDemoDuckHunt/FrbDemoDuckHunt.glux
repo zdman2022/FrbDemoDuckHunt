@@ -9,11 +9,27 @@
       <Name>Screens\GameScreen</Name>
       <NamedObjects>
         <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>20</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>-60</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Z</Member>
+            <ValueAsFloat>0</ValueAsFloat>
+          </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
           <SourceClassType>Entities\Dog</SourceClassType>
           <InstanceName>DogInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
+          <CurrentState>OneDuck</CurrentState>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
@@ -24,10 +40,75 @@
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Z</Member>
+            <ValueAsFloat>-1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>-100</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+            <ValueAsFloat>20</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceFile />
+          <SourceClassType>Entities\Background</SourceClassType>
+          <InstanceName>BackgroundInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
       </NamedObjects>
     </ScreenSave>
   </Screens>
   <Entities>
+    <EntitySave>
+      <Tags>
+        <string>GLUE</string>
+      </Tags>
+      <Source>GLUE</Source>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+            <PropertySave>
+              <Name>CreatesProperties</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+      </CustomVariables>
+      <Name>Entities\Background</Name>
+      <NamedObjects>
+        <NamedObjectSave>
+          <SourceType>File</SourceType>
+          <SourceFile>Entities/Background/SceneFile.scnx</SourceFile>
+          <SourceName>doghunt1 (Sprite)</SourceName>
+          <InstanceName>EntireScene</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+      </NamedObjects>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>Entities/Background/SceneFile.scnx</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Scene</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
+      <Is2D>true</Is2D>
+    </EntitySave>
     <EntitySave>
       <Tags>
         <string>GLUE</string>
@@ -118,6 +199,153 @@
           <DefaultValue xsi:type="xsd:string">Walking</DefaultValue>
           <SourceObject>VisibleInstance</SourceObject>
           <SourceObjectProperty>CurrentChainName</SourceObjectProperty>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>X</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+            <PropertySave>
+              <Name>CreatesProperties</Name>
+              <ValueAsBool>true</ValueAsBool>
+            </PropertySave>
+          </Properties>
+          <Name>Y</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>WalkingSpeed</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">20</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>JumpingXSpeed</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">5</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>JumpingYSpeed</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">75</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>JumpingYDeceleration</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-350</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>DogDuckMoveSpeed</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">86</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>WalkingStartY</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-48</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>WalkingStartX</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-95</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>DuckStartY</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-60</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>DuckMaxStartX</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">40</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>DuckMinStartX</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-50</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Name>Entities\Dog</Name>
@@ -220,9 +448,9 @@
   <SetResolution>false</SetResolution>
   <ResolutionWidth>800</ResolutionWidth>
   <ResolutionHeight>600</ResolutionHeight>
-  <SetOrthogonalResolution>false</SetOrthogonalResolution>
-  <OrthogonalWidth>800</OrthogonalWidth>
-  <OrthogonalHeight>600</OrthogonalHeight>
+  <SetOrthogonalResolution>true</SetOrthogonalResolution>
+  <OrthogonalWidth>256</OrthogonalWidth>
+  <OrthogonalHeight>240</OrthogonalHeight>
   <ResolutionPresets />
   <PerformanceSettingsSave>
     <ThrowExceptionOnPostInitializeContentLoad>false</ThrowExceptionOnPostInitializeContentLoad>

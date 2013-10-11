@@ -38,6 +38,7 @@ namespace FrbDemoDuckHunt.Screens
 		
 		private FrbDemoDuckHunt.Entities.Dog DogInstance;
 		private PositionedObjectList<Duck> DuckList;
+		private FrbDemoDuckHunt.Entities.Background BackgroundInstance;
 
 		public GameScreen()
 			: base("GameScreen")
@@ -51,6 +52,8 @@ namespace FrbDemoDuckHunt.Screens
 			DogInstance = new FrbDemoDuckHunt.Entities.Dog(ContentManagerName, false);
 			DogInstance.Name = "DogInstance";
 			DuckList = new PositionedObjectList<Duck>();
+			BackgroundInstance = new FrbDemoDuckHunt.Entities.Background(ContentManagerName, false);
+			BackgroundInstance.Name = "BackgroundInstance";
 			
 			
 			PostInitialize();
@@ -86,6 +89,7 @@ namespace FrbDemoDuckHunt.Screens
 						DuckList[i].Activity();
 					}
 				}
+				BackgroundInstance.Activity();
 			}
 			else
 			{
@@ -115,6 +119,11 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				DuckList[i].Destroy();
 			}
+			if (BackgroundInstance != null)
+			{
+				BackgroundInstance.Destroy();
+				BackgroundInstance.Detach();
+			}
 
 			base.Destroy();
 
@@ -127,12 +136,78 @@ namespace FrbDemoDuckHunt.Screens
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
+			if (DogInstance.Parent == null)
+			{
+				DogInstance.X = 20f;
+			}
+			else
+			{
+				DogInstance.RelativeX = 20f;
+			}
+			if (DogInstance.Parent == null)
+			{
+				DogInstance.Y = -60f;
+			}
+			else
+			{
+				DogInstance.RelativeY = -60f;
+			}
+			if (DogInstance.Parent == null)
+			{
+				DogInstance.Z = 0f;
+			}
+			else
+			{
+				DogInstance.RelativeZ = 0f;
+			}
+			if (BackgroundInstance.Parent == null)
+			{
+				BackgroundInstance.Z = -1f;
+			}
+			else
+			{
+				BackgroundInstance.RelativeZ = -1f;
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
 		{
 			CameraSetup.ResetCamera(SpriteManager.Camera);
 			DogInstance.AddToManagers(mLayer);
+			DogInstance.CurrentState = FrbDemoDuckHunt.Entities.Dog.VariableState.OneDuck;
+			if (DogInstance.Parent == null)
+			{
+				DogInstance.X = 20f;
+			}
+			else
+			{
+				DogInstance.RelativeX = 20f;
+			}
+			if (DogInstance.Parent == null)
+			{
+				DogInstance.Y = -60f;
+			}
+			else
+			{
+				DogInstance.RelativeY = -60f;
+			}
+			if (DogInstance.Parent == null)
+			{
+				DogInstance.Z = 0f;
+			}
+			else
+			{
+				DogInstance.RelativeZ = 0f;
+			}
+			BackgroundInstance.AddToManagers(mLayer);
+			if (BackgroundInstance.Parent == null)
+			{
+				BackgroundInstance.Z = -1f;
+			}
+			else
+			{
+				BackgroundInstance.RelativeZ = -1f;
+			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -141,6 +216,7 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				DuckList[i].ConvertToManuallyUpdated();
 			}
+			BackgroundInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -159,6 +235,7 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			#endif
 			FrbDemoDuckHunt.Entities.Dog.LoadStaticContent(contentManagerName);
+			FrbDemoDuckHunt.Entities.Background.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

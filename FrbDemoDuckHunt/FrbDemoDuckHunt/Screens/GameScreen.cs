@@ -26,11 +26,29 @@ namespace FrbDemoDuckHunt.Screens
 {
 	public partial class GameScreen
 	{
+        private void DogWalking()
+        {
+            DogInstance.WalkingSniffingThenDiving(DogOneDuck);
+        }
+
+        private void DogOneDuck()
+        {
+            DogInstance.OneDuck((new Random()).Next(-75, 75), DogTwoDucks);
+        }
+
+        private void DogTwoDucks()
+        {
+            DogInstance.TwoDucks((new Random()).Next(-75, 75), DogLaugh);
+        }
+
+        private void DogLaugh()
+        {
+            DogInstance.Laugh(DogOneDuck);
+        }
 
 		void CustomInitialize()
 		{
-
-
+            DogWalking();
 		}
 
 		void CustomActivity(bool firstTimeCalled)

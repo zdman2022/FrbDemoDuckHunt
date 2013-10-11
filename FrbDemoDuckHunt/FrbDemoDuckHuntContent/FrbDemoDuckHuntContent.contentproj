@@ -42,6 +42,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Entities\Background\SceneFile.scnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>SceneFile</Name>
+    </None>
     <None Include="Entities\Dog\AnimationChainListFile.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>

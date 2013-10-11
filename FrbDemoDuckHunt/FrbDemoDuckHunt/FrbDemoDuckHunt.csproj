@@ -113,6 +113,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Background.cs" />
+    <Compile Include="Entities\Background.Generated.cs">
+      <DependentUpon>Background.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Dog.cs" />
     <Compile Include="Entities\Dog.Generated.cs">
       <DependentUpon>Dog.cs</DependentUpon>
