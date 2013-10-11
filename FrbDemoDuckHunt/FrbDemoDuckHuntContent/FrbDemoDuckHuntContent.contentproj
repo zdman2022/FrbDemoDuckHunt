@@ -54,6 +54,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>
     </None>
+    <None Include="Entities\GameInterface\dialog_box.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>dialog_box</Name>
+    </None>
+    <None Include="Entities\GameInterface\InterfaceAnimations.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>InterfaceAnimations</Name>
+    </None>
+    <None Include="Entities\GameInterface\ui.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>ui</Name>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="GlobalContent\dhunttitle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>dhunttitle</Name>
@@ -69,6 +82,10 @@
     <None Include="GlobalContent\GreenNumbers.fnt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>GreenNumbers</Name>
+    </None>
+    <None Include="GlobalContent\InterfaceConstants.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>InterfaceConstants</Name>
     </None>
     <None Include="GlobalContent\WhiteNumbers.fnt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

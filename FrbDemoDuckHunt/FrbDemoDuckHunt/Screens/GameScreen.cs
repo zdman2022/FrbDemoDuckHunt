@@ -30,7 +30,7 @@ namespace FrbDemoDuckHunt.Screens
 		void CustomInitialize()
 		{
 
-
+		    GameInterfaceInstance.Score = 500;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
