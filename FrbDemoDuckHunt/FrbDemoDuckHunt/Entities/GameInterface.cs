@@ -42,6 +42,7 @@ namespace FrbDemoDuckHunt.Entities
             _mainLayout = interfacePackage.GetNamedControl<SimpleLayout>(mainLabelName);
 
             _mainLayout.AttachTo(this, false);
+		    _scoreLabel.DisplayText = Score.ToString();
 		}
 
 		private void CustomActivity()

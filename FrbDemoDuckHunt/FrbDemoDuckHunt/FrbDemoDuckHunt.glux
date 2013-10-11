@@ -224,6 +224,7 @@
           </Properties>
           <Name>Score</Name>
           <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">0</DefaultValue>
           <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
       </CustomVariables>

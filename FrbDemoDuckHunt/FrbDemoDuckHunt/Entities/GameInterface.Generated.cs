@@ -56,7 +56,7 @@ namespace FrbDemoDuckHunt.Entities
 		public int AvailableShots;
 		public event EventHandler BeforeScoreSet;
 		public event EventHandler AfterScoreSet;
-		int mScore;
+		int mScore = 0;
 		public int Score
 		{
 			set
@@ -166,6 +166,7 @@ namespace FrbDemoDuckHunt.Entities
 			RotationX = oldRotationX;
 			RotationY = oldRotationY;
 			RotationZ = oldRotationZ;
+			Score = 0;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

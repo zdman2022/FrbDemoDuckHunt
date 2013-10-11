@@ -7,7 +7,7 @@
                      Direction="Down" Margin="20">
             <Children>
               <BoxLayoutChild ItemAlignment="Inverse">
-                <LayoutableText Name="ScoreValue" Text="12345" />
+                <LayoutableText Name="ScoreValue" />
               </BoxLayoutChild>
               <BoxLayoutChild ItemAlignment="Inverse">
                 <LayoutableText Text="Score" />

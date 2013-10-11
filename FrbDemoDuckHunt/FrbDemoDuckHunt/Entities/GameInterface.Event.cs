@@ -14,7 +14,9 @@ namespace FrbDemoDuckHunt.Entities
     {
         void OnAfterScoreSet(object sender, EventArgs e)
         {
-            _scoreLabel.DisplayText = Score.ToString();
+            // __scoreLabel will be null when the score's default value is set
+            if (_scoreLabel != null)
+                _scoreLabel.DisplayText = Score.ToString();
         }
 
     }
