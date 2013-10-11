@@ -46,6 +46,8 @@ namespace FrbDemoDuckHunt.Screens
         }
 		void CustomInitialize()
 		{
+            SpriteManager.Camera.BackgroundColor = new Microsoft.Xna.Framework.Color(63, 191, 255);
+
             DogWalking();
 		}
 
