@@ -39,6 +39,7 @@ namespace FrbDemoDuckHunt.Screens
 		private FrbDemoDuckHunt.Entities.Dog DogInstance;
 		private PositionedObjectList<Duck> DuckList;
 		private FrbDemoDuckHunt.Entities.Background BackgroundInstance;
+		private FrbDemoDuckHunt.Entities.GameInterface GameInterfaceInstance;
 
 		public GameScreen()
 			: base("GameScreen")
@@ -54,6 +55,8 @@ namespace FrbDemoDuckHunt.Screens
 			DuckList = new PositionedObjectList<Duck>();
 			BackgroundInstance = new FrbDemoDuckHunt.Entities.Background(ContentManagerName, false);
 			BackgroundInstance.Name = "BackgroundInstance";
+			GameInterfaceInstance = new FrbDemoDuckHunt.Entities.GameInterface(ContentManagerName, false);
+			GameInterfaceInstance.Name = "GameInterfaceInstance";
 			
 			
 			PostInitialize();
@@ -90,6 +93,7 @@ namespace FrbDemoDuckHunt.Screens
 					}
 				}
 				BackgroundInstance.Activity();
+				GameInterfaceInstance.Activity();
 			}
 			else
 			{
@@ -124,6 +128,12 @@ namespace FrbDemoDuckHunt.Screens
 				BackgroundInstance.Destroy();
 				BackgroundInstance.Detach();
 			}
+			if (GameInterfaceInstance != null)
+			{
+				GameInterfaceInstance.Destroy();
+				GameInterfaceInstance.Detach();
+			}
+
 
 			base.Destroy();
 
@@ -175,6 +185,7 @@ namespace FrbDemoDuckHunt.Screens
 			CameraSetup.ResetCamera(SpriteManager.Camera);
 			DogInstance.AddToManagers(mLayer);
 			DogInstance.CurrentState = FrbDemoDuckHunt.Entities.Dog.VariableState.OneDuck;
+			GameInterfaceInstance.AddToManagers(mLayer);
 			if (DogInstance.Parent == null)
 			{
 				DogInstance.X = 20f;
@@ -217,6 +228,7 @@ namespace FrbDemoDuckHunt.Screens
 				DuckList[i].ConvertToManuallyUpdated();
 			}
 			BackgroundInstance.ConvertToManuallyUpdated();
+			GameInterfaceInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -236,6 +248,7 @@ namespace FrbDemoDuckHunt.Screens
 			#endif
 			FrbDemoDuckHunt.Entities.Dog.LoadStaticContent(contentManagerName);
 			FrbDemoDuckHunt.Entities.Background.LoadStaticContent(contentManagerName);
+			FrbDemoDuckHunt.Entities.GameInterface.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		[System.Obsolete("Use GetFile instead")]

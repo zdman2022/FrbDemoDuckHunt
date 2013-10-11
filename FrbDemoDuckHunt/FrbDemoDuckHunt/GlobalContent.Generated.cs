@@ -9,6 +9,8 @@ using FlatRedBall.AI.Pathfinding;
 using FlatRedBall.Utilities;
 using BitmapFont = FlatRedBall.Graphics.BitmapFont;
 using FlatRedBall.Localization;
+using FrbDemoDuckHunt.DataTypes;
+using FlatRedBall.IO.Csv;
 
 namespace FrbDemoDuckHunt
 {
@@ -20,6 +22,7 @@ namespace FrbDemoDuckHunt
 		public static FlatRedBall.Graphics.BitmapFont WhiteNumbers { get; set; }
 		public static Microsoft.Xna.Framework.Graphics.Texture2D dhunttitle { get; set; }
 		public static Microsoft.Xna.Framework.Graphics.Texture2D dhunttitlepointer { get; set; }
+		public static Dictionary<string, InterfaceConstants> InterfaceConstants { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -35,6 +38,8 @@ namespace FrbDemoDuckHunt
 					return dhunttitle;
 				case  "dhunttitlepointer":
 					return dhunttitlepointer;
+				case  "InterfaceConstants":
+					return InterfaceConstants;
 			}
 			return null;
 		}
@@ -52,6 +57,8 @@ namespace FrbDemoDuckHunt
 					return dhunttitle;
 				case  "dhunttitlepointer":
 					return dhunttitlepointer;
+				case  "InterfaceConstants":
+					return InterfaceConstants;
 			}
 			return null;
 		}
@@ -66,10 +73,33 @@ namespace FrbDemoDuckHunt
 			WhiteNumbers = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/whitenumbers.fnt", ContentManagerName);
 			dhunttitle = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/dhunttitle.png", ContentManagerName);
 			dhunttitlepointer = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/dhunttitlepointer.png", ContentManagerName);
+			if (InterfaceConstants == null)
+			{
+				{
+					// We put the { and } to limit the scope of oldDelimiter
+					char oldDelimiter = CsvFileManager.Delimiter;
+					CsvFileManager.Delimiter = ',';
+					Dictionary<string, InterfaceConstants> temporaryCsvObject = new Dictionary<string, InterfaceConstants>();
+					CsvFileManager.CsvDeserializeDictionary<string, InterfaceConstants>("content/globalcontent/interfaceconstants.csv", temporaryCsvObject);
+					CsvFileManager.Delimiter = oldDelimiter;
+					InterfaceConstants = temporaryCsvObject;
+				}
+			}
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)
 		{
+			if (whatToReload == InterfaceConstants)
+			{
+				{
+					// We put the { and } to limit the scope of oldDelimiter
+					char oldDelimiter = CsvFileManager.Delimiter;
+					CsvFileManager.Delimiter = ',';
+					InterfaceConstants.Clear();
+					CsvFileManager.CsvDeserializeDictionary<string, InterfaceConstants>("content/globalcontent/interfaceconstants.csv", InterfaceConstants);
+					CsvFileManager.Delimiter = oldDelimiter;
+				}
+			}
 		}
 		
 		

@@ -1,0 +1,21 @@
+<UserInterfacePackage>
+  <Controls>
+    <SimpleLayout Name="MainLayout" IsFullScreen="true">
+      <Children>
+        <SimpleLayoutChild VerticalOffsetFromBottom="20" HorizontalOffsetFromRight="-20" Origin="BottomRight">
+          <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background" 
+                     Direction="Down" Margin="20">
+            <Children>
+              <BoxLayoutChild ItemAlignment="Inverse">
+                <LayoutableText Name="ScoreValue" />
+              </BoxLayoutChild>
+              <BoxLayoutChild ItemAlignment="Inverse">
+                <LayoutableText Text="Score" />
+              </BoxLayoutChild>
+            </Children>
+          </BoxLayout>
+        </SimpleLayoutChild>
+      </Children>
+    </SimpleLayout>
+  </Controls>
+</UserInterfacePackage>

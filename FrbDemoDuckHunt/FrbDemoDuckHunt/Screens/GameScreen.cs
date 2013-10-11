@@ -40,12 +40,10 @@ namespace FrbDemoDuckHunt.Screens
         {
             DogInstance.TwoDucks((new Random()).Next(-75, 75), DogLaugh);
         }
-
         private void DogLaugh()
         {
             DogInstance.Laugh(DogOneDuck);
         }
-
 		void CustomInitialize()
 		{
             DogWalking();
