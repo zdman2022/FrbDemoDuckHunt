@@ -432,6 +432,7 @@
           </Properties>
           <Name>MaxShots</Name>
           <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">3</DefaultValue>
         </CustomVariable>
         <CustomVariable>
           <Properties>
@@ -442,6 +443,8 @@
           </Properties>
           <Name>AvailableShots</Name>
           <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">3</DefaultValue>
+          <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
         <CustomVariable>
           <Properties>
@@ -473,6 +476,12 @@
         <EventResponseSave>
           <EventName>AfterScoreSet</EventName>
           <SourceVariable>Score</SourceVariable>
+          <BeforeOrAfter>After</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
+        <EventResponseSave>
+          <EventName>AfterAvailableShotsSet</EventName>
+          <SourceVariable>AvailableShots</SourceVariable>
           <BeforeOrAfter>After</BeforeOrAfter>
           <DelegateType />
         </EventResponseSave>

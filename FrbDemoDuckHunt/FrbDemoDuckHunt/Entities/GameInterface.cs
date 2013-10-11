@@ -30,16 +30,33 @@ namespace FrbDemoDuckHunt.Entities
 	{
 	    private LayoutableText _scoreLabel;
 	    private SimpleLayout _mainLayout;
+	    private List<LayoutableSprite> _shotIndicators;
+	    private BoxLayout _shotContainer;
 
 		private void CustomInitialize()
 		{
 		    var xmlFilePath = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceXml].Value;
 		    var scoreLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceScoreValue].Value;
 		    var mainLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceMainLayout].Value;
+		    var shotName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceShot].Value;
+		    var shotContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceShotContainer].Value;
 
             var interfacePackage = new UserInterfacePackage(xmlFilePath, ContentManagerName);
             _scoreLabel = interfacePackage.GetNamedControl<LayoutableText>(scoreLabelName);
             _mainLayout = interfacePackage.GetNamedControl<SimpleLayout>(mainLabelName);
+		    _shotContainer = interfacePackage.GetNamedControl<BoxLayout>(shotContainerName);
+
+            _shotIndicators = new List<LayoutableSprite>();
+		    var shotSprite = interfacePackage.GetNamedControl<LayoutableSprite>(shotName);
+            for (int x = 0; x < MaxShots; x++)
+            {
+                var clonedShotSprite = (LayoutableSprite)shotSprite.Clone();
+                _shotIndicators.Add(clonedShotSprite);
+                _shotContainer.AddItem(clonedShotSprite);
+
+                if (x < AvailableShots)
+                    clonedShotSprite.Visible = true;
+            }
 
             _mainLayout.AttachTo(this, false);
 		    _scoreLabel.DisplayText = Score.ToString();

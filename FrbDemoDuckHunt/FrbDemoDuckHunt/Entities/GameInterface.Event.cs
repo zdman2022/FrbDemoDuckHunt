@@ -19,5 +19,17 @@ namespace FrbDemoDuckHunt.Entities
                 _scoreLabel.DisplayText = Score.ToString();
         }
 
+        void OnAfterAvailableShotsSet(object sender, EventArgs e)
+        {
+            if (_shotIndicators != null)
+            {
+                for (int x = 0; x < _shotIndicators.Count; x++)
+                {
+                    var indicator = _shotIndicators[x];
+                    indicator.Visible = (x < AvailableShots);
+                }
+            }
+        }
+
     }
 }

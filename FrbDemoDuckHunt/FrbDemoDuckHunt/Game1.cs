@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using FlatRedBall;
 using FlatRedBall.Graphics;
 using FlatRedBall.Utilities;
-
+using FrbUi;
 using Microsoft.Xna.Framework;
 #if !FRB_MDX
 using System.Linq;
@@ -55,6 +55,7 @@ namespace FrbDemoDuckHunt
 
         protected override void Update(GameTime gameTime)
         {
+            UiControlManager.Instance.RunActivities();
             FlatRedBallServices.Update(gameTime);
 
             FlatRedBall.Screens.ScreenManager.Activity();
@@ -64,6 +65,7 @@ namespace FrbDemoDuckHunt
 
         protected override void Draw(GameTime gameTime)
         {
+            UiControlManager.Instance.UpdateDependencies();
             FlatRedBallServices.Draw();
 
             base.Draw(gameTime);

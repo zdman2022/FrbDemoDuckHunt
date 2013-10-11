@@ -5,6 +5,7 @@ Content\Entities\Duck\SceneFile.scnx
 Content\Entities\GameInterface\dialog_box.png
 Content\Entities\GameInterface\InterfaceAnimations.achx
 Content\Entities\GameInterface\ui.xml
+Content\Entities\GameInterface\VolumeBar.png
 Content\GlobalContent\dhunttitle.png
 Content\GlobalContent\dhunttitlepointer.png
 Content\GlobalContent\DogHunt.png
