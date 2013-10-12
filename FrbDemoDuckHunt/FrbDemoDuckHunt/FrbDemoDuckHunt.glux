@@ -548,20 +548,10 @@
             <InstructionSave>
               <Type>String</Type>
               <Member>VisibleInstanceCurrentChainName</Member>
-              <ValueAsString>FallLeft</ValueAsString>
+              <ValueAsString>Fall</ValueAsString>
             </InstructionSave>
           </InstructionSaves>
-          <Name>FallLeft</Name>
-        </StateSave>
-        <StateSave>
-          <InstructionSaves>
-            <InstructionSave>
-              <Type>String</Type>
-              <Member>VisibleInstanceCurrentChainName</Member>
-              <ValueAsString>FallRight</ValueAsString>
-            </InstructionSave>
-          </InstructionSaves>
-          <Name>FallRight</Name>
+          <Name>Fall</Name>
         </StateSave>
         <StateSave>
           <InstructionSaves>

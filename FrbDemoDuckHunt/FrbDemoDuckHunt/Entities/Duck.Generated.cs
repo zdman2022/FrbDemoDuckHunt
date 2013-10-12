@@ -54,13 +54,12 @@ namespace FrbDemoDuckHunt.Entities
 			Unknown = 1, //This exists so that if the entity is actually a child entity and has set a child state, you will get this
 			FlyRight = 2, 
 			FlyLeft = 3, 
-			FallLeft = 4, 
-			FallRight = 5, 
-			FlyUpLeft = 6, 
-			FlyUpRight = 7, 
-			HitLeft = 8, 
-			HitRight = 9, 
-			FlyAway = 10
+			Fall = 4, 
+			FlyUpLeft = 5, 
+			FlyUpRight = 6, 
+			HitLeft = 7, 
+			HitRight = 8, 
+			FlyAway = 9
 		}
 		protected int mCurrentState = 0;
 		public VariableState CurrentState
@@ -91,11 +90,8 @@ namespace FrbDemoDuckHunt.Entities
 					case  VariableState.FlyLeft:
 						VisibleInstanceCurrentChainName = "FlyLeft";
 						break;
-					case  VariableState.FallLeft:
-						VisibleInstanceCurrentChainName = "FallLeft";
-						break;
-					case  VariableState.FallRight:
-						VisibleInstanceCurrentChainName = "FallRight";
+					case  VariableState.Fall:
+						VisibleInstanceCurrentChainName = "Fall";
 						break;
 					case  VariableState.FlyUpLeft:
 						VisibleInstanceCurrentChainName = "FlyUpLeft";
@@ -436,9 +432,7 @@ namespace FrbDemoDuckHunt.Entities
 					break;
 				case  VariableState.FlyLeft:
 					break;
-				case  VariableState.FallLeft:
-					break;
-				case  VariableState.FallRight:
+				case  VariableState.Fall:
 					break;
 				case  VariableState.FlyUpLeft:
 					break;
@@ -464,9 +458,7 @@ namespace FrbDemoDuckHunt.Entities
 					break;
 				case  VariableState.FlyLeft:
 					break;
-				case  VariableState.FallLeft:
-					break;
-				case  VariableState.FallRight:
+				case  VariableState.Fall:
 					break;
 				case  VariableState.FlyUpLeft:
 					break;
@@ -503,16 +495,10 @@ namespace FrbDemoDuckHunt.Entities
 						this.VisibleInstanceCurrentChainName = "FlyLeft";
 					}
 					break;
-				case  VariableState.FallLeft:
+				case  VariableState.Fall:
 					if (interpolationValue < 1)
 					{
-						this.VisibleInstanceCurrentChainName = "FallLeft";
-					}
-					break;
-				case  VariableState.FallRight:
-					if (interpolationValue < 1)
-					{
-						this.VisibleInstanceCurrentChainName = "FallRight";
+						this.VisibleInstanceCurrentChainName = "Fall";
 					}
 					break;
 				case  VariableState.FlyUpLeft:
@@ -560,16 +546,10 @@ namespace FrbDemoDuckHunt.Entities
 						this.VisibleInstanceCurrentChainName = "FlyLeft";
 					}
 					break;
-				case  VariableState.FallLeft:
+				case  VariableState.Fall:
 					if (interpolationValue >= 1)
 					{
-						this.VisibleInstanceCurrentChainName = "FallLeft";
-					}
-					break;
-				case  VariableState.FallRight:
-					if (interpolationValue >= 1)
-					{
-						this.VisibleInstanceCurrentChainName = "FallRight";
+						this.VisibleInstanceCurrentChainName = "Fall";
 					}
 					break;
 				case  VariableState.FlyUpLeft:
@@ -627,14 +607,9 @@ namespace FrbDemoDuckHunt.Entities
 						object throwaway = "FlyLeft";
 					}
 					break;
-				case  VariableState.FallLeft:
+				case  VariableState.Fall:
 					{
-						object throwaway = "FallLeft";
-					}
-					break;
-				case  VariableState.FallRight:
-					{
-						object throwaway = "FallRight";
+						object throwaway = "Fall";
 					}
 					break;
 				case  VariableState.FlyUpLeft:
