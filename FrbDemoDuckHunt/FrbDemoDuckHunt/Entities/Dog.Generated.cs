@@ -207,8 +207,8 @@ namespace FrbDemoDuckHunt.Entities
 				VisibleInstance.CopyAbsoluteToRelative();
 				VisibleInstance.AttachTo(this, false);
 			}
-			VisibleInstance.AnimationChains = AnimationChainListFile;
 			VisibleInstance.PixelSize = 0.5f;
+			VisibleInstance.AnimationChains = AnimationChainListFile;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -229,8 +229,8 @@ namespace FrbDemoDuckHunt.Entities
 			RotationY = 0;
 			RotationZ = 0;
 			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
-			VisibleInstance.AnimationChains = AnimationChainListFile;
 			VisibleInstance.PixelSize = 0.5f;
+			VisibleInstance.AnimationChains = AnimationChainListFile;
 			X = oldX;
 			Y = oldY;
 			Z = oldZ;
