@@ -131,6 +131,17 @@ namespace FrbDemoDuckHunt.Entities
 				VisibleInstance.CurrentChainName = value;
 			}
 		}
+		public bool Visible
+		{
+			get
+			{
+				return VisibleInstance.Visible;
+			}
+			set
+			{
+				VisibleInstance.Visible = value;
+			}
+		}
 		protected Layer LayerProvidedByContainer = null;
 
         public Duck(string contentManagerName) :
@@ -218,7 +229,16 @@ namespace FrbDemoDuckHunt.Entities
 			}
 			VisibleInstance.AnimationChains = AnimationChainListFileBlack;
 			VisibleInstance.CurrentChainName = "FlyRight";
-			VisibleInstance.PixelSize = 0.5f;
+			VisibleInstance.PixelSize = 0.4f;
+			if (VisibleInstance.Parent == null)
+			{
+				VisibleInstance.Z = -1f;
+			}
+			else
+			{
+				VisibleInstance.RelativeZ = -1f;
+			}
+			VisibleInstance.UseAnimationRelativePosition = false;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -243,7 +263,16 @@ namespace FrbDemoDuckHunt.Entities
 			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
 			VisibleInstance.AnimationChains = AnimationChainListFileBlack;
 			VisibleInstance.CurrentChainName = "FlyRight";
-			VisibleInstance.PixelSize = 0.5f;
+			VisibleInstance.PixelSize = 0.4f;
+			if (VisibleInstance.Parent == null)
+			{
+				VisibleInstance.Z = -1f;
+			}
+			else
+			{
+				VisibleInstance.RelativeZ = -1f;
+			}
+			VisibleInstance.UseAnimationRelativePosition = false;
 			X = oldX;
 			Y = oldY;
 			Z = oldZ;
@@ -251,6 +280,35 @@ namespace FrbDemoDuckHunt.Entities
 			RotationY = oldRotationY;
 			RotationZ = oldRotationZ;
 			VisibleInstanceCurrentChainName = "FlyRight";
+			if (Parent == null)
+			{
+				Y = 0f;
+			}
+			else
+			{
+				RelativeY = 0f;
+			}
+			if (Parent == null)
+			{
+				X = 0f;
+			}
+			else
+			{
+				RelativeX = 0f;
+			}
+			Visible = true;
+			if (Parent == null)
+			{
+				Z = 0f;
+			}
+			else if (Parent is Camera)
+			{
+				RelativeZ = 0f - 40.0f;
+			}
+			else
+			{
+				RelativeZ = 0f;
+			}
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

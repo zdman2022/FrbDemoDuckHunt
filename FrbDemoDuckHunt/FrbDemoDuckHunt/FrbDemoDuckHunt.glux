@@ -6,6 +6,100 @@
         <string>GLUE</string>
       </Tags>
       <Source>GLUE</Source>
+      <States>
+        <StateSave>
+          <InstructionSaves />
+          <Name>Intro</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>StartDucks</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>DucksFlying</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>DucksEscaping</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>PostDucks</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>StartIntro</Name>
+        </StateSave>
+      </States>
+      <CustomVariables>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>int</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>MinDuckY</Name>
+          <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>int</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>MaxDuckY</Name>
+          <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">100</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>int</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>MinDuckX</Name>
+          <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">-100</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>int</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>MaxDuckX</Name>
+          <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">100</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>StartDuckY</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-60</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>InitialDuckSpeed</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">70</DefaultValue>
+        </CustomVariable>
+      </CustomVariables>
       <Name>Screens\GameScreen</Name>
       <NamedObjects>
         <NamedObjectSave>
@@ -22,7 +116,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Z</Member>
-            <ValueAsFloat>0</ValueAsFloat>
+            <ValueAsFloat>-1</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
@@ -75,6 +169,24 @@
           <SourceFile />
           <SourceClassType>Entities\Shot</SourceClassType>
           <InstanceName>ShotInstance</InstanceName>
+          <AttachToContainer>true</AttachToContainer>
+          <IndependentOfCamera>true</IndependentOfCamera>
+        </NamedObjectSave>
+        <NamedObjectSave>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>Visible</Member>
+            <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Z</Member>
+            <ValueAsFloat>-1</ValueAsFloat>
+          </CustomProperty>
+          <SourceType>Entity</SourceType>
+          <SourceFile />
+          <SourceClassType>Entities\Duck</SourceClassType>
+          <InstanceName>DuckInstance</InstanceName>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
@@ -316,7 +428,7 @@
           </Properties>
           <Name>WalkingStartY</Name>
           <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">-48</DefaultValue>
+          <DefaultValue xsi:type="xsd:float">-44</DefaultValue>
         </CustomVariable>
         <CustomVariable>
           <Properties>
@@ -495,6 +607,52 @@
           <SourceObject>VisibleInstance</SourceObject>
           <SourceObjectProperty>CurrentChainName</SourceObjectProperty>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Y</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>X</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>bool</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Visible</Name>
+          <Type>bool</Type>
+          <DefaultValue xsi:type="xsd:boolean">true</DefaultValue>
+          <SourceObject>VisibleInstance</SourceObject>
+          <SourceObjectProperty>Visible</SourceObjectProperty>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Z</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
       </CustomVariables>
       <Name>Entities\Duck</Name>
       <NamedObjects>
@@ -525,7 +683,37 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>PixelSize</Member>
-            <ValueAsFloat>0.5</ValueAsFloat>
+            <ValueAsFloat>0.4</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Z</Member>
+            <ValueAsFloat>-1</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Y</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>RelativeX</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>RotationY</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>RelativeY</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>bool</Type>
+            <Member>UseAnimationRelativePosition</Member>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>Entities/Duck/SceneFile.scnx</SourceFile>

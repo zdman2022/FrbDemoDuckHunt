@@ -35,12 +35,68 @@ namespace FrbDemoDuckHunt.Screens
 		#if DEBUG
 		static bool HasBeenLoadedWithGlobalContentManager = false;
 		#endif
+		public enum VariableState
+		{
+			Uninitialized = 0, //This exists so that the first set call actually does something
+			Unknown = 1, //This exists so that if the entity is actually a child entity and has set a child state, you will get this
+			Intro = 2, 
+			StartDucks = 3, 
+			DucksFlying = 4, 
+			DucksEscaping = 5, 
+			PostDucks = 6, 
+			StartIntro = 7
+		}
+		protected int mCurrentState = 0;
+		public VariableState CurrentState
+		{
+			get
+			{
+				if (Enum.IsDefined(typeof(VariableState), mCurrentState))
+				{
+					return (VariableState)mCurrentState;
+				}
+				else
+				{
+					return VariableState.Unknown;
+				}
+			}
+			set
+			{
+				mCurrentState = (int)value;
+				switch(CurrentState)
+				{
+					case  VariableState.Uninitialized:
+						break;
+					case  VariableState.Unknown:
+						break;
+					case  VariableState.Intro:
+						break;
+					case  VariableState.StartDucks:
+						break;
+					case  VariableState.DucksFlying:
+						break;
+					case  VariableState.DucksEscaping:
+						break;
+					case  VariableState.PostDucks:
+						break;
+					case  VariableState.StartIntro:
+						break;
+				}
+			}
+		}
 		
 		private FrbDemoDuckHunt.Entities.Dog DogInstance;
 		private PositionedObjectList<Duck> DuckList;
 		private FrbDemoDuckHunt.Entities.Background BackgroundInstance;
 		private FrbDemoDuckHunt.Entities.GameInterface GameInterfaceInstance;
 		private FrbDemoDuckHunt.Entities.Shot ShotInstance;
+		private FrbDemoDuckHunt.Entities.Duck DuckInstance;
+		public int MinDuckY = 0;
+		public int MaxDuckY = 100;
+		public int MinDuckX = -100;
+		public int MaxDuckX = 100;
+		public float StartDuckY = -60f;
+		public float InitialDuckSpeed = 70f;
 
 		public GameScreen()
 			: base("GameScreen")
@@ -60,6 +116,8 @@ namespace FrbDemoDuckHunt.Screens
 			GameInterfaceInstance.Name = "GameInterfaceInstance";
 			ShotInstance = new FrbDemoDuckHunt.Entities.Shot(ContentManagerName, false);
 			ShotInstance.Name = "ShotInstance";
+			DuckInstance = new FrbDemoDuckHunt.Entities.Duck(ContentManagerName, false);
+			DuckInstance.Name = "DuckInstance";
 			
 			
 			PostInitialize();
@@ -98,6 +156,7 @@ namespace FrbDemoDuckHunt.Screens
 				BackgroundInstance.Activity();
 				GameInterfaceInstance.Activity();
 				ShotInstance.Activity();
+				DuckInstance.Activity();
 			}
 			else
 			{
@@ -142,6 +201,11 @@ namespace FrbDemoDuckHunt.Screens
 				ShotInstance.Destroy();
 				ShotInstance.Detach();
 			}
+			if (DuckInstance != null)
+			{
+				DuckInstance.Destroy();
+				DuckInstance.Detach();
+			}
 
 			base.Destroy();
 
@@ -172,11 +236,11 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			if (DogInstance.Parent == null)
 			{
-				DogInstance.Z = 0f;
+				DogInstance.Z = -1f;
 			}
 			else
 			{
-				DogInstance.RelativeZ = 0f;
+				DogInstance.RelativeZ = -1f;
 			}
 			if (BackgroundInstance.Parent == null)
 			{
@@ -185,6 +249,15 @@ namespace FrbDemoDuckHunt.Screens
 			else
 			{
 				BackgroundInstance.RelativeZ = -1f;
+			}
+			DuckInstance.Visible = false;
+			if (DuckInstance.Parent == null)
+			{
+				DuckInstance.Z = -1f;
+			}
+			else
+			{
+				DuckInstance.RelativeZ = -1f;
 			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
@@ -211,11 +284,11 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			if (DogInstance.Parent == null)
 			{
-				DogInstance.Z = 0f;
+				DogInstance.Z = -1f;
 			}
 			else
 			{
-				DogInstance.RelativeZ = 0f;
+				DogInstance.RelativeZ = -1f;
 			}
 			BackgroundInstance.AddToManagers(mLayer);
 			if (BackgroundInstance.Parent == null)
@@ -228,6 +301,22 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			GameInterfaceInstance.AddToManagers(mLayer);
 			ShotInstance.AddToManagers(mLayer);
+			DuckInstance.AddToManagers(mLayer);
+			DuckInstance.Visible = false;
+			if (DuckInstance.Parent == null)
+			{
+				DuckInstance.Z = -1f;
+			}
+			else
+			{
+				DuckInstance.RelativeZ = -1f;
+			}
+			MinDuckY = 0;
+			MaxDuckY = 100;
+			MinDuckX = -100;
+			MaxDuckX = 100;
+			StartDuckY = -60f;
+			InitialDuckSpeed = 70f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -239,6 +328,7 @@ namespace FrbDemoDuckHunt.Screens
 			BackgroundInstance.ConvertToManuallyUpdated();
 			GameInterfaceInstance.ConvertToManuallyUpdated();
 			ShotInstance.ConvertToManuallyUpdated();
+			DuckInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -260,7 +350,122 @@ namespace FrbDemoDuckHunt.Screens
 			FrbDemoDuckHunt.Entities.Background.LoadStaticContent(contentManagerName);
 			FrbDemoDuckHunt.Entities.GameInterface.LoadStaticContent(contentManagerName);
 			FrbDemoDuckHunt.Entities.Shot.LoadStaticContent(contentManagerName);
+			FrbDemoDuckHunt.Entities.Duck.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
+		}
+		static VariableState mLoadingState = VariableState.Uninitialized;
+		public static VariableState LoadingState
+		{
+			get
+			{
+				return mLoadingState;
+			}
+			set
+			{
+				mLoadingState = value;
+			}
+		}
+		public FlatRedBall.Instructions.Instruction InterpolateToState (VariableState stateToInterpolateTo, double secondsToTake)
+		{
+			switch(stateToInterpolateTo)
+			{
+				case  VariableState.Intro:
+					break;
+				case  VariableState.StartDucks:
+					break;
+				case  VariableState.DucksFlying:
+					break;
+				case  VariableState.DucksEscaping:
+					break;
+				case  VariableState.PostDucks:
+					break;
+				case  VariableState.StartIntro:
+					break;
+			}
+			var instruction = new FlatRedBall.Instructions.DelegateInstruction<VariableState>(StopStateInterpolation, stateToInterpolateTo);
+			instruction.TimeToExecute = FlatRedBall.TimeManager.CurrentTime + secondsToTake;
+			FlatRedBall.Instructions.InstructionManager.Add(instruction);
+			return instruction;
+		}
+		public void StopStateInterpolation (VariableState stateToStop)
+		{
+			switch(stateToStop)
+			{
+				case  VariableState.Intro:
+					break;
+				case  VariableState.StartDucks:
+					break;
+				case  VariableState.DucksFlying:
+					break;
+				case  VariableState.DucksEscaping:
+					break;
+				case  VariableState.PostDucks:
+					break;
+				case  VariableState.StartIntro:
+					break;
+			}
+			CurrentState = stateToStop;
+		}
+		public void InterpolateBetween (VariableState firstState, VariableState secondState, float interpolationValue)
+		{
+			#if DEBUG
+			if (float.IsNaN(interpolationValue))
+			{
+				throw new Exception("interpolationValue cannot be NaN");
+			}
+			#endif
+			switch(firstState)
+			{
+				case  VariableState.Intro:
+					break;
+				case  VariableState.StartDucks:
+					break;
+				case  VariableState.DucksFlying:
+					break;
+				case  VariableState.DucksEscaping:
+					break;
+				case  VariableState.PostDucks:
+					break;
+				case  VariableState.StartIntro:
+					break;
+			}
+			switch(secondState)
+			{
+				case  VariableState.Intro:
+					break;
+				case  VariableState.StartDucks:
+					break;
+				case  VariableState.DucksFlying:
+					break;
+				case  VariableState.DucksEscaping:
+					break;
+				case  VariableState.PostDucks:
+					break;
+				case  VariableState.StartIntro:
+					break;
+			}
+			if (interpolationValue < 1)
+			{
+				mCurrentState = (int)firstState;
+			}
+			else
+			{
+				mCurrentState = (int)secondState;
+			}
+		}
+		public override void MoveToState (int state)
+		{
+			this.CurrentState = (VariableState)state;
+		}
+		
+		/// <summary>Sets the current state, and pushes that state onto the back stack.</summary>
+		public void PushState (VariableState state)
+		{
+			this.CurrentState = state;
+			
+			#if !MONOGAME
+			ScreenManager.PushStateToStack((int)this.CurrentState);
+			#endif
 		}
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)

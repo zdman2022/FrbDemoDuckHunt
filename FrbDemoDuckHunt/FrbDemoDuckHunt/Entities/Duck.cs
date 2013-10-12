@@ -26,6 +26,48 @@ namespace FrbDemoDuckHunt.Entities
 {
 	public partial class Duck
 	{
+        private double GetAngle(Vector3 dest, Vector3 src)
+        {
+            dest.Normalize();
+            src.Normalize();
+
+            return Math.Acos(Vector3.Dot(dest, src));
+        }
+
+        public void FlyTo(int toX, int toY, float speed, Action finishedCallback)
+        {
+            var direction = new Vector3(toX, toY, Z) - new Vector3(X, Y, Z);
+            var angle = GetAngle(direction, new Vector3(0, 1, Z));
+            var timeToPoint = direction.Length() / speed;
+            direction.Normalize();
+            Velocity = direction * speed;
+
+            if (angle >= 0 && angle < ((3 * Math.PI) / 8))
+            {
+                if (Velocity.X >= 0)
+                {
+                    CurrentState = VariableState.FlyUpRight;
+                }
+                else
+                {
+                    CurrentState = VariableState.FlyUpLeft;
+                }
+            }
+            else
+            {
+                if (Velocity.X >= 0)
+                {
+                    CurrentState = VariableState.FlyRight;
+                }
+                else
+                {
+                    CurrentState = VariableState.FlyLeft;
+                }
+            }
+
+            this.Call(finishedCallback).After(timeToPoint);
+        }
+
 		private void CustomInitialize()
 		{
 

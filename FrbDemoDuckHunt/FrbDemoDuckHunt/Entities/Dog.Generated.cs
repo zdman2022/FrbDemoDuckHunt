@@ -128,7 +128,7 @@ namespace FrbDemoDuckHunt.Entities
 		public float JumpingYSpeed = 75f;
 		public float JumpingYDeceleration = -350f;
 		public float DogDuckMoveSpeed = 86f;
-		public float WalkingStartY = -48f;
+		public float WalkingStartY = -44f;
 		public float WalkingStartX = -95f;
 		public float DuckStartY = -60f;
 		public float DuckMaxStartX = 40f;
@@ -271,7 +271,7 @@ namespace FrbDemoDuckHunt.Entities
 			JumpingYSpeed = 75f;
 			JumpingYDeceleration = -350f;
 			DogDuckMoveSpeed = 86f;
-			WalkingStartY = -48f;
+			WalkingStartY = -44f;
 			WalkingStartX = -95f;
 			DuckStartY = -60f;
 			DuckMaxStartX = 40f;

@@ -20,41 +20,55 @@ using FlatRedBall.Localization;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
+using FrbDemoDuckHunt.Entities;
 #endif
 
 namespace FrbDemoDuckHunt.Screens
 {
 	public partial class GameScreen
 	{
-        private void DogWalking()
-        {
-            DogInstance.WalkingSniffingThenDiving(DogOneDuck);
-        }
+        private Random rnd;
+        private bool SetNewPoint = false;
+        private float CurrentLevelSpeed;
 
-        private void DogOneDuck()
-        {
-            ShotInstance.Shoot(() => { DogInstance.OneDuck((new Random()).Next(-75, 75), DogTwoDucks); });
-        }
-
-        private void DogTwoDucks()
-        {
-            ShotInstance.Shoot(() => { DogInstance.TwoDucks((new Random()).Next(-75, 75), DogLaugh); });
-        }
-        private void DogLaugh()
-        {
-            ShotInstance.Shoot(() => { DogInstance.Laugh(DogOneDuck); });
-        }
 		void CustomInitialize()
 		{
+            rnd = new Random();
             SpriteManager.Camera.BackgroundColor = new Microsoft.Xna.Framework.Color(63, 191, 255);
-
-            DogWalking();
+            CurrentState = VariableState.StartDucks;
+            CurrentLevelSpeed = InitialDuckSpeed;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-
-
+            switch (CurrentState)
+            {
+                case VariableState.StartIntro:
+                    DogInstance.WalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
+                    CurrentState = VariableState.Intro;
+                    break;
+                case VariableState.Intro:
+                    break;
+                case VariableState.StartDucks:
+                    DuckInstance.Y = StartDuckY;
+                    DuckInstance.X = rnd.Next(MinDuckX, MaxDuckX);
+                    DuckInstance.Visible = true;
+                    SetNewPoint = true;
+                    CurrentState = VariableState.DucksFlying;
+                    break;
+                case VariableState.DucksFlying:
+                    if (SetNewPoint)
+                    {
+                        DuckInstance.FlyTo(rnd.Next(MinDuckX, MaxDuckX), rnd.Next(MinDuckY, MaxDuckY), CurrentLevelSpeed, () => SetNewPoint = true);
+                        SetNewPoint = false;
+                    }
+                    break;
+                case VariableState.DucksEscaping:
+                    //DuckInstance.FlyAway(() => CurrentState = VariableState.PostDucks);
+                    break;
+                case VariableState.PostDucks:
+                    break;
+            }
 		}
 
 		void CustomDestroy()
