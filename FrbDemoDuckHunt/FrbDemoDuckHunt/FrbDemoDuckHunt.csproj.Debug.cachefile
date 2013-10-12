@@ -30,8 +30,9 @@ Content\GlobalContent\ShotSoundEffect.wma
 Content\GlobalContent\WingFlapSoundEffect.wma
 Content\Entities\Background\SceneFile.scnx
 Content\Entities\Dog\AnimationChainListFile.achx
-Content\Entities\Dog\SceneFile.scnx
-Content\Entities\Duck\SceneFile.scnx
+Content\Entities\Duck\AnimationChainListFileBlack.achx
+Content\Entities\Duck\AnimationChainListFileBlue.achx
+Content\Entities\Duck\AnimationChainListFileRed.achx
 Content\Entities\GameInterface\dialog_box.png
 Content\Entities\GameInterface\InterfaceAnimations.achx
 Content\Entities\GameInterface\ui.xml

@@ -50,13 +50,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFile</Name>
     </None>
-    <None Include="Entities\Dog\SceneFile.scnx">
+    <None Include="Entities\Duck\AnimationChainListFileBlack.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>SceneFile</Name>
+      <Name>AnimationChainListFileBlack</Name>
     </None>
-    <None Include="Entities\Duck\SceneFile.scnx">
+    <None Include="Entities\Duck\AnimationChainListFileBlue.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>SceneFile</Name>
+      <Name>AnimationChainListFileBlue</Name>
+    </None>
+    <None Include="Entities\Duck\AnimationChainListFileRed.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>AnimationChainListFileRed</Name>
     </None>
     <None Include="Entities\GameInterface\dialog_box.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

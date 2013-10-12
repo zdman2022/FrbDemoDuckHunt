@@ -110,7 +110,6 @@ namespace FrbDemoDuckHunt.Entities
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static FlatRedBall.Graphics.Animation.AnimationChainList AnimationChainListFile;
-		protected static FlatRedBall.Scene SceneFile;
 		
 		private FlatRedBall.Sprite VisibleInstance;
 		public string CurrentChain
@@ -155,7 +154,7 @@ namespace FrbDemoDuckHunt.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			VisibleInstance = SceneFile.Sprites.FindByName("doghunt1").Clone();
+			VisibleInstance = new FlatRedBall.Sprite();
 			
 			PostInitialize();
 			if (addToManagers)
@@ -208,6 +207,8 @@ namespace FrbDemoDuckHunt.Entities
 				VisibleInstance.CopyAbsoluteToRelative();
 				VisibleInstance.AttachTo(this, false);
 			}
+			VisibleInstance.AnimationChains = AnimationChainListFile;
+			VisibleInstance.PixelSize = 0.5f;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -228,6 +229,8 @@ namespace FrbDemoDuckHunt.Entities
 			RotationY = 0;
 			RotationZ = 0;
 			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
+			VisibleInstance.AnimationChains = AnimationChainListFile;
+			VisibleInstance.PixelSize = 0.5f;
 			X = oldX;
 			Y = oldY;
 			Z = oldZ;
@@ -314,11 +317,6 @@ namespace FrbDemoDuckHunt.Entities
 					registerUnload = true;
 				}
 				AnimationChainListFile = FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/dog/animationchainlistfile.achx", ContentManagerName);
-				if (!FlatRedBallServices.IsLoaded<FlatRedBall.Scene>(@"content/entities/dog/scenefile.scnx", ContentManagerName))
-				{
-					registerUnload = true;
-				}
-				SceneFile = FlatRedBallServices.Load<FlatRedBall.Scene>(@"content/entities/dog/scenefile.scnx", ContentManagerName);
 			}
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
@@ -345,11 +343,6 @@ namespace FrbDemoDuckHunt.Entities
 				if (AnimationChainListFile != null)
 				{
 					AnimationChainListFile= null;
-				}
-				if (SceneFile != null)
-				{
-					SceneFile.RemoveFromManagers(ContentManagerName != "Global");
-					SceneFile= null;
 				}
 			}
 		}
@@ -566,8 +559,6 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "AnimationChainListFile":
 					return AnimationChainListFile;
-				case  "SceneFile":
-					return SceneFile;
 			}
 			return null;
 		}
@@ -577,8 +568,6 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "AnimationChainListFile":
 					return AnimationChainListFile;
-				case  "SceneFile":
-					return SceneFile;
 			}
 			return null;
 		}
@@ -588,8 +577,6 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "AnimationChainListFile":
 					return AnimationChainListFile;
-				case  "SceneFile":
-					return SceneFile;
 			}
 			return null;
 		}
