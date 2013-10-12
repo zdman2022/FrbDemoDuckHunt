@@ -1,6 +1,9 @@
 <UserInterfacePackage>
   <Controls>
     <LayoutableSprite Name="Shot" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="Shot" Visible="false" ScaleY="13.5" ScaleX="12" />
+    <LayoutableSprite Name="HitDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="HitDuck" Visible="false" ScaleX="14" ScaleY="14" />
+    <LayoutableSprite Name="MissedDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="MissedDuck" Visible="false" ScaleX="14" ScaleY="14" />
+    <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" ScaleX="14" ScaleY="14" />
     <SimpleLayout Name="MainLayout" IsFullScreen="true">
       <Children>
         <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromRight="-41" Origin="BottomRight">
@@ -25,6 +28,25 @@
               </BoxLayoutChild>
               <BoxLayoutChild ItemAlignment="Centered">
                 <LayoutableText Text="SHOTS"/>
+              </BoxLayoutChild>
+            </Children>
+          </BoxLayout>
+        </SimpleLayoutChild>
+        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromCenter="0" Origin="Center">
+          <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
+                     Direction="Right" Margin="10" Spacing="10">
+            <Children>
+              <BoxLayoutChild>
+                <LayoutableText Text="HIT"/>
+              </BoxLayoutChild>
+              <BoxLayoutChild>
+                <BoxLayout Direction="Down" Spacing="10">
+                  <Children>
+                    <BoxLayoutChild>
+                      <BoxLayout Name="DuckContainer" Margin="2" Spacing="2" Direction="Right" />
+                    </BoxLayoutChild>
+                  </Children>
+                </BoxLayout>
               </BoxLayoutChild>
             </Children>
           </BoxLayout>

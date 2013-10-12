@@ -10,6 +10,10 @@ namespace FrbDemoDuckHunt.DataTypes
 		public const string GameInterfaceScoreValue = "GameInterfaceScoreValue";
 		public const string GameInterfaceShot = "GameInterfaceShot";
 		public const string GameInterfaceShotContainer = "GameInterfaceShotContainer";
+		public const string GameInterfaceHitDuck = "GameInterfaceHitDuck";
+		public const string GameInterfaceMissedDuck = "GameInterfaceMissedDuck";
+		public const string GameInterfaceActiveDuck = "GameInterfaceActiveDuck";
+		public const string GameInterfaceDuckContainer = "GameInterfaceDuckContainer";
 		public static System.Collections.Generic.List<System.String> OrderedList = new System.Collections.Generic.List<System.String>
 		{
 		GameInterfaceXml
@@ -17,6 +21,10 @@ namespace FrbDemoDuckHunt.DataTypes
 		,GameInterfaceScoreValue
 		,GameInterfaceShot
 		,GameInterfaceShotContainer
+		,GameInterfaceHitDuck
+		,GameInterfaceMissedDuck
+		,GameInterfaceActiveDuck
+		,GameInterfaceDuckContainer
 		};
 		
 		

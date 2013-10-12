@@ -490,14 +490,14 @@
       <NamedObjects>
         <NamedObjectSave>
           <CustomProperty>
-            <Type>AnimationChainList</Type>
-            <Member>AnimationChains</Member>
-            <ValueAsString>AnimationChainListFile</ValueAsString>
-          </CustomProperty>
-          <CustomProperty>
             <Type>float</Type>
             <Member>PixelSize</Member>
             <ValueAsFloat>0.5</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>AnimationChainList</Type>
+            <Member>AnimationChains</Member>
+            <ValueAsString>AnimationChainListFile</ValueAsString>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>Entities/Dog/SceneFile.scnx</SourceFile>
@@ -737,6 +737,11 @@
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>float</Type>
+            <Member>PixelSize</Member>
+            <ValueAsFloat>0.4</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
             <Type>AnimationChainList</Type>
             <Member>AnimationChains</Member>
             <ValueAsString>AnimationChainListFileBlack</ValueAsString>
@@ -747,39 +752,14 @@
             <ValueAsString>FlyRight</ValueAsString>
           </CustomProperty>
           <CustomProperty>
-            <Type>float</Type>
-            <Member>PixelSize</Member>
-            <ValueAsFloat>0.4</ValueAsFloat>
+            <Type>bool</Type>
+            <Member>UseAnimationRelativePosition</Member>
+            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>Z</Member>
             <ValueAsFloat>-1</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>Y</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>RelativeX</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>RotationY</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>RelativeY</Member>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>bool</Type>
-            <Member>UseAnimationRelativePosition</Member>
-            <ValueAsBool>false</ValueAsBool>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>Entities/Duck/SceneFile.scnx</SourceFile>
@@ -848,6 +828,17 @@
           <Type>int</Type>
           <DefaultValue xsi:type="xsd:int">0</DefaultValue>
           <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>int</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>TotalDucks</Name>
+          <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">10</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Name>Entities\GameInterface</Name>
