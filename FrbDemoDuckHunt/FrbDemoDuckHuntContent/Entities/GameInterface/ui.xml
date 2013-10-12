@@ -1,9 +1,9 @@
 <UserInterfacePackage>
   <Controls>
-    <LayoutableSprite Name="Shot" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="Shot" Visible="false" ScaleY="13.5" ScaleX="12" />
-    <LayoutableSprite Name="HitDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="HitDuck" Visible="false" ScaleX="14" ScaleY="14" />
-    <LayoutableSprite Name="MissedDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="MissedDuck" Visible="false" ScaleX="14" ScaleY="14" />
-    <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" />
+    <LayoutableSprite Name="Shot" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="Shot" Visible="false" TextureScale="1.5" />
+    <LayoutableSprite Name="HitDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="HitDuck" Visible="false" TextureScale="2" />
+    <LayoutableSprite Name="MissedDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="MissedDuck" Visible="false" TextureScale="2" />
+    <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" TextureScale="2" />
     <SimpleLayout Name="MainLayout" IsFullScreen="true">
       <Children>
         <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromRight="-41" Origin="BottomRight">

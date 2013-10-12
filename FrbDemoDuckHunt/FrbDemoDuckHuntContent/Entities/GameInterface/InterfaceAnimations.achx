@@ -86,10 +86,10 @@
       <FlipVertical>false</FlipVertical>
       <TextureName>../../GlobalContent/DogHunt.png</TextureName>
       <FrameLength>0.2</FrameLength>
-      <LeftCoordinate>0.203832746</LeftCoordinate>
-      <RightCoordinate>0.216027871</RightCoordinate>
-      <TopCoordinate>0.939716339</TopCoordinate>
-      <BottomCoordinate>0.964539</BottomCoordinate>
+      <LeftCoordinate>0.189895466</LeftCoordinate>
+      <RightCoordinate>0.202090591</RightCoordinate>
+      <TopCoordinate>0.872340441</TopCoordinate>
+      <BottomCoordinate>0.8971631</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
