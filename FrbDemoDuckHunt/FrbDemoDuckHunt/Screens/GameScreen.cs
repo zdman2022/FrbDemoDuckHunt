@@ -146,7 +146,10 @@ namespace FrbDemoDuckHunt.Screens
                         CurrentState = VariableState.PostDucks;
                     }
 
-                    SpriteManager.Camera.BackgroundColor = _pink;
+                    if (!_includeDuck2 || (!DuckInstance.IsShot && !DuckInstance2.IsShot))
+                    {
+                        SpriteManager.Camera.BackgroundColor = _pink;
+                    }
                     
                     break;
 
