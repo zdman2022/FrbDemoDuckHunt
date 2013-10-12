@@ -840,6 +840,18 @@
           <Type>int</Type>
           <DefaultValue xsi:type="xsd:int">10</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>int</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>Round</Name>
+          <Type>int</Type>
+          <DefaultValue xsi:type="xsd:int">0</DefaultValue>
+          <CreatesEvent>true</CreatesEvent>
+        </CustomVariable>
       </CustomVariables>
       <Name>Entities\GameInterface</Name>
       <ReferencedFiles>
@@ -864,6 +876,12 @@
         <EventResponseSave>
           <EventName>AfterAvailableShotsSet</EventName>
           <SourceVariable>AvailableShots</SourceVariable>
+          <BeforeOrAfter>After</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
+        <EventResponseSave>
+          <EventName>AfterRoundSet</EventName>
+          <SourceVariable>Round</SourceVariable>
           <BeforeOrAfter>After</BeforeOrAfter>
           <DelegateType />
         </EventResponseSave>
