@@ -101,8 +101,9 @@ namespace FrbDemoDuckHunt.Entities
 		    for (int x = 0; x < TotalDucks; x++)
 		        _duckTypes.Add(DuckDisplayType.Missed);
 
-		    SetDuckDisplay(3, DuckDisplayType.Hit);
-            SetDuckDisplay(5, DuckDisplayType.Active);
+            UpdateDuckDisplay();
+		    //SetDuckDisplay(3, DuckDisplayType.Hit);
+            //SetDuckDisplay(5, DuckDisplayType.Active);
 		}
 
 		private void CustomActivity()
