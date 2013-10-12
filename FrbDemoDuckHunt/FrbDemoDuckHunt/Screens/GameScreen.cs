@@ -46,6 +46,7 @@ namespace FrbDemoDuckHunt.Screens
             duck.HasFallen = false;
             duck.HasEscaped = false;
             _state.DuckFlight++;
+            GameInterfaceInstance.SetDuckDisplay(_state.DuckFlight - 1, GameInterface.DuckDisplayType.Active);
 
             switch (_rnd.Next(0, 3))
             {
@@ -64,7 +65,7 @@ namespace FrbDemoDuckHunt.Screens
             duck.Call(() => { if (currentDuckRound == _state.DuckFlight) { _doFlyAway = true; } }).After(5);
         }
 
-        void CheckDuck(Duck duck)
+        void CheckDuck(Duck duck, int offset)
         {
             if (duck.SetNewPoint && !duck.IsShot)
             {
@@ -75,10 +76,11 @@ namespace FrbDemoDuckHunt.Screens
             {
                 duck.FlyAway(() => duck.HasEscaped = true, _state.LevelSpeed);
                 CurrentState = VariableState.DucksEscaping;
+                GameInterfaceInstance.SetDuckDisplay(_state.DuckFlight - offset, GameInterface.DuckDisplayType.Missed);
             }
         }
 
-        void CheckDuckShot(Duck duck, Score score)
+        bool CheckDuckShot(Duck duck, Score score, int offset)
         {
             if (!duck.IsShot && duck.CollisionCircle.IsPointInside(InputManager.Mouse.WorldXAt(0), InputManager.Mouse.WorldYAt(0)))
             {
@@ -90,7 +92,12 @@ namespace FrbDemoDuckHunt.Screens
                 score.Set("Visible").To(false).After(score.TimeToShow);
                 duck.IsShot = true;
                 duck.Shot(() => duck.Fall(() => { duck.HasFallen = true; duck.Velocity = Vector3.Zero; }));
+                GameInterfaceInstance.SetDuckDisplay(_state.DuckFlight - offset, GameInterface.DuckDisplayType.Hit);
+
+                return true;
             }
+
+            return false;
         }
 
 		void CustomInitialize()
@@ -140,21 +147,22 @@ namespace FrbDemoDuckHunt.Screens
                     if (shot)
                     {
                         shot = false;
-                        CheckDuckShot(DuckInstance, ScoreInstance);
-
-                        if (_state.IncludeDuck2)
+                        if (!CheckDuckShot(DuckInstance, ScoreInstance, _state.IncludeDuck2 ? 2 : 1))
                         {
-                            CheckDuckShot(DuckInstance2, ScoreInstance2);
+                            if (_state.IncludeDuck2)
+                            {
+                                CheckDuckShot(DuckInstance2, ScoreInstance2, 1);
+                            }
                         }
                     }
 
                     //Duck 1
-                    CheckDuck(DuckInstance);
+                    CheckDuck(DuckInstance, _state.IncludeDuck2 ? 2 : 1);
 
                     //Duck 2
                     if (_state.IncludeDuck2)
                     {
-                        CheckDuck(DuckInstance2);
+                        CheckDuck(DuckInstance2, 1);
                     }
 
                     if (DuckInstance.HasFallen && (!_state.IncludeDuck2 || DuckInstance2.HasFallen))
@@ -213,6 +221,10 @@ namespace FrbDemoDuckHunt.Screens
                     {
                         _state.Round++;
                         _state.DuckFlight = 0;
+                        for (var i = 0; i < 10; i++)
+                        {
+                            GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Missed);
+                        }
                     }
 
                     break;
