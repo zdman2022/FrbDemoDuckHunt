@@ -1,12 +1,11 @@
 <UserInterfacePackage>
   <Controls>
-    <LayoutableSprite Name="Shot" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="Shot" 
-                      Visible="false" ScaleY="10" />
+    <LayoutableSprite Name="Shot" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="Shot" Visible="false" ScaleY="13.5" ScaleX="12" />
     <SimpleLayout Name="MainLayout" IsFullScreen="true">
       <Children>
-        <SimpleLayoutChild VerticalOffsetFromBottom="20" HorizontalOffsetFromRight="-20" Origin="BottomRight">
+        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromRight="-41" Origin="BottomRight">
           <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background" 
-                     Direction="Down" Margin="20">
+                     Direction="Down" Margin="15" ScaleX="100">
             <Children>
               <BoxLayoutChild ItemAlignment="Inverse">
                 <LayoutableText Name="ScoreValue" />
@@ -17,9 +16,9 @@
             </Children>
           </BoxLayout>
         </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="20" HorizontalOffsetFromLeft="20" Origin="BottomLeft">
+        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromLeft="41" Origin="BottomLeft">
           <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
-                     Direction="Down" Margin="20" Spacing="10" >
+                     Direction="Down" Margin="10" Spacing="10" >
             <Children>
               <BoxLayoutChild ItemAlignment="Centered">
                 <BoxLayout Direction="Right" Name="ShotsContainer"/>

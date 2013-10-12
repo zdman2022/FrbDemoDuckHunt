@@ -38,6 +38,7 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Media.Song RoundIntroduction { get; set; }
 		public static Microsoft.Xna.Framework.Media.Song ShotSoundEffect { get; set; }
 		public static Microsoft.Xna.Framework.Media.Song WingFlapSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Graphics.Texture2D duckhunt2 { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -85,6 +86,8 @@ namespace FrbDemoDuckHunt
 					return ShotSoundEffect;
 				case  "WingFlapSoundEffect":
 					return WingFlapSoundEffect;
+				case  "duckhunt2":
+					return duckhunt2;
 			}
 			return null;
 		}
@@ -134,6 +137,8 @@ namespace FrbDemoDuckHunt
 					return ShotSoundEffect;
 				case  "WingFlapSoundEffect":
 					return WingFlapSoundEffect;
+				case  "duckhunt2":
+					return duckhunt2;
 			}
 			return null;
 		}
@@ -175,6 +180,7 @@ namespace FrbDemoDuckHunt
 			RoundIntroduction = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/roundintroduction", ContentManagerName);
 			ShotSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/shotsoundeffect", ContentManagerName);
 			WingFlapSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Media.Song>(@"content/globalcontent/wingflapsoundeffect", ContentManagerName);
+			duckhunt2 = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/duckhunt2.png", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)

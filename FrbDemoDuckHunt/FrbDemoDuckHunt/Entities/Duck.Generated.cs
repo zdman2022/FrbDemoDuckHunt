@@ -242,9 +242,10 @@ namespace FrbDemoDuckHunt.Entities
 				VisibleInstance.CopyAbsoluteToRelative();
 				VisibleInstance.AttachTo(this, false);
 			}
+			VisibleInstance.PixelSize = 0.4f;
 			VisibleInstance.AnimationChains = AnimationChainListFileBlack;
 			VisibleInstance.CurrentChainName = "FlyRight";
-			VisibleInstance.PixelSize = 0.4f;
+			VisibleInstance.UseAnimationRelativePosition = false;
 			if (VisibleInstance.Parent == null)
 			{
 				VisibleInstance.Z = -1f;
@@ -253,7 +254,6 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				VisibleInstance.RelativeZ = -1f;
 			}
-			VisibleInstance.UseAnimationRelativePosition = false;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -276,9 +276,10 @@ namespace FrbDemoDuckHunt.Entities
 			ShapeManager.AddToLayer(mCollisionCircle, layerToAddTo);
 			mCollisionCircle.Radius = 16f;
 			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
+			VisibleInstance.PixelSize = 0.4f;
 			VisibleInstance.AnimationChains = AnimationChainListFileBlack;
 			VisibleInstance.CurrentChainName = "FlyRight";
-			VisibleInstance.PixelSize = 0.4f;
+			VisibleInstance.UseAnimationRelativePosition = false;
 			if (VisibleInstance.Parent == null)
 			{
 				VisibleInstance.Z = -1f;
@@ -287,7 +288,6 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				VisibleInstance.RelativeZ = -1f;
 			}
-			VisibleInstance.UseAnimationRelativePosition = false;
 			X = oldX;
 			Y = oldY;
 			Z = oldZ;
