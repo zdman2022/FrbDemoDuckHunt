@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnimationChainArraySave xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileRelativeTextures>true</FileRelativeTextures>
+  <TimeMeasurementUnit>Undefined</TimeMeasurementUnit>
+  <AnimationChain>
+    <Name>FlyAway</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0.543554</LeftCoordinate>
+      <RightCoordinate>0.6707317</RightCoordinate>
+      <TopCoordinate>0.858156</TopCoordinate>
+      <BottomCoordinate>0.918439746</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
+  <FileName>D:/Users/scott/Documents/GitHub/FrbDemoDuckHunt/FrbDemoDuckHunt/FrbDemoDuckHuntContent/Entities/FlyAway/AnimationChainListFile.achx</FileName>
+</AnimationChainArraySave>
