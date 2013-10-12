@@ -153,6 +153,11 @@ namespace FrbDemoDuckHunt.Entities
 		public float TimeHit = 0.7f;
 		public float FallSpeed = -80f;
 		public float FallPointY = -60f;
+		public bool IsEscaped;
+		public bool IsShot;
+		public bool SetNewPoint;
+		public bool HasEscaped;
+		public bool HasFallen;
 		protected Layer LayerProvidedByContainer = null;
 
         public Duck(string contentManagerName) :

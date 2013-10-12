@@ -25,7 +25,6 @@ using FlatRedBall.Screens;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using FlatRedBall.Math;
 
 namespace FrbDemoDuckHunt.Screens
 {
@@ -44,7 +43,8 @@ namespace FrbDemoDuckHunt.Screens
 			DucksFlying = 4, 
 			DucksEscaping = 5, 
 			PostDucks = 6, 
-			StartIntro = 7
+			StartIntro = 7, 
+			DogAnimation = 8
 		}
 		protected int mCurrentState = 0;
 		public VariableState CurrentState
@@ -81,16 +81,18 @@ namespace FrbDemoDuckHunt.Screens
 						break;
 					case  VariableState.StartIntro:
 						break;
+					case  VariableState.DogAnimation:
+						break;
 				}
 			}
 		}
 		
 		private FrbDemoDuckHunt.Entities.Dog DogInstance;
-		private PositionedObjectList<Duck> DuckList;
 		private FrbDemoDuckHunt.Entities.Background BackgroundInstance;
 		private FrbDemoDuckHunt.Entities.GameInterface GameInterfaceInstance;
 		private FrbDemoDuckHunt.Entities.Shot ShotInstance;
 		private FrbDemoDuckHunt.Entities.Duck DuckInstance;
+		private FrbDemoDuckHunt.Entities.Duck DuckInstance2;
 		public int MinDuckY = 0;
 		public int MaxDuckY = 100;
 		public int MinDuckX = -100;
@@ -110,7 +112,6 @@ namespace FrbDemoDuckHunt.Screens
 			LoadStaticContent(ContentManagerName);
 			DogInstance = new FrbDemoDuckHunt.Entities.Dog(ContentManagerName, false);
 			DogInstance.Name = "DogInstance";
-			DuckList = new PositionedObjectList<Duck>();
 			BackgroundInstance = new FrbDemoDuckHunt.Entities.Background(ContentManagerName, false);
 			BackgroundInstance.Name = "BackgroundInstance";
 			GameInterfaceInstance = new FrbDemoDuckHunt.Entities.GameInterface(ContentManagerName, false);
@@ -119,6 +120,8 @@ namespace FrbDemoDuckHunt.Screens
 			ShotInstance.Name = "ShotInstance";
 			DuckInstance = new FrbDemoDuckHunt.Entities.Duck(ContentManagerName, false);
 			DuckInstance.Name = "DuckInstance";
+			DuckInstance2 = new FrbDemoDuckHunt.Entities.Duck(ContentManagerName, false);
+			DuckInstance2.Name = "DuckInstance2";
 			
 			
 			PostInitialize();
@@ -146,18 +149,11 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				
 				DogInstance.Activity();
-				for (int i = DuckList.Count - 1; i > -1; i--)
-				{
-					if (i < DuckList.Count)
-					{
-						// We do the extra if-check because activity could destroy any number of entities
-						DuckList[i].Activity();
-					}
-				}
 				BackgroundInstance.Activity();
 				GameInterfaceInstance.Activity();
 				ShotInstance.Activity();
 				DuckInstance.Activity();
+				DuckInstance2.Activity();
 			}
 			else
 			{
@@ -183,10 +179,6 @@ namespace FrbDemoDuckHunt.Screens
 				DogInstance.Destroy();
 				DogInstance.Detach();
 			}
-			for (int i = DuckList.Count - 1; i > -1; i--)
-			{
-				DuckList[i].Destroy();
-			}
 			if (BackgroundInstance != null)
 			{
 				BackgroundInstance.Destroy();
@@ -206,6 +198,11 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				DuckInstance.Destroy();
 				DuckInstance.Detach();
+			}
+			if (DuckInstance2 != null)
+			{
+				DuckInstance2.Destroy();
+				DuckInstance2.Detach();
 			}
 
 			base.Destroy();
@@ -260,6 +257,15 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				DuckInstance.RelativeZ = -1f;
 			}
+			DuckInstance2.Visible = false;
+			if (DuckInstance2.Parent == null)
+			{
+				DuckInstance2.Z = -1f;
+			}
+			else
+			{
+				DuckInstance2.RelativeZ = -1f;
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -312,6 +318,16 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				DuckInstance.RelativeZ = -1f;
 			}
+			DuckInstance2.AddToManagers(mLayer);
+			DuckInstance2.Visible = false;
+			if (DuckInstance2.Parent == null)
+			{
+				DuckInstance2.Z = -1f;
+			}
+			else
+			{
+				DuckInstance2.RelativeZ = -1f;
+			}
 			MinDuckY = 0;
 			MaxDuckY = 100;
 			MinDuckX = -100;
@@ -323,14 +339,11 @@ namespace FrbDemoDuckHunt.Screens
 		public virtual void ConvertToManuallyUpdated ()
 		{
 			DogInstance.ConvertToManuallyUpdated();
-			for (int i = 0; i < DuckList.Count; i++)
-			{
-				DuckList[i].ConvertToManuallyUpdated();
-			}
 			BackgroundInstance.ConvertToManuallyUpdated();
 			GameInterfaceInstance.ConvertToManuallyUpdated();
 			ShotInstance.ConvertToManuallyUpdated();
 			DuckInstance.ConvertToManuallyUpdated();
+			DuckInstance2.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -383,6 +396,8 @@ namespace FrbDemoDuckHunt.Screens
 					break;
 				case  VariableState.StartIntro:
 					break;
+				case  VariableState.DogAnimation:
+					break;
 			}
 			var instruction = new FlatRedBall.Instructions.DelegateInstruction<VariableState>(StopStateInterpolation, stateToInterpolateTo);
 			instruction.TimeToExecute = FlatRedBall.TimeManager.CurrentTime + secondsToTake;
@@ -404,6 +419,8 @@ namespace FrbDemoDuckHunt.Screens
 				case  VariableState.PostDucks:
 					break;
 				case  VariableState.StartIntro:
+					break;
+				case  VariableState.DogAnimation:
 					break;
 			}
 			CurrentState = stateToStop;
@@ -430,6 +447,8 @@ namespace FrbDemoDuckHunt.Screens
 					break;
 				case  VariableState.StartIntro:
 					break;
+				case  VariableState.DogAnimation:
+					break;
 			}
 			switch(secondState)
 			{
@@ -444,6 +463,8 @@ namespace FrbDemoDuckHunt.Screens
 				case  VariableState.PostDucks:
 					break;
 				case  VariableState.StartIntro:
+					break;
+				case  VariableState.DogAnimation:
 					break;
 			}
 			if (interpolationValue < 1)
