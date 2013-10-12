@@ -86,13 +86,6 @@ namespace FrbDemoDuckHunt.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-            bool shot = false;
-            if(InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
-            {
-                ShotInstance.Shoot(() => { });
-                shot = true;
-            }
-
             switch (CurrentState)
             {
                 case VariableState.StartIntro:
@@ -114,6 +107,13 @@ namespace FrbDemoDuckHunt.Screens
 
                     break;
                 case VariableState.DucksFlying:
+                    bool shot = false;
+                    if(InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
+                    {
+                        ShotInstance.Shoot(() => { });
+                        shot = true;
+                    }
+
                     if (shot)
                     {
                         shot = false;
