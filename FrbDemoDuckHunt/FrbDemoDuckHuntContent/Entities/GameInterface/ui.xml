@@ -32,7 +32,7 @@
             </Children>
           </BoxLayout>
         </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromCenter="0" Origin="Center">
+        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromCenter="0" Origin="BottomCenter">
           <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
                      Direction="Right" Margin="10" Spacing="10">
             <Children>
