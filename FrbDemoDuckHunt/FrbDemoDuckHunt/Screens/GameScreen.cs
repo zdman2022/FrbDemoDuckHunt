@@ -29,13 +29,11 @@ namespace FrbDemoDuckHunt.Screens
 	public partial class GameScreen
 	{
         private Random _rnd;
-        private float _currentLevelSpeed;
         private bool _doFlyAway = false;
-        private float _currentFlightTime = 0f;
         private Color _blue = new Microsoft.Xna.Framework.Color(63, 191, 255);
         private Color _pink = new Microsoft.Xna.Framework.Color(255, 191, 179);
         private Guid flyingGuid = Guid.Empty;
-        private bool _includeDuck2 = true;
+        private GameState _state = new GameState();
 
         void SetDuck(Duck duck, Guid newGuid)
         {
@@ -56,12 +54,12 @@ namespace FrbDemoDuckHunt.Screens
         {
             if (duck.SetNewPoint && !duck.IsShot)
             {
-                duck.FlyTo(_rnd.Next(MinDuckX, MaxDuckX), _rnd.Next(MinDuckY, MaxDuckY), _currentLevelSpeed, () => duck.SetNewPoint = true);
+                duck.FlyTo(_rnd.Next(MinDuckX, MaxDuckX), _rnd.Next(MinDuckY, MaxDuckY), _state.LevelSpeed, () => duck.SetNewPoint = true);
                 duck.SetNewPoint = false;
             }
             else if (_doFlyAway && !duck.IsShot)
             {
-                duck.FlyAway(() => duck.HasEscaped = true, _currentLevelSpeed);
+                duck.FlyAway(() => duck.HasEscaped = true, _state.LevelSpeed);
                 CurrentState = VariableState.DucksEscaping;
             }
         }
@@ -80,8 +78,9 @@ namespace FrbDemoDuckHunt.Screens
             _rnd = new Random();
             SpriteManager.Camera.BackgroundColor = _blue;
             CurrentState = VariableState.StartIntro;
-            _currentLevelSpeed = InitialDuckSpeed;
-            _currentFlightTime = InitialFlightTime;
+            _state.LevelSpeed = InitialDuckSpeed;
+            _state.FlightTime = InitialFlightTime;
+            _state.IncludeDuck2 = false;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
@@ -99,7 +98,7 @@ namespace FrbDemoDuckHunt.Screens
                         var newGuid = Guid.NewGuid();
                         flyingGuid = newGuid;
                         SetDuck(DuckInstance, newGuid);
-                        if (_includeDuck2) SetDuck(DuckInstance2, newGuid);
+                        if (_state.IncludeDuck2) SetDuck(DuckInstance2, newGuid);
                     }
 
                     _doFlyAway = false;
@@ -119,7 +118,7 @@ namespace FrbDemoDuckHunt.Screens
                         shot = false;
                         CheckDuckShot(DuckInstance);
 
-                        if (_includeDuck2)
+                        if (_state.IncludeDuck2)
                         {
                             CheckDuckShot(DuckInstance2);
                         }
@@ -129,24 +128,24 @@ namespace FrbDemoDuckHunt.Screens
                     CheckDuck(DuckInstance);
 
                     //Duck 2
-                    if (_includeDuck2)
+                    if (_state.IncludeDuck2)
                     {
                         CheckDuck(DuckInstance2);
                     }
 
-                    if (DuckInstance.HasFallen && (_includeDuck2 && DuckInstance2.HasFallen))
+                    if (DuckInstance.HasFallen && (!_state.IncludeDuck2 || DuckInstance2.HasFallen))
                     {
                         CurrentState = VariableState.PostDucks;
                     }
 
                     break;
                 case VariableState.DucksEscaping:
-                    if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (_includeDuck2 && (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
+                    if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (_state.IncludeDuck2 && (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
                     {
                         CurrentState = VariableState.PostDucks;
                     }
 
-                    if (!_includeDuck2 || (!DuckInstance.IsShot && !DuckInstance2.IsShot))
+                    if (!_state.IncludeDuck2 || (!DuckInstance.IsShot && !DuckInstance2.IsShot))
                     {
                         SpriteManager.Camera.BackgroundColor = _pink;
                     }
@@ -160,7 +159,7 @@ namespace FrbDemoDuckHunt.Screens
                     DuckInstance.Velocity = Vector3.Zero;
                     DuckInstance2.Velocity = Vector3.Zero;
 
-                    if(_includeDuck2)
+                    if(_state.IncludeDuck2)
                     {
                         if(DuckInstance.IsShot && DuckInstance2.IsShot)
                         {

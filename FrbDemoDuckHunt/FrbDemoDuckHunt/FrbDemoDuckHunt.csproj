@@ -144,6 +144,7 @@
     <Compile Include="Entities\Shot.Generated.cs">
       <DependentUpon>Shot.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameState.cs" />
     <Compile Include="GlobalContent.Generated.cs" />
     <Compile Include="Performance\IEntityFactory.Generated.cs" />
     <Compile Include="Performance\IPoolable.Generated.cs" />
