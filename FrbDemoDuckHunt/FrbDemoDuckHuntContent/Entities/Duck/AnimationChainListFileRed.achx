@@ -3,23 +3,7 @@
   <FileRelativeTextures>true</FileRelativeTextures>
   <TimeMeasurementUnit>Undefined</TimeMeasurementUnit>
   <AnimationChain>
-    <Name>FallLeft</Name>
-    <ColorKey>0</ColorKey>
-    <Frame>
-      <FlipHorizontal>true</FlipHorizontal>
-      <FlipVertical>false</FlipVertical>
-      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
-      <FrameLength>0.1</FrameLength>
-      <LeftCoordinate>0.9094077</LeftCoordinate>
-      <RightCoordinate>0.9407666</RightCoordinate>
-      <TopCoordinate>0.581560254</TopCoordinate>
-      <BottomCoordinate>0.691489339</BottomCoordinate>
-      <RelativeX>-0</RelativeX>
-      <RelativeY>15.999999</RelativeY>
-    </Frame>
-  </AnimationChain>
-  <AnimationChain>
-    <Name>FallRight</Name>
+    <Name>Fall</Name>
     <ColorKey>0</ColorKey>
     <Frame>
       <FlipHorizontal>false</FlipHorizontal>
@@ -30,8 +14,20 @@
       <RightCoordinate>0.9407666</RightCoordinate>
       <TopCoordinate>0.581560254</TopCoordinate>
       <BottomCoordinate>0.691489339</BottomCoordinate>
+      <RelativeX>-0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0.9512195</LeftCoordinate>
+      <RightCoordinate>0.9825784</RightCoordinate>
+      <TopCoordinate>0.581560254</TopCoordinate>
+      <BottomCoordinate>0.691489339</BottomCoordinate>
       <RelativeX>0</RelativeX>
-      <RelativeY>15.999999</RelativeY>
+      <RelativeY>0</RelativeY>
     </Frame>
   </AnimationChain>
   <AnimationChain>

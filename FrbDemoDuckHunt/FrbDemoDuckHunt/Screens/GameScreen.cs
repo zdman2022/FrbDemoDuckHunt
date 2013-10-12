@@ -29,16 +29,51 @@ namespace FrbDemoDuckHunt.Screens
 	public partial class GameScreen
 	{
         private Random _rnd;
-        private bool _setNewPoint = false;
         private float _currentLevelSpeed;
         private bool _doFlyAway = false;
-        private bool _duckEscaped = false;
-        private bool _duckShot = false;
         private float _currentFlightTime = 0f;
         private Color _blue = new Microsoft.Xna.Framework.Color(63, 191, 255);
         private Color _pink = new Microsoft.Xna.Framework.Color(255, 191, 179);
         private Guid flyingGuid = Guid.Empty;
+        private bool _includeDuck2 = true;
 
+        void SetDuck(Duck duck, Guid newGuid)
+        {
+            duck.Y = StartDuckY;
+            duck.X = _rnd.Next(MinDuckX, MaxDuckX);
+            duck.Visible = true;
+            duck.CurrentState = Duck.VariableState.FlyLeft;
+            duck.SetNewPoint = true;
+            duck.IsEscaped = false;
+            duck.IsShot = false;
+            duck.HasFallen = false;
+            duck.HasEscaped = false;
+
+            duck.Call(() => { if (newGuid == flyingGuid) { _doFlyAway = true; } }).After(5);
+        }
+
+        void CheckDuck(Duck duck)
+        {
+            if (duck.SetNewPoint && !duck.IsShot)
+            {
+                duck.FlyTo(_rnd.Next(MinDuckX, MaxDuckX), _rnd.Next(MinDuckY, MaxDuckY), _currentLevelSpeed, () => duck.SetNewPoint = true);
+                duck.SetNewPoint = false;
+            }
+            else if (_doFlyAway && !duck.IsShot)
+            {
+                duck.FlyAway(() => duck.HasEscaped = true, _currentLevelSpeed);
+                CurrentState = VariableState.DucksEscaping;
+            }
+        }
+
+        void CheckDuckShot(Duck duck)
+        {
+            if (!duck.IsShot && duck.CollisionCircle.IsPointInside(InputManager.Mouse.WorldXAt(0), InputManager.Mouse.WorldYAt(0)))
+            {
+                duck.IsShot = true;
+                duck.Shot(() => duck.Fall(() => { duck.HasFallen = true; duck.Velocity = Vector3.Zero; }));
+            }
+        }
 
 		void CustomInitialize()
 		{
@@ -51,13 +86,6 @@ namespace FrbDemoDuckHunt.Screens
 
 		void CustomActivity(bool firstTimeCalled)
 		{
-            bool shot = false;
-            if(InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
-            {
-                ShotInstance.Shoot(() => { });
-                shot = true;
-            }
-
             switch (CurrentState)
             {
                 case VariableState.StartIntro:
@@ -67,46 +95,57 @@ namespace FrbDemoDuckHunt.Screens
                 case VariableState.Intro:
                     break;
                 case VariableState.StartDucks:
-                    DuckInstance.Y = StartDuckY;
-                    DuckInstance.X = _rnd.Next(MinDuckX, MaxDuckX);
-                    DuckInstance.Visible = true;
-                    _setNewPoint = true;
-                    CurrentState = VariableState.DucksFlying;
-                    _doFlyAway = false;
                     {
                         var newGuid = Guid.NewGuid();
                         flyingGuid = newGuid;
-                        DuckInstance.Call(() => { if (newGuid == flyingGuid) { _doFlyAway = true; } }).After(5);
+                        SetDuck(DuckInstance, newGuid);
+                        if (_includeDuck2) SetDuck(DuckInstance2, newGuid);
                     }
-                    _duckEscaped = false;
-                    _duckShot = false;
-                    DuckInstance.CurrentState = Duck.VariableState.FlyLeft;
+
+                    _doFlyAway = false;
+                    CurrentState = VariableState.DucksFlying;
 
                     break;
                 case VariableState.DucksFlying:
+                    bool shot = false;
+                    if(InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
+                    {
+                        ShotInstance.Shoot(() => { });
+                        shot = true;
+                    }
+
                     if (shot)
                     {
                         shot = false;
-                        if (DuckInstance.CollisionCircle.IsPointInside(InputManager.Mouse.WorldXAt(0), InputManager.Mouse.WorldYAt(0)))
+                        CheckDuckShot(DuckInstance);
+
+                        if (_includeDuck2)
                         {
-                            CurrentState = VariableState.PostDucks;
-                            DuckInstance.Shot(() => DuckInstance.Fall(() => _duckShot = true));
+                            CheckDuckShot(DuckInstance2);
                         }
                     }
 
-                    if (_setNewPoint)
+                    //Duck 1
+                    CheckDuck(DuckInstance);
+
+                    //Duck 2
+                    if (_includeDuck2)
                     {
-                        DuckInstance.FlyTo(_rnd.Next(MinDuckX, MaxDuckX), _rnd.Next(MinDuckY, MaxDuckY), _currentLevelSpeed, () => _setNewPoint = true);
-                        _setNewPoint = false;
-                    }else if (_doFlyAway)
+                        CheckDuck(DuckInstance2);
+                    }
+
+                    if (DuckInstance.HasFallen && (_includeDuck2 && DuckInstance2.HasFallen))
                     {
-                        DuckInstance.FlyAway(() => CurrentState = VariableState.PostDucks, _currentLevelSpeed);
-                        CurrentState = VariableState.DucksEscaping;
+                        CurrentState = VariableState.PostDucks;
                     }
 
                     break;
                 case VariableState.DucksEscaping:
-                    _duckEscaped = true;
+                    if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (_includeDuck2 && (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
+                    {
+                        CurrentState = VariableState.PostDucks;
+                    }
+
                     SpriteManager.Camera.BackgroundColor = _pink;
                     
                     break;
@@ -114,19 +153,37 @@ namespace FrbDemoDuckHunt.Screens
                 case VariableState.PostDucks:
                     flyingGuid = Guid.Empty;
                     SpriteManager.Camera.BackgroundColor = _blue;
-                    if (_duckEscaped)
+
+                    DuckInstance.Velocity = Vector3.Zero;
+                    DuckInstance2.Velocity = Vector3.Zero;
+
+                    if(_includeDuck2)
                     {
-                        DogInstance.Laugh(() => CurrentState = VariableState.StartDucks);
-                        _duckEscaped = false;
+                        if(DuckInstance.IsShot && DuckInstance2.IsShot)
+                        {
+                            DogInstance.TwoDucks(DuckInstance.X, () => CurrentState = VariableState.StartDucks);
+                        }else if(DuckInstance.IsShot || DuckInstance2.IsShot){
+                            DogInstance.OneDuck(DuckInstance.IsShot 
+                                                        ? DuckInstance.X
+                                                        : DuckInstance2.X,
+                                                () => CurrentState = VariableState.StartDucks);
+                        }else{
+                            DogInstance.Laugh(() => CurrentState = VariableState.StartDucks);
+                        }
+                    }else{
+                        if(DuckInstance.IsShot)
+                        {
+                            DogInstance.OneDuck(DuckInstance.X, () => CurrentState = VariableState.StartDucks);
+                        }else{
+                            DogInstance.Laugh(() => CurrentState = VariableState.StartDucks);
+                        }
                     }
 
-                    if (_duckShot)
-                    {
-                        DuckInstance.Velocity = Vector3.Zero;
-                        DogInstance.OneDuck(DuckInstance.X, () => CurrentState = VariableState.StartDucks);
-                        _duckShot = false;
-                    }
+                    CurrentState = VariableState.DogAnimation;
 
+                    break;
+
+                case VariableState.DogAnimation:
                     break;
             }
 		}

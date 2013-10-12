@@ -36,14 +36,7 @@ namespace FrbDemoDuckHunt.Entities
 
         public void Fall(Action finishedCallback)
         {
-            if (CurrentState == VariableState.HitLeft)
-            {
-                CurrentState = VariableState.FallLeft;
-            }
-            else
-            {
-                CurrentState = VariableState.FallRight;
-            }
+            CurrentState = VariableState.Fall;
 
             var dest = Position - new Vector3(X, FallPointY, Z);
             var timeToHit = Math.Abs(dest.Length() / FallSpeed);
@@ -69,7 +62,7 @@ namespace FrbDemoDuckHunt.Entities
 
         public void FlyAway(Action finishedCallback, float speed)
         {
-            if (CurrentState == VariableState.HitLeft || CurrentState == VariableState.HitRight || CurrentState == VariableState.FallLeft || CurrentState == VariableState.FallRight)
+            if (CurrentState == VariableState.HitLeft || CurrentState == VariableState.HitRight || CurrentState == VariableState.Fall)
                 return;
 
             var direction = new Vector3(X, FlyAwayY, Z) - Position;
@@ -83,7 +76,7 @@ namespace FrbDemoDuckHunt.Entities
 
         public void FlyTo(int toX, int toY, float speed, Action finishedCallback)
         {
-            if (CurrentState == VariableState.HitLeft || CurrentState == VariableState.HitRight || CurrentState == VariableState.FallLeft || CurrentState == VariableState.FallRight)
+            if (CurrentState == VariableState.HitLeft || CurrentState == VariableState.HitRight || CurrentState == VariableState.Fall)
                 return;
 
             var direction = new Vector3(toX, toY, Z) - Position;
