@@ -8,3 +8,4 @@ GameInterfaceHitDuck,HitDuck
 GameInterfaceMissedDuck,MissedDuck
 GameInterfaceActiveDuck,ActiveDuck
 GameInterfaceDuckContainer,DuckContainer
+GameInterfaceRoundLabel,RoundNumberDisplay

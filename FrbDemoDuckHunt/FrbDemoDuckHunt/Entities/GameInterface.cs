@@ -40,7 +40,8 @@ namespace FrbDemoDuckHunt.Entities
 	    private LayoutableSprite _missedDuckTemplate;
 	    private LayoutableSprite _activeDuckTemplate;
 	    private BoxLayout _duckContainer;
-	    private List<DuckDisplayType> _duckTypes; 
+	    private List<DuckDisplayType> _duckTypes;
+	    private LayoutableText _roundLabel;
 
         public void SetDuckDisplay(int duckIndex, DuckDisplayType type)
         {
@@ -66,6 +67,7 @@ namespace FrbDemoDuckHunt.Entities
 		    var missedDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceMissedDuck].Value;
 		    var activeDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceActiveDuck].Value;
 		    var duckContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDuckContainer].Value;
+		    var roundLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceRoundLabel].Value;
 
             var interfacePackage = new UserInterfacePackage(xmlFilePath, ContentManagerName);
             _scoreLabel = interfacePackage.GetNamedControl<LayoutableText>(scoreLabelName);
@@ -75,6 +77,7 @@ namespace FrbDemoDuckHunt.Entities
 		    _hitDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(hitDuckName);
 		    _missedDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(missedDuckName);
 		    _duckContainer = interfacePackage.GetNamedControl<BoxLayout>(duckContainerName);
+		    _roundLabel = interfacePackage.GetNamedControl<LayoutableText>(roundLabelName);
 
             _shotIndicators = new List<LayoutableSprite>();
 		    var shotSprite = interfacePackage.GetNamedControl<LayoutableSprite>(shotName);
@@ -90,6 +93,7 @@ namespace FrbDemoDuckHunt.Entities
 
             _mainLayout.AttachTo(this, false);
 		    _scoreLabel.DisplayText = Score.ToString();
+		    _roundLabel.DisplayText = Round.ToString();
 
             // Fill the duck container with missed/inactive duck indicators
             _duckTypes = new List<DuckDisplayType>();

@@ -31,5 +31,13 @@ namespace FrbDemoDuckHunt.Entities
             }
         }
 
+        void OnAfterRoundSet (object sender, EventArgs e)
+        {
+            if (_roundLabel != null)
+            {
+                _roundLabel.DisplayText = Round.ToString();
+            }
+        }
+
     }
 }
