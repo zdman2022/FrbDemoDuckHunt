@@ -64,10 +64,13 @@ namespace FrbDemoDuckHunt.Screens
             }
         }
 
-        void CheckDuckShot(Duck duck)
+        void CheckDuckShot(Duck duck, Score score)
         {
             if (!duck.IsShot && duck.CollisionCircle.IsPointInside(InputManager.Mouse.WorldXAt(0), InputManager.Mouse.WorldYAt(0)))
             {
+                score.Position = duck.Position;
+                score.Visible = true;
+                score.Set("Visible").To(false).After(score.TimeToShow);
                 duck.IsShot = true;
                 duck.Shot(() => duck.Fall(() => { duck.HasFallen = true; duck.Velocity = Vector3.Zero; }));
             }
@@ -116,11 +119,11 @@ namespace FrbDemoDuckHunt.Screens
                     if (shot)
                     {
                         shot = false;
-                        CheckDuckShot(DuckInstance);
+                        CheckDuckShot(DuckInstance, ScoreInstance);
 
                         if (_state.IncludeDuck2)
                         {
-                            CheckDuckShot(DuckInstance2);
+                            CheckDuckShot(DuckInstance2, ScoreInstance2);
                         }
                     }
 

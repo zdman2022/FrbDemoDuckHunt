@@ -140,6 +140,10 @@
     <Compile Include="Entities\GameInterface.Generated.Event.cs">
       <DependentUpon>GameInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Score.cs" />
+    <Compile Include="Entities\Score.Generated.cs">
+      <DependentUpon>Score.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Shot.cs" />
     <Compile Include="Entities\Shot.Generated.cs">
       <DependentUpon>Shot.cs</DependentUpon>
