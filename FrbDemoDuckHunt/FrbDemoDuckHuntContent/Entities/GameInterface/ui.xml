@@ -1,14 +1,14 @@
 <UserInterfacePackage>
   <Controls>
-    <LayoutableSprite Name="Shot" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="Shot" Visible="false" TextureScale="1.5" />
-    <LayoutableSprite Name="HitDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="HitDuck" Visible="false" TextureScale="2" />
-    <LayoutableSprite Name="MissedDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="MissedDuck" Visible="false" TextureScale="2" />
-    <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" TextureScale="2" />
+    <LayoutableSprite Name="Shot" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="Shot" Visible="false" />
+    <LayoutableSprite Name="HitDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="HitDuck" Visible="false" />
+    <LayoutableSprite Name="MissedDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="MissedDuck" Visible="false" />
+    <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" />
     <SimpleLayout Name="MainLayout" IsFullScreen="true">
       <Children>
-        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromRight="-41" Origin="BottomRight">
+        <SimpleLayoutChild VerticalOffsetFromBottom="10" HorizontalOffsetFromRight="-10" Origin="BottomRight">
           <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background" 
-                     Direction="Down" Margin="15" ScaleX="100">
+                     Direction="Down" Margin="5">
             <Children>
               <BoxLayoutChild ItemAlignment="Inverse">
                 <LayoutableText Name="ScoreValue" />
@@ -19,9 +19,9 @@
             </Children>
           </BoxLayout>
         </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromLeft="41" Origin="BottomLeft">
+        <SimpleLayoutChild VerticalOffsetFromBottom="10" HorizontalOffsetFromLeft="10" Origin="BottomLeft">
           <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
-                     Direction="Down" Margin="10" Spacing="10" >
+                     Direction="Down" Margin="2" Spacing="2" >
             <Children>
               <BoxLayoutChild ItemAlignment="Centered">
                 <BoxLayout Direction="Right" Name="ShotsContainer"/>
@@ -32,15 +32,15 @@
             </Children>
           </BoxLayout>
         </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="41" HorizontalOffsetFromCenter="0" Origin="BottomCenter">
+        <SimpleLayoutChild VerticalOffsetFromBottom="10" HorizontalOffsetFromCenter="0" Origin="BottomCenter">
           <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
-                     Direction="Right" Margin="10" Spacing="10">
+                     Direction="Right" Margin="2" Spacing="2">
             <Children>
               <BoxLayoutChild>
                 <LayoutableText Text="HIT"/>
               </BoxLayoutChild>
               <BoxLayoutChild>
-                <BoxLayout Direction="Down" Spacing="10">
+                <BoxLayout Direction="Down" Spacing="2">
                   <Children>
                     <BoxLayoutChild>
                       <BoxLayout Name="DuckContainer" Margin="2" Spacing="2" Direction="Right" />
@@ -51,9 +51,9 @@
             </Children>
           </BoxLayout>
         </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="120" HorizontalOffsetFromLeft="41" Origin="BottomLeft">
+        <SimpleLayoutChild VerticalOffsetFromBottom="40" HorizontalOffsetFromLeft="10" Origin="BottomLeft">
           <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
-                     Direction="Right" Margin="10" Spacing="5">
+                     Direction="Right" Margin="2" Spacing="1">
             <Children>
               <BoxLayoutChild>
                 <LayoutableText Text="R ="/>
