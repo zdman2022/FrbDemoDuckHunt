@@ -272,7 +272,7 @@
           </Properties>
           <Name>JumpingXSpeed</Name>
           <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">5</DefaultValue>
+          <DefaultValue xsi:type="xsd:float">15</DefaultValue>
         </CustomVariable>
         <CustomVariable>
           <Properties>
