@@ -226,5 +226,45 @@
       <RelativeY>15.999999</RelativeY>
     </Frame>
   </AnimationChain>
+  <AnimationChain>
+    <Name>FlyAway</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/duckhunt2.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0.36</LeftCoordinate>
+      <RightCoordinate>0.424</RightCoordinate>
+      <TopCoordinate>0.7378277</TopCoordinate>
+      <BottomCoordinate>0.853932559</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/duckhunt2.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0.456</LeftCoordinate>
+      <RightCoordinate>0.5413333</RightCoordinate>
+      <TopCoordinate>0.7378277</TopCoordinate>
+      <BottomCoordinate>0.853932559</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/duckhunt2.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0.5653333</LeftCoordinate>
+      <RightCoordinate>0.64533335</RightCoordinate>
+      <TopCoordinate>0.741573036</TopCoordinate>
+      <BottomCoordinate>0.853932559</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
   <FileName>D:/Users/scott/Documents/GitHub/FrbDemoDuckHunt/FrbDemoDuckHunt/FrbDemoDuckHuntContent/Entities/Duck/AnimationChainListFileBlack.achx</FileName>
 </AnimationChainArraySave>

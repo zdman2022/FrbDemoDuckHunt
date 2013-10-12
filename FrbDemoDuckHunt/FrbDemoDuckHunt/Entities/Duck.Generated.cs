@@ -59,7 +59,8 @@ namespace FrbDemoDuckHunt.Entities
 			FlyUpLeft = 6, 
 			FlyUpRight = 7, 
 			HitLeft = 8, 
-			HitRight = 9
+			HitRight = 9, 
+			FlyAway = 10
 		}
 		protected int mCurrentState = 0;
 		public VariableState CurrentState
@@ -108,6 +109,9 @@ namespace FrbDemoDuckHunt.Entities
 					case  VariableState.HitRight:
 						VisibleInstanceCurrentChainName = "HitRight";
 						break;
+					case  VariableState.FlyAway:
+						VisibleInstanceCurrentChainName = "FlyAway";
+						break;
 				}
 			}
 		}
@@ -142,6 +146,7 @@ namespace FrbDemoDuckHunt.Entities
 				VisibleInstance.Visible = value;
 			}
 		}
+		public float FlyAwayY = 200f;
 		protected Layer LayerProvidedByContainer = null;
 
         public Duck(string contentManagerName) :
@@ -309,6 +314,7 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				RelativeZ = 0f;
 			}
+			FlyAwayY = 200f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -429,6 +435,8 @@ namespace FrbDemoDuckHunt.Entities
 					break;
 				case  VariableState.HitRight:
 					break;
+				case  VariableState.FlyAway:
+					break;
 			}
 			var instruction = new FlatRedBall.Instructions.DelegateInstruction<VariableState>(StopStateInterpolation, stateToInterpolateTo);
 			instruction.TimeToExecute = FlatRedBall.TimeManager.CurrentTime + secondsToTake;
@@ -454,6 +462,8 @@ namespace FrbDemoDuckHunt.Entities
 				case  VariableState.HitLeft:
 					break;
 				case  VariableState.HitRight:
+					break;
+				case  VariableState.FlyAway:
 					break;
 			}
 			CurrentState = stateToStop;
@@ -516,6 +526,12 @@ namespace FrbDemoDuckHunt.Entities
 						this.VisibleInstanceCurrentChainName = "HitRight";
 					}
 					break;
+				case  VariableState.FlyAway:
+					if (interpolationValue < 1)
+					{
+						this.VisibleInstanceCurrentChainName = "FlyAway";
+					}
+					break;
 			}
 			switch(secondState)
 			{
@@ -565,6 +581,12 @@ namespace FrbDemoDuckHunt.Entities
 					if (interpolationValue >= 1)
 					{
 						this.VisibleInstanceCurrentChainName = "HitRight";
+					}
+					break;
+				case  VariableState.FlyAway:
+					if (interpolationValue >= 1)
+					{
+						this.VisibleInstanceCurrentChainName = "FlyAway";
 					}
 					break;
 			}
@@ -620,6 +642,11 @@ namespace FrbDemoDuckHunt.Entities
 				case  VariableState.HitRight:
 					{
 						object throwaway = "HitRight";
+					}
+					break;
+				case  VariableState.FlyAway:
+					{
+						object throwaway = "FlyAway";
 					}
 					break;
 			}

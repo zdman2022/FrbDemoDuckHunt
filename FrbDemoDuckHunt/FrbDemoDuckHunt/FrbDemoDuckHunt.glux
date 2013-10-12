@@ -99,6 +99,17 @@
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">70</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>InitialFlightTime</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">8</DefaultValue>
+        </CustomVariable>
       </CustomVariables>
       <Name>Screens\GameScreen</Name>
       <NamedObjects>
@@ -592,6 +603,16 @@
           </InstructionSaves>
           <Name>HitRight</Name>
         </StateSave>
+        <StateSave>
+          <InstructionSaves>
+            <InstructionSave>
+              <Type>String</Type>
+              <Member>VisibleInstanceCurrentChainName</Member>
+              <ValueAsString>FlyAway</ValueAsString>
+            </InstructionSave>
+          </InstructionSaves>
+          <Name>FlyAway</Name>
+        </StateSave>
       </States>
       <CustomVariables>
         <CustomVariable>
@@ -652,6 +673,17 @@
           <Name>Z</Name>
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">0</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>FlyAwayY</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">200</DefaultValue>
         </CustomVariable>
       </CustomVariables>
       <Name>Entities\Duck</Name>
@@ -1038,6 +1070,11 @@
         </PropertySave>
       </Properties>
       <Name>GlobalContent/WingFlapSoundEffect.mp3</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+    </ReferencedFileSave>
+    <ReferencedFileSave>
+      <Name>GlobalContent/duckhunt2.png</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
     </ReferencedFileSave>

@@ -97,6 +97,7 @@ namespace FrbDemoDuckHunt.Screens
 		public int MaxDuckX = 100;
 		public float StartDuckY = -60f;
 		public float InitialDuckSpeed = 70f;
+		public float InitialFlightTime = 8f;
 
 		public GameScreen()
 			: base("GameScreen")
@@ -317,6 +318,7 @@ namespace FrbDemoDuckHunt.Screens
 			MaxDuckX = 100;
 			StartDuckY = -60f;
 			InitialDuckSpeed = 70f;
+			InitialFlightTime = 8f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

@@ -34,9 +34,20 @@ namespace FrbDemoDuckHunt.Entities
             return Math.Acos(Vector3.Dot(dest, src));
         }
 
+        public void FlyAway(Action finishedCallback, float speed)
+        {
+            var direction = new Vector3(X, FlyAwayY, Z) - Position;
+            var timeToPoint = direction.Length() / speed;
+            direction.Normalize();
+            Velocity = direction * speed;
+            CurrentState = VariableState.FlyAway;
+
+            this.Call(finishedCallback).After(timeToPoint);
+        }
+
         public void FlyTo(int toX, int toY, float speed, Action finishedCallback)
         {
-            var direction = new Vector3(toX, toY, Z) - new Vector3(X, Y, Z);
+            var direction = new Vector3(toX, toY, Z) - Position;
             var angle = GetAngle(direction, new Vector3(0, 1, Z));
             var timeToPoint = direction.Length() / speed;
             direction.Normalize();

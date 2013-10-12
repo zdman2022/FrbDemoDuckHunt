@@ -95,6 +95,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>DogHunt</Name>
     </None>
+    <None Include="GlobalContent\duckhunt2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>duckhunt2</Name>
+    </None>
     <None Include="GlobalContent\GreenNumbers.fnt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>GreenNumbers</Name>
