@@ -295,7 +295,7 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			ScoreInstance.Visible = false;
 			ScoreInstance2.Visible = false;
-			FlyAwayInstance.Visible = true;
+			FlyAwayInstance.Visible = false;
 			if (FlyAwayInstance.Parent == null)
 			{
 				FlyAwayInstance.Y = 50f;
@@ -371,7 +371,7 @@ namespace FrbDemoDuckHunt.Screens
 			ScoreInstance2.AddToManagers(mLayer);
 			ScoreInstance2.Visible = false;
 			FlyAwayInstance.AddToManagers(mLayer);
-			FlyAwayInstance.Visible = true;
+			FlyAwayInstance.Visible = false;
 			if (FlyAwayInstance.Parent == null)
 			{
 				FlyAwayInstance.Y = 50f;

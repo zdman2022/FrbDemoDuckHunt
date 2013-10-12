@@ -32,10 +32,9 @@ namespace FrbDemoDuckHunt.Screens
         private bool _doFlyAway = false;
         private Color _blue = new Microsoft.Xna.Framework.Color(63, 191, 255);
         private Color _pink = new Microsoft.Xna.Framework.Color(255, 191, 179);
-        private Guid flyingGuid = Guid.Empty;
         private GameState _state = new GameState();
 
-        void SetDuck(Duck duck, Guid newGuid)
+        void SetDuck(Duck duck)
         {
             duck.Y = StartDuckY;
             duck.X = _rnd.Next(MinDuckX, MaxDuckX);
@@ -46,6 +45,7 @@ namespace FrbDemoDuckHunt.Screens
             duck.IsShot = false;
             duck.HasFallen = false;
             duck.HasEscaped = false;
+            _state.DuckFlight++;
 
             switch (_rnd.Next(0, 3))
             {
@@ -60,7 +60,8 @@ namespace FrbDemoDuckHunt.Screens
                     break;
             }
 
-            duck.Call(() => { if (newGuid == flyingGuid) { _doFlyAway = true; } }).After(5);
+            var currentDuckRound = _state.DuckFlight;
+            duck.Call(() => { if (currentDuckRound == _state.DuckFlight) { _doFlyAway = true; } }).After(5);
         }
 
         void CheckDuck(Duck duck)
@@ -99,7 +100,10 @@ namespace FrbDemoDuckHunt.Screens
             CurrentState = VariableState.StartIntro;
             _state.LevelSpeed = InitialDuckSpeed;
             _state.FlightTime = InitialFlightTime;
-            _state.IncludeDuck2 = false;
+            _state.IncludeDuck2 = true;
+            _state.Ammo = 3;
+            _state.Round = 1;
+            _state.DuckFlight = 0;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
@@ -115,21 +119,22 @@ namespace FrbDemoDuckHunt.Screens
                 case VariableState.StartDucks:
                     {
                         var newGuid = Guid.NewGuid();
-                        flyingGuid = newGuid;
-                        SetDuck(DuckInstance, newGuid);
-                        if (_state.IncludeDuck2) SetDuck(DuckInstance2, newGuid);
+                        SetDuck(DuckInstance);
+                        if (_state.IncludeDuck2) SetDuck(DuckInstance2);
                     }
 
                     _doFlyAway = false;
                     CurrentState = VariableState.DucksFlying;
+                    _state.Ammo = 3;
 
                     break;
                 case VariableState.DucksFlying:
                     bool shot = false;
-                    if(InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
+                    if(_state.Ammo > 0 && InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
                     {
                         ShotInstance.Shoot(() => { });
                         shot = true;
+                        _state.Ammo--;
                     }
 
                     if (shot)
@@ -174,7 +179,6 @@ namespace FrbDemoDuckHunt.Screens
 
                 case VariableState.PostDucks:
                     FlyAwayInstance.Visible = false;
-                    flyingGuid = Guid.Empty;
                     SpriteManager.Camera.BackgroundColor = _blue;
 
                     DuckInstance.Velocity = Vector3.Zero;
@@ -204,11 +208,22 @@ namespace FrbDemoDuckHunt.Screens
 
                     CurrentState = VariableState.DogAnimation;
 
+
+                    if (_state.DuckFlight == 10)
+                    {
+                        _state.Round++;
+                        _state.DuckFlight = 0;
+                    }
+
                     break;
 
                 case VariableState.DogAnimation:
                     break;
             }
+
+            GameInterfaceInstance.Score = _state.Score;
+            GameInterfaceInstance.AvailableShots = _state.Ammo;
+            GameInterfaceInstance.Round = _state.Round;
 		}
 
 		void CustomDestroy()

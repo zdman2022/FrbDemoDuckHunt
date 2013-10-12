@@ -13,6 +13,7 @@ namespace FrbDemoDuckHunt
         public float LevelSpeed { get; set; }
         public float FlightTime { get; set; }
         public bool IncludeDuck2 { get; set; }
+        public int DuckFlight { get; set; }
 
         public enum DuckTypes
         {
