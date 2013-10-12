@@ -824,7 +824,7 @@
           <CustomProperty>
             <Type>AnimationChainList</Type>
             <Member>AnimationChains</Member>
-            <ValueAsString>AnimationChainListFileBlack</ValueAsString>
+            <ValueAsString>AnimationChainListFileBlue</ValueAsString>
           </CustomProperty>
           <CustomProperty>
             <Type>string</Type>

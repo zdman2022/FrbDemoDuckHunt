@@ -26,6 +26,31 @@ namespace FrbDemoDuckHunt.Entities
 {
 	public partial class Duck
 	{
+        private GameState.DuckTypes _duckType;
+        public GameState.DuckTypes DuckType {
+            get
+            {
+                return _duckType;
+            }
+            set
+            {
+                _duckType = value;
+
+                switch(_duckType)
+                {
+                    case GameState.DuckTypes.Black:
+                        VisibleInstance.AnimationChains = AnimationChainListFileBlack;
+                        break;
+                    case GameState.DuckTypes.Blue:
+                        VisibleInstance.AnimationChains = AnimationChainListFileBlue;
+                        break;
+                    case GameState.DuckTypes.Red:
+                        VisibleInstance.AnimationChains = AnimationChainListFileRed;
+                        break;
+                }
+            }
+        }
+
         private double GetAngle(Vector3 dest, Vector3 src)
         {
             dest.Normalize();

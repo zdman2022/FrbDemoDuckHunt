@@ -47,6 +47,19 @@ namespace FrbDemoDuckHunt.Screens
             duck.HasFallen = false;
             duck.HasEscaped = false;
 
+            switch (_rnd.Next(0, 3))
+            {
+                case 0:
+                    duck.DuckType = GameState.DuckTypes.Black;
+                    break;
+                case 1:
+                    duck.DuckType = GameState.DuckTypes.Blue;
+                    break;
+                case 2:
+                    duck.DuckType = GameState.DuckTypes.Red;
+                    break;
+            }
+
             duck.Call(() => { if (newGuid == flyingGuid) { _doFlyAway = true; } }).After(5);
         }
 
@@ -69,6 +82,9 @@ namespace FrbDemoDuckHunt.Screens
             if (!duck.IsShot && duck.CollisionCircle.IsPointInside(InputManager.Mouse.WorldXAt(0), InputManager.Mouse.WorldYAt(0)))
             {
                 score.Position = duck.Position;
+                var val = _state.GetScore(duck.DuckType);
+                score.TextInstanceDisplayText = val.ToString();
+                _state.Score += val;
                 score.Visible = true;
                 score.Set("Visible").To(false).After(score.TimeToShow);
                 duck.IsShot = true;
@@ -143,7 +159,7 @@ namespace FrbDemoDuckHunt.Screens
 
                     break;
                 case VariableState.DucksEscaping:
-                    if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (_state.IncludeDuck2 && (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
+                    if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (!_state.IncludeDuck2 || (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
                     {
                         CurrentState = VariableState.PostDucks;
                     }

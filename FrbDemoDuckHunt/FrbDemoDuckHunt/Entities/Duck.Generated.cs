@@ -244,7 +244,7 @@ namespace FrbDemoDuckHunt.Entities
 				VisibleInstance.AttachTo(this, false);
 			}
 			VisibleInstance.PixelSize = 0.4f;
-			VisibleInstance.AnimationChains = AnimationChainListFileBlack;
+			VisibleInstance.AnimationChains = AnimationChainListFileBlue;
 			VisibleInstance.CurrentChainName = "FlyRight";
 			VisibleInstance.UseAnimationRelativePosition = false;
 			if (VisibleInstance.Parent == null)
@@ -278,7 +278,7 @@ namespace FrbDemoDuckHunt.Entities
 			mCollisionCircle.Radius = 16f;
 			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
 			VisibleInstance.PixelSize = 0.4f;
-			VisibleInstance.AnimationChains = AnimationChainListFileBlack;
+			VisibleInstance.AnimationChains = AnimationChainListFileBlue;
 			VisibleInstance.CurrentChainName = "FlyRight";
 			VisibleInstance.UseAnimationRelativePosition = false;
 			if (VisibleInstance.Parent == null)
