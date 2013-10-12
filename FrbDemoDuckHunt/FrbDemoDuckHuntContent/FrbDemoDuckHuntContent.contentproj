@@ -62,9 +62,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFileRed</Name>
     </None>
-    <None Include="Entities\GameInterface\dialog_box.png">
+    <None Include="Entities\GameInterface\Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>dialog_box</Name>
+      <Name>Background</Name>
     </None>
     <None Include="Entities\GameInterface\InterfaceAnimations.achx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -74,10 +74,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>ui</Name>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Entities\GameInterface\VolumeBar.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>VolumeBar</Name>
     </None>
     <None Include="Entities\Shot\SceneFile.scnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

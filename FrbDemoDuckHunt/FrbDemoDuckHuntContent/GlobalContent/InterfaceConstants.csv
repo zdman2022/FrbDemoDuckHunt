@@ -4,3 +4,7 @@ GameInterfaceMainLayout,MainLayout
 GameInterfaceScoreValue,ScoreValue
 GameInterfaceShot,Shot
 GameInterfaceShotContainer,ShotsContainer
+GameInterfaceHitDuck,HitDuck
+GameInterfaceMissedDuck,MissedDuck
+GameInterfaceActiveDuck,ActiveDuck
+GameInterfaceDuckContainer,DuckContainer

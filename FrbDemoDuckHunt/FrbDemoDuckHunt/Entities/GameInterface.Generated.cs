@@ -97,6 +97,7 @@ namespace FrbDemoDuckHunt.Entities
 				return mScore;
 			}
 		}
+		public int TotalDucks = 10;
 		protected Layer LayerProvidedByContainer = null;
 
         public GameInterface(string contentManagerName) :
@@ -191,6 +192,7 @@ namespace FrbDemoDuckHunt.Entities
 			MaxShots = 3;
 			AvailableShots = 3;
 			Score = 0;
+			TotalDucks = 10;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

@@ -8,7 +8,7 @@
     <Frame>
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
-      <TextureName>dialog_box.png</TextureName>
+      <TextureName>Background.png</TextureName>
       <FrameLength>0.1</FrameLength>
       <LeftCoordinate>0</LeftCoordinate>
       <RightCoordinate>1</RightCoordinate>
@@ -24,15 +24,75 @@
     <Frame>
       <FlipHorizontal>false</FlipHorizontal>
       <FlipVertical>false</FlipVertical>
-      <TextureName>VolumeBar.png</TextureName>
+      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
       <FrameLength>0.1</FrameLength>
-      <LeftCoordinate>0</LeftCoordinate>
-      <RightCoordinate>1</RightCoordinate>
-      <TopCoordinate>0</TopCoordinate>
-      <BottomCoordinate>1</BottomCoordinate>
+      <LeftCoordinate>0.0993031338</LeftCoordinate>
+      <RightCoordinate>0.113240421</RightCoordinate>
+      <TopCoordinate>0.8652482</TopCoordinate>
+      <BottomCoordinate>0.8971631</BottomCoordinate>
       <RelativeX>0</RelativeX>
       <RelativeY>0</RelativeY>
     </Frame>
   </AnimationChain>
-  <FileName>C:/Users/Matthew/Documents/Projects/FrbDemoDuckHunt/FrbDemoDuckHunt/FrbDemoDuckHuntContent/Entities/GameInterface/InterfaceAnimations.achx</FileName>
+  <AnimationChain>
+    <Name>HitDuck</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0.203832746</LeftCoordinate>
+      <RightCoordinate>0.216027871</RightCoordinate>
+      <TopCoordinate>0.939716339</TopCoordinate>
+      <BottomCoordinate>0.964539</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
+  <AnimationChain>
+    <Name>MissedDuck</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
+      <FrameLength>0.1</FrameLength>
+      <LeftCoordinate>0.203832746</LeftCoordinate>
+      <RightCoordinate>0.216027871</RightCoordinate>
+      <TopCoordinate>0.872340441</TopCoordinate>
+      <BottomCoordinate>0.8971631</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
+  <AnimationChain>
+    <Name>ActiveDuck</Name>
+    <ColorKey>0</ColorKey>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
+      <FrameLength>0.2</FrameLength>
+      <LeftCoordinate>0.203832746</LeftCoordinate>
+      <RightCoordinate>0.216027871</RightCoordinate>
+      <TopCoordinate>0.872340441</TopCoordinate>
+      <BottomCoordinate>0.8971631</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+    <Frame>
+      <FlipHorizontal>false</FlipHorizontal>
+      <FlipVertical>false</FlipVertical>
+      <TextureName>../../GlobalContent/DogHunt.png</TextureName>
+      <FrameLength>0.2</FrameLength>
+      <LeftCoordinate>0.203832746</LeftCoordinate>
+      <RightCoordinate>0.216027871</RightCoordinate>
+      <TopCoordinate>0.939716339</TopCoordinate>
+      <BottomCoordinate>0.964539</BottomCoordinate>
+      <RelativeX>0</RelativeX>
+      <RelativeY>0</RelativeY>
+    </Frame>
+  </AnimationChain>
+  <FileName>C:/Users/Matthew/Documents/Projects/FrbDemoDuckHunt/FrbDemoDuckHunt/FrbDemoDuckHunt/FrbDemoDuckHuntContent/Entities/GameInterface/InterfaceAnimations.achx</FileName>
 </AnimationChainArraySave>
