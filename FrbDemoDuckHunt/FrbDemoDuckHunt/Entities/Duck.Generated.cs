@@ -122,7 +122,14 @@ namespace FrbDemoDuckHunt.Entities
 		protected static FlatRedBall.Graphics.Animation.AnimationChainList AnimationChainListFileBlue;
 		protected static FlatRedBall.Graphics.Animation.AnimationChainList AnimationChainListFileRed;
 		
-		private FlatRedBall.Math.Geometry.Circle CollisionCircle;
+		private FlatRedBall.Math.Geometry.Circle mCollisionCircle;
+		public FlatRedBall.Math.Geometry.Circle CollisionCircle
+		{
+			get
+			{
+				return mCollisionCircle;
+			}
+		}
 		private FlatRedBall.Sprite VisibleInstance;
 		public string VisibleInstanceCurrentChainName
 		{
@@ -147,6 +154,9 @@ namespace FrbDemoDuckHunt.Entities
 			}
 		}
 		public float FlyAwayY = 200f;
+		public float TimeHit = 0.7f;
+		public float FallSpeed = -80f;
+		public float FallPointY = -60f;
 		protected Layer LayerProvidedByContainer = null;
 
         public Duck(string contentManagerName) :
@@ -168,7 +178,7 @@ namespace FrbDemoDuckHunt.Entities
 		{
 			// Generated Initialize
 			LoadStaticContent(ContentManagerName);
-			CollisionCircle = new FlatRedBall.Math.Geometry.Circle();
+			mCollisionCircle = new FlatRedBall.Math.Geometry.Circle();
 			VisibleInstance = new FlatRedBall.Sprite();
 			
 			PostInitialize();
@@ -221,10 +231,10 @@ namespace FrbDemoDuckHunt.Entities
 		{
 			bool oldShapeManagerSuppressAdd = FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = true;
-			if (CollisionCircle.Parent == null)
+			if (mCollisionCircle.Parent == null)
 			{
-				CollisionCircle.CopyAbsoluteToRelative();
-				CollisionCircle.AttachTo(this, false);
+				mCollisionCircle.CopyAbsoluteToRelative();
+				mCollisionCircle.AttachTo(this, false);
 			}
 			CollisionCircle.Radius = 16f;
 			if (VisibleInstance.Parent == null)
@@ -263,8 +273,8 @@ namespace FrbDemoDuckHunt.Entities
 			RotationX = 0;
 			RotationY = 0;
 			RotationZ = 0;
-			ShapeManager.AddToLayer(CollisionCircle, layerToAddTo);
-			CollisionCircle.Radius = 16f;
+			ShapeManager.AddToLayer(mCollisionCircle, layerToAddTo);
+			mCollisionCircle.Radius = 16f;
 			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
 			VisibleInstance.AnimationChains = AnimationChainListFileBlack;
 			VisibleInstance.CurrentChainName = "FlyRight";
@@ -315,6 +325,9 @@ namespace FrbDemoDuckHunt.Entities
 				RelativeZ = 0f;
 			}
 			FlyAwayY = 200f;
+			TimeHit = 0.7f;
+			FallSpeed = -80f;
+			FallPointY = -60f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{

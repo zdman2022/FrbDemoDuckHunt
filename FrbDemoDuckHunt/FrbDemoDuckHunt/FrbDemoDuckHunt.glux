@@ -685,6 +685,39 @@
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">200</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>TimeHit</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0.7</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>FallSpeed</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-80</DefaultValue>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>FallPointY</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">-60</DefaultValue>
+        </CustomVariable>
       </CustomVariables>
       <Name>Entities\Duck</Name>
       <NamedObjects>
@@ -698,6 +731,7 @@
           <SourceFile />
           <SourceClassType>Circle</SourceClassType>
           <InstanceName>CollisionCircle</InstanceName>
+          <HasPublicProperty>true</HasPublicProperty>
           <AttachToContainer>true</AttachToContainer>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>

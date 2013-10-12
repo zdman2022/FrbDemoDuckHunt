@@ -34,8 +34,44 @@ namespace FrbDemoDuckHunt.Entities
             return Math.Acos(Vector3.Dot(dest, src));
         }
 
+        public void Fall(Action finishedCallback)
+        {
+            if (CurrentState == VariableState.HitLeft)
+            {
+                CurrentState = VariableState.FallLeft;
+            }
+            else
+            {
+                CurrentState = VariableState.FallRight;
+            }
+
+            var dest = Position - new Vector3(X, FallPointY, Z);
+            var timeToHit = Math.Abs(dest.Length() / FallSpeed);
+            dest.Normalize();
+            Velocity = dest * FallSpeed;
+            this.Call(finishedCallback).After(timeToHit);
+        }
+
+        public void Shot(Action finishedCallback)
+        {
+            Velocity = Vector3.Zero;
+            if (CurrentState == VariableState.FlyLeft || CurrentState == VariableState.FlyUpLeft)
+            {
+                CurrentState = VariableState.HitLeft;
+            }
+            else
+            {
+                CurrentState = VariableState.HitRight;
+            }
+
+            this.Call(finishedCallback).After(TimeHit);
+        }
+
         public void FlyAway(Action finishedCallback, float speed)
         {
+            if (CurrentState == VariableState.HitLeft || CurrentState == VariableState.HitRight || CurrentState == VariableState.FallLeft || CurrentState == VariableState.FallRight)
+                return;
+
             var direction = new Vector3(X, FlyAwayY, Z) - Position;
             var timeToPoint = direction.Length() / speed;
             direction.Normalize();
@@ -47,6 +83,9 @@ namespace FrbDemoDuckHunt.Entities
 
         public void FlyTo(int toX, int toY, float speed, Action finishedCallback)
         {
+            if (CurrentState == VariableState.HitLeft || CurrentState == VariableState.HitRight || CurrentState == VariableState.FallLeft || CurrentState == VariableState.FallRight)
+                return;
+
             var direction = new Vector3(toX, toY, Z) - Position;
             var angle = GetAngle(direction, new Vector3(0, 1, Z));
             var timeToPoint = direction.Length() / speed;
