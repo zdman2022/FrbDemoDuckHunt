@@ -67,6 +67,7 @@ namespace FrbDemoDuckHunt.Entities
             var timeToHit = Math.Abs(dest.Length() / FallSpeed);
             dest.Normalize();
             Velocity = dest * FallSpeed;
+            this.Call(() => GlobalContent.DuckHittingtheGround.Play()).After(timeToHit);
             this.Call(finishedCallback).After(timeToHit);
         }
 

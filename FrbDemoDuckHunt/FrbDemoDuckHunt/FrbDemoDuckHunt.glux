@@ -1192,51 +1192,67 @@
       <Name>GlobalContent/WingFlapSoundEffect.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/ShotSoundEffect.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/RoundIntroduction.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/PerfectScoreSoundEffect.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/MainThemeSong.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/DuckRelease.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/DuckHuntThemeSong.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/DuckHuntEndofRound.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/DuckHittingtheGround.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/DogLaughingSoundEffect.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
+    </ReferencedFileSave>
+    <ReferencedFileSave>
+      <Name>GlobalContent/DogBarkSoundEffect.wav</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
   </GlobalFiles>
   <GlobalContentSettingsSave>

@@ -24,6 +24,17 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Graphics.Texture2D dhunttitlepointer { get; set; }
 		public static Dictionary<string, InterfaceConstants> InterfaceConstants { get; set; }
 		public static Microsoft.Xna.Framework.Graphics.Texture2D duckhunt2 { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect WingFlapSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect ShotSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect RoundIntroduction { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect PerfectScoreSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect MainThemeSong { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect DuckRelease { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect DuckHuntThemeSong { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect DuckHuntEndofRound { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect DuckHittingtheGround { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect DogLaughingSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect DogBarkSoundEffect { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -43,6 +54,28 @@ namespace FrbDemoDuckHunt
 					return InterfaceConstants;
 				case  "duckhunt2":
 					return duckhunt2;
+				case  "WingFlapSoundEffect":
+					return WingFlapSoundEffect;
+				case  "ShotSoundEffect":
+					return ShotSoundEffect;
+				case  "RoundIntroduction":
+					return RoundIntroduction;
+				case  "PerfectScoreSoundEffect":
+					return PerfectScoreSoundEffect;
+				case  "MainThemeSong":
+					return MainThemeSong;
+				case  "DuckRelease":
+					return DuckRelease;
+				case  "DuckHuntThemeSong":
+					return DuckHuntThemeSong;
+				case  "DuckHuntEndofRound":
+					return DuckHuntEndofRound;
+				case  "DuckHittingtheGround":
+					return DuckHittingtheGround;
+				case  "DogLaughingSoundEffect":
+					return DogLaughingSoundEffect;
+				case  "DogBarkSoundEffect":
+					return DogBarkSoundEffect;
 			}
 			return null;
 		}
@@ -64,6 +97,28 @@ namespace FrbDemoDuckHunt
 					return InterfaceConstants;
 				case  "duckhunt2":
 					return duckhunt2;
+				case  "WingFlapSoundEffect":
+					return WingFlapSoundEffect;
+				case  "ShotSoundEffect":
+					return ShotSoundEffect;
+				case  "RoundIntroduction":
+					return RoundIntroduction;
+				case  "PerfectScoreSoundEffect":
+					return PerfectScoreSoundEffect;
+				case  "MainThemeSong":
+					return MainThemeSong;
+				case  "DuckRelease":
+					return DuckRelease;
+				case  "DuckHuntThemeSong":
+					return DuckHuntThemeSong;
+				case  "DuckHuntEndofRound":
+					return DuckHuntEndofRound;
+				case  "DuckHittingtheGround":
+					return DuckHittingtheGround;
+				case  "DogLaughingSoundEffect":
+					return DogLaughingSoundEffect;
+				case  "DogBarkSoundEffect":
+					return DogBarkSoundEffect;
 			}
 			return null;
 		}
@@ -91,6 +146,17 @@ namespace FrbDemoDuckHunt
 				}
 			}
 			duckhunt2 = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/duckhunt2.png", ContentManagerName);
+			WingFlapSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/wingflapsoundeffect", ContentManagerName);
+			ShotSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/shotsoundeffect", ContentManagerName);
+			RoundIntroduction = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/roundintroduction", ContentManagerName);
+			PerfectScoreSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/perfectscoresoundeffect", ContentManagerName);
+			MainThemeSong = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/mainthemesong", ContentManagerName);
+			DuckRelease = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duckrelease", ContentManagerName);
+			DuckHuntThemeSong = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duckhuntthemesong", ContentManagerName);
+			DuckHuntEndofRound = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duckhuntendofround", ContentManagerName);
+			DuckHittingtheGround = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duckhittingtheground", ContentManagerName);
+			DogLaughingSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/doglaughingsoundeffect", ContentManagerName);
+			DogBarkSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/dogbarksoundeffect", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)

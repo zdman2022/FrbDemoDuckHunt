@@ -113,6 +113,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalContent\DogBarkSoundEffect.wav">
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Name>DogBarkSoundEffect</Name>
+    </Compile>
     <Compile Include="GlobalContent\DogLaughingSoundEffect.wav">
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>

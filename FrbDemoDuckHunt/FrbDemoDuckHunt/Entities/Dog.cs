@@ -62,6 +62,7 @@ namespace FrbDemoDuckHunt.Entities
             this.Set("CurrentState").To(VariableState.Jumping).After(currentTime);
             this.Set("XVelocity").To(JumpingXSpeed).After(currentTime);
             this.Set("YVelocity").To(JumpingYSpeed).After(currentTime);
+            this.Call(() => GlobalContent.DogBarkSoundEffect.Play()).After(currentTime);
             currentTime += .5;
             this.Set("YAcceleration").To(JumpingYDeceleration).After(currentTime);
             currentTime += .5;
@@ -110,6 +111,8 @@ namespace FrbDemoDuckHunt.Entities
 
             //Callback
             this.Call(finishedCallback).After(currentTime);
+
+            GlobalContent.DuckRelease.Play();
         }
 
         public void TwoDucks(float position, Action finishedCallback)
@@ -144,6 +147,8 @@ namespace FrbDemoDuckHunt.Entities
 
             //Callback
             this.Call(finishedCallback).After(currentTime);
+
+            GlobalContent.DuckRelease.Play();
         }
 
         public void Laugh(Action finishedCallback)
@@ -174,6 +179,8 @@ namespace FrbDemoDuckHunt.Entities
 
             //Callback
             this.Call(finishedCallback).After(currentTime);
+
+            GlobalContent.DogLaughingSoundEffect.Play();
         }
 
 		private void CustomInitialize()

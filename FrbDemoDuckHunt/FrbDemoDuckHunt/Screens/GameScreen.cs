@@ -33,6 +33,7 @@ namespace FrbDemoDuckHunt.Screens
         private Color _blue = new Microsoft.Xna.Framework.Color(63, 191, 255);
         private Color _pink = new Microsoft.Xna.Framework.Color(255, 191, 179);
         private GameState _state = new GameState();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _wings = GlobalContent.WingFlapSoundEffect.CreateInstance();
 
         void SetDuck(Duck duck)
         {
@@ -111,6 +112,7 @@ namespace FrbDemoDuckHunt.Screens
             _state.Ammo = 3;
             _state.Round = 1;
             _state.DuckFlight = 0;
+            _wings.IsLooped = true;
 		}
 
 		void CustomActivity(bool firstTimeCalled)
@@ -118,6 +120,7 @@ namespace FrbDemoDuckHunt.Screens
             switch (CurrentState)
             {
                 case VariableState.StartIntro:
+                    GlobalContent.RoundIntroduction.Play();
                     DogInstance.WalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
                     CurrentState = VariableState.Intro;
                     break;
@@ -134,11 +137,15 @@ namespace FrbDemoDuckHunt.Screens
                     CurrentState = VariableState.DucksFlying;
                     _state.Ammo = 3;
 
+                    
+                    _wings.Play();
+
                     break;
                 case VariableState.DucksFlying:
                     bool shot = false;
                     if(_state.Ammo > 0 && InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
                     {
+                        GlobalContent.ShotSoundEffect.Play();
                         ShotInstance.Shoot(() => { });
                         shot = true;
                         _state.Ammo--;
@@ -153,6 +160,11 @@ namespace FrbDemoDuckHunt.Screens
                             {
                                 CheckDuckShot(DuckInstance2, ScoreInstance2, 1);
                             }
+                        }
+
+                        if (DuckInstance.IsShot && (!_state.IncludeDuck2 || DuckInstance2.IsShot))
+                        {
+                            _wings.Stop();
                         }
                     }
 
@@ -174,6 +186,7 @@ namespace FrbDemoDuckHunt.Screens
                 case VariableState.DucksEscaping:
                     if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (!_state.IncludeDuck2 || (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
                     {
+                        _wings.Stop();
                         CurrentState = VariableState.PostDucks;
                     }
 
