@@ -11,6 +11,9 @@ Content\GlobalContent\WingFlapSoundEffect.xnb
 Content\GlobalContent\DogBarkSoundEffect.xnb
 Content\GlobalContent\point.xnb
 Content\GlobalContent\lose.xnb
+Content\GlobalContent\duck.xnb
+Content\GlobalContent\pause.xnb
+Content\GlobalContent\ClayPigeonFalling.xnb
 Content\Entities\Background\SceneFile.scnx
 Content\Entities\Dog\AnimationChainListFile.achx
 Content\Entities\Duck\AnimationChainListFileBlack.achx

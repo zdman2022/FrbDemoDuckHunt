@@ -766,7 +766,7 @@
           </Properties>
           <Name>FallSpeed</Name>
           <Type>float</Type>
-          <DefaultValue xsi:type="xsd:float">-80</DefaultValue>
+          <DefaultValue xsi:type="xsd:float">-100</DefaultValue>
         </CustomVariable>
         <CustomVariable>
           <Properties>
@@ -1315,6 +1315,24 @@
     </ReferencedFileSave>
     <ReferencedFileSave>
       <Name>GlobalContent/lose.wav</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
+    </ReferencedFileSave>
+    <ReferencedFileSave>
+      <Name>GlobalContent/pause.wav</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
+    </ReferencedFileSave>
+    <ReferencedFileSave>
+      <Name>GlobalContent/duck.wav</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
+    </ReferencedFileSave>
+    <ReferencedFileSave>
+      <Name>GlobalContent/ClayPigeonFalling.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
       <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>

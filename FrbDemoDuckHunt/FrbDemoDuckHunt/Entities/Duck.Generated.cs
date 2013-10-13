@@ -151,7 +151,7 @@ namespace FrbDemoDuckHunt.Entities
 		}
 		public float FlyAwayY = 200f;
 		public float TimeHit = 0.7f;
-		public float FallSpeed = -80f;
+		public float FallSpeed = -100f;
 		public float FallPointY = -60f;
 		public bool IsEscaped;
 		public bool IsShot;
@@ -327,7 +327,7 @@ namespace FrbDemoDuckHunt.Entities
 			}
 			FlyAwayY = 200f;
 			TimeHit = 0.7f;
-			FallSpeed = -80f;
+			FallSpeed = -100f;
 			FallPointY = -60f;
 		}
 		public virtual void ConvertToManuallyUpdated ()

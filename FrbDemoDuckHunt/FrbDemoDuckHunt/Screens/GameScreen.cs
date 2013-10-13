@@ -34,6 +34,7 @@ namespace FrbDemoDuckHunt.Screens
         private Color _pink = new Microsoft.Xna.Framework.Color(255, 191, 179);
         private GameState _state = new GameState();
         private Microsoft.Xna.Framework.Audio.SoundEffectInstance _wings = GlobalContent.WingFlapSoundEffect.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _quake = GlobalContent.duck.CreateInstance();
 
         void SetDuck(Duck duck)
         {
@@ -162,6 +163,7 @@ namespace FrbDemoDuckHunt.Screens
             _state.Round = 1;
             _state.DuckFlight = 0;
             _wings.IsLooped = true;
+            _quake.IsLooped = true;
             
             //testing
             //CurrentState = VariableState.AnimateEndOfRound;
@@ -210,6 +212,7 @@ namespace FrbDemoDuckHunt.Screens
 
                     
                     _wings.Play();
+                    _quake.Play();
 
                     break;
                 case VariableState.DucksFlying:
@@ -236,6 +239,7 @@ namespace FrbDemoDuckHunt.Screens
                         if (DuckInstance.IsShot && (!_state.IncludeDuck2 || DuckInstance2.IsShot))
                         {
                             _wings.Stop();
+                            _quake.Stop();
                         }
                     }
 
@@ -258,6 +262,7 @@ namespace FrbDemoDuckHunt.Screens
                     if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (!_state.IncludeDuck2 || (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
                     {
                         _wings.Stop();
+                        _quake.Stop();
                         CurrentState = VariableState.PostDucks;
                     }
 

@@ -125,6 +125,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalContent\ClayPigeonFalling.wav">
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Name>ClayPigeonFalling</Name>
+    </Compile>
     <Compile Include="GlobalContent\DogBarkSoundEffect.wav">
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
@@ -134,6 +139,11 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Name>DogLaughingSoundEffect</Name>
+    </Compile>
+    <Compile Include="GlobalContent\duck.wav">
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Name>duck</Name>
     </Compile>
     <Compile Include="GlobalContent\DuckHittingtheGround.wav">
       <Importer>WavImporter</Importer>
@@ -164,6 +174,11 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Name>MainThemeSong</Name>
+    </Compile>
+    <Compile Include="GlobalContent\pause.wav">
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Name>pause</Name>
     </Compile>
     <Compile Include="GlobalContent\PerfectScoreSoundEffect.wav">
       <Importer>WavImporter</Importer>

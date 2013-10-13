@@ -37,6 +37,9 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Audio.SoundEffect DogBarkSoundEffect { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect point { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect lose { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect pause { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect duck { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect ClayPigeonFalling { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -82,6 +85,12 @@ namespace FrbDemoDuckHunt
 					return point;
 				case  "lose":
 					return lose;
+				case  "pause":
+					return pause;
+				case  "duck":
+					return duck;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
 			}
 			return null;
 		}
@@ -129,6 +138,12 @@ namespace FrbDemoDuckHunt
 					return point;
 				case  "lose":
 					return lose;
+				case  "pause":
+					return pause;
+				case  "duck":
+					return duck;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
 			}
 			return null;
 		}
@@ -169,6 +184,9 @@ namespace FrbDemoDuckHunt
 			DogBarkSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/dogbarksoundeffect", ContentManagerName);
 			point = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/point", ContentManagerName);
 			lose = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/lose", ContentManagerName);
+			pause = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/pause", ContentManagerName);
+			duck = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duck", ContentManagerName);
+			ClayPigeonFalling = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/claypigeonfalling", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)

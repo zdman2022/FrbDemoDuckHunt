@@ -26,6 +26,7 @@ namespace FrbDemoDuckHunt.Entities
 {
 	public partial class Duck
 	{
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance falling = GlobalContent.ClayPigeonFalling.CreateInstance();
         private GameState.DuckTypes _duckType;
         public GameState.DuckTypes DuckType {
             get
@@ -67,8 +68,13 @@ namespace FrbDemoDuckHunt.Entities
             var timeToHit = Math.Abs(dest.Length() / FallSpeed);
             dest.Normalize();
             Velocity = dest * FallSpeed;
-            this.Call(() => GlobalContent.DuckHittingtheGround.Play()).After(timeToHit);
+            this.Call(() => {
+                falling.Stop();
+                GlobalContent.DuckHittingtheGround.Play();
+            }).After(timeToHit);
             this.Call(finishedCallback).After(timeToHit);
+
+            falling.Play();
         }
 
         public void Shot(Action finishedCallback)
