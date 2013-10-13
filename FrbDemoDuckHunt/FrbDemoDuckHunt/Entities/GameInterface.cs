@@ -32,6 +32,7 @@ namespace FrbDemoDuckHunt.Entities
 	{
         public enum DuckDisplayType { Active, Missed, Hit }
 
+	    private bool _uiIsReady;
 	    private LayoutableText _scoreLabel;
 	    private SimpleLayout _mainLayout;
 	    private List<LayoutableSprite> _shotIndicators;
@@ -115,6 +116,8 @@ namespace FrbDemoDuckHunt.Entities
                 _barIndicators.Add(clone);
             }
 
+		    _uiIsReady = true;
+
             UpdateDuckDisplay();
             UpdateBarDisplay();
 		}
@@ -133,6 +136,9 @@ namespace FrbDemoDuckHunt.Entities
 
         private void UpdateDuckDisplay()
         {
+            if (!_uiIsReady)
+                return;
+
             var existingItems = _duckContainer.Items.ToArray();
             foreach (var existingItem in existingItems)
             {
@@ -169,6 +175,9 @@ namespace FrbDemoDuckHunt.Entities
 
         private void UpdateBarDisplay()
         {
+            if (!_uiIsReady)
+                return;
+
             var visibleBarCount = BarsPerDuck * DucksRequiredForRound;
             for (int x = 0; x < _barIndicators.Count; x++)
             {

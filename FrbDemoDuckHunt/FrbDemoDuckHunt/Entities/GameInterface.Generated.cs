@@ -121,7 +121,28 @@ namespace FrbDemoDuckHunt.Entities
 			}
 		}
 		public int BarsPerDuck = 4;
-		public int DucksRequiredForRound = 4;
+		public event EventHandler BeforeDucksRequiredForRoundSet;
+		public event EventHandler AfterDucksRequiredForRoundSet;
+		int mDucksRequiredForRound = 4;
+		public int DucksRequiredForRound
+		{
+			set
+			{
+				if (BeforeDucksRequiredForRoundSet != null)
+				{
+					BeforeDucksRequiredForRoundSet(this, null);
+				}
+				mDucksRequiredForRound = value;
+				if (AfterDucksRequiredForRoundSet != null)
+				{
+					AfterDucksRequiredForRoundSet(this, null);
+				}
+			}
+			get
+			{
+				return mDucksRequiredForRound;
+			}
+		}
 		protected Layer LayerProvidedByContainer = null;
 
         public GameInterface(string contentManagerName) :
@@ -189,6 +210,7 @@ namespace FrbDemoDuckHunt.Entities
 			this.AfterScoreSet += OnAfterScoreSet;
 			this.AfterAvailableShotsSet += OnAfterAvailableShotsSet;
 			this.AfterRoundSet += OnAfterRoundSet;
+			this.AfterDucksRequiredForRoundSet += OnAfterDucksRequiredForRoundSet;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)

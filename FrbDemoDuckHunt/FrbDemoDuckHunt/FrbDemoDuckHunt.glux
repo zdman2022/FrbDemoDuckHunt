@@ -1037,6 +1037,7 @@
           <Name>DucksRequiredForRound</Name>
           <Type>int</Type>
           <DefaultValue xsi:type="xsd:int">4</DefaultValue>
+          <CreatesEvent>true</CreatesEvent>
         </CustomVariable>
       </CustomVariables>
       <Name>Entities\GameInterface</Name>
@@ -1068,6 +1069,12 @@
         <EventResponseSave>
           <EventName>AfterRoundSet</EventName>
           <SourceVariable>Round</SourceVariable>
+          <BeforeOrAfter>After</BeforeOrAfter>
+          <DelegateType />
+        </EventResponseSave>
+        <EventResponseSave>
+          <EventName>AfterDucksRequiredForRoundSet</EventName>
+          <SourceVariable>DucksRequiredForRound</SourceVariable>
           <BeforeOrAfter>After</BeforeOrAfter>
           <DelegateType />
         </EventResponseSave>

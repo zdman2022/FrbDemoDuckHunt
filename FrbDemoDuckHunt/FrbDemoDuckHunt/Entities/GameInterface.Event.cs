@@ -39,5 +39,10 @@ namespace FrbDemoDuckHunt.Entities
             }
         }
 
+        void OnAfterDucksRequiredForRoundSet (object sender, EventArgs e)
+        {
+            UpdateBarDisplay();
+        }
+
     }
 }
