@@ -194,12 +194,14 @@ namespace FrbDemoDuckHunt.Screens
                     {
                         DogInstance.ShortWalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
                     }
+                    GameInterfaceInstance.ShowDialog("ROUND \n" + _state.Round);
                     
                     CurrentState = VariableState.Intro;
                     break;
                 case VariableState.Intro:
                     break;
                 case VariableState.StartDucks:
+                    GameInterfaceInstance.HideDialog();
                     {
                         var newGuid = Guid.NewGuid();
                         SetDuck(DuckInstance);
