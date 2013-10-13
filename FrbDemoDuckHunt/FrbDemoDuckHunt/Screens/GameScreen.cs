@@ -219,7 +219,7 @@ namespace FrbDemoDuckHunt.Screens
                     break;
                 case VariableState.DucksFlying:
                     bool shot = false;
-                    if(_state.Ammo > 0 && InputManager.Mouse.ButtonPushed(Mouse.MouseButtons.LeftButton))
+                    if(_state.Ammo > 0 && GuiManager.Cursor.PrimaryPush)
                     {
                         GlobalContent.ShotSoundEffect.Play();
                         ShotInstance.Shoot(() => { });

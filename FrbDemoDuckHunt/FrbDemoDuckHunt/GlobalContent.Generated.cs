@@ -39,9 +39,9 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Audio.SoundEffect lose { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect pause { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect duck { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect ClayPigeonFalling { get; set; }
 		public static FlatRedBall.Graphics.BitmapFont nesfont { get; set; }
 		public static Microsoft.Xna.Framework.Graphics.Texture2D nesfontTexture { get; set; }
-		public static Microsoft.Xna.Framework.Audio.SoundEffect ClayPigeonFalling { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -91,12 +91,12 @@ namespace FrbDemoDuckHunt
 					return pause;
 				case  "duck":
 					return duck;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
 				case  "nesfont":
 					return nesfont;
 				case  "nesfontTexture":
 					return nesfontTexture;
-				case  "ClayPigeonFalling":
-					return ClayPigeonFalling;
 			}
 			return null;
 		}
@@ -148,12 +148,12 @@ namespace FrbDemoDuckHunt
 					return pause;
 				case  "duck":
 					return duck;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
 				case  "nesfont":
 					return nesfont;
 				case  "nesfontTexture":
 					return nesfontTexture;
-				case  "ClayPigeonFalling":
-					return ClayPigeonFalling;
 			}
 			return null;
 		}
@@ -196,9 +196,9 @@ namespace FrbDemoDuckHunt
 			lose = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/lose", ContentManagerName);
 			pause = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/pause", ContentManagerName);
 			duck = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duck", ContentManagerName);
+			ClayPigeonFalling = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/claypigeonfalling", ContentManagerName);
 			nesfont = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/nesfont.fnt", ContentManagerName);
 			nesfontTexture = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/nesfonttexture.png", ContentManagerName);
-			ClayPigeonFalling = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/claypigeonfalling", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)
