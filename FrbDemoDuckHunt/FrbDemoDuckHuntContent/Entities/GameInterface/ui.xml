@@ -6,69 +6,57 @@
     <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" />
     <LayoutableSprite Name="BlueBar" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="BlueBar" Visible="false"/>
     <SimpleLayout Name="MainLayout" IsFullScreen="true">
-      <Children>
-        <SimpleLayoutChild VerticalOffsetFromBottom="10" HorizontalOffsetFromRight="-10" Origin="BottomRight">
-          <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background" 
-                     Direction="Down" Margin="5">
-            <Children>
-              <BoxLayoutChild ItemAlignment="Inverse">
-                <LayoutableText Name="ScoreValue" FontName="NesFont" />
-              </BoxLayoutChild>
-              <BoxLayoutChild ItemAlignment="Inverse">
-                <LayoutableText Text="SCORE" FontName="NesFont" />
-              </BoxLayoutChild>
-            </Children>
-          </BoxLayout>
-        </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="10" HorizontalOffsetFromLeft="10" Origin="BottomLeft">
-          <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
-                     Direction="Down" Margin="2" Spacing="2" >
-            <Children>
-              <BoxLayoutChild ItemAlignment="Centered">
-                <BoxLayout Direction="Right" Name="ShotsContainer"/>
-              </BoxLayoutChild>
-              <BoxLayoutChild ItemAlignment="Centered">
-                <LayoutableText Text="SHOTS" FontName="NesFont"/>
-              </BoxLayoutChild>
-            </Children>
-          </BoxLayout>
-        </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="10" HorizontalOffsetFromCenter="0" Origin="BottomCenter">
-          <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
-                     Direction="Right" Margin="2" Spacing="2">
-            <Children>
-              <BoxLayoutChild>
-                <LayoutableText Text="HIT" FontName="NesFont"/>
-              </BoxLayoutChild>
-              <BoxLayoutChild>
-                <BoxLayout Direction="Down" Spacing="2">
-                  <Children>
-                    <BoxLayoutChild>
-                      <BoxLayout Name="DuckContainer" Margin="2" Spacing="2" Direction="Right" />
-                    </BoxLayoutChild>
-                    <BoxLayoutChild>
-                      <BoxLayout Name="BarContainer" Margin="2" Spacing="3" Direction="Right" />
-                    </BoxLayoutChild>
-                  </Children>
-                </BoxLayout>
-              </BoxLayoutChild>
-            </Children>
-          </BoxLayout>
-        </SimpleLayoutChild>
-        <SimpleLayoutChild VerticalOffsetFromBottom="40" HorizontalOffsetFromLeft="10" Origin="BottomLeft">
-          <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
-                     Direction="Right" Margin="2" Spacing="1">
-            <Children>
-              <BoxLayoutChild>
-                <LayoutableText Text="R =" FontName="NesFont"/>
-              </BoxLayoutChild>
-              <BoxLayoutChild>
-                <LayoutableText Name="RoundNumberDisplay" FontName="NesFont"/>
-              </BoxLayoutChild>
-            </Children>
-          </BoxLayout>
-        </SimpleLayoutChild>
-      </Children>
+      <Child VerticalOffsetFromBottom="10" HorizontalOffsetFromRight="-10" Origin="BottomRight">
+        <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
+                   Direction="Down" Margin="5">
+          <Child ItemAlignment="Inverse">
+            <LayoutableText Name="ScoreValue" FontName="NesFont" />
+          </Child>
+          <Child ItemAlignment="Inverse">
+            <LayoutableText Text="SCORE" FontName="NesFont" />
+          </Child>
+        </BoxLayout>
+      </Child>
+      <Child VerticalOffsetFromBottom="10" HorizontalOffsetFromLeft="10" Origin="BottomLeft">
+        <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
+                   Direction="Down" Margin="2" Spacing="2" >
+          <Child ItemAlignment="Centered">
+            <BoxLayout Direction="Right" Name="ShotsContainer"/>
+          </Child>
+          <Child ItemAlignment="Centered">
+            <LayoutableText Text="SHOTS" FontName="NesFont"/>
+          </Child>
+        </BoxLayout>
+      </Child>
+      <Child VerticalOffsetFromBottom="10" HorizontalOffsetFromCenter="0" Origin="BottomCenter">
+        <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
+                   Direction="Right" Margin="2" Spacing="2">
+          <Child>
+            <LayoutableText Text="HIT" FontName="NesFont"/>
+          </Child>
+          <Child>
+            <BoxLayout Direction="Down" Spacing="2">
+              <Child>
+                <BoxLayout Name="DuckContainer" Margin="2" Spacing="2" Direction="Right" />
+              </Child>
+              <Child>
+                <BoxLayout Name="BarContainer" Margin="2" Spacing="3" Direction="Right" />
+              </Child>
+            </BoxLayout>
+          </Child>
+        </BoxLayout>
+      </Child>
+      <Child VerticalOffsetFromBottom="40" HorizontalOffsetFromLeft="10" Origin="BottomLeft">
+        <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
+                   Direction="Right" Margin="2" Spacing="1">
+          <Child>
+            <LayoutableText Text="R =" FontName="NesFont"/>
+          </Child>
+          <Child>
+            <LayoutableText Name="RoundNumberDisplay" FontName="NesFont"/>
+          </Child>
+        </BoxLayout>
+      </Child>
     </SimpleLayout>
   </Controls>
   <BitmapFonts>
