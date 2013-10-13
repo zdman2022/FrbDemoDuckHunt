@@ -90,7 +90,7 @@ namespace FrbDemoDuckHunt.Entities
 		    LoadUserInterface();
 
 		    _mainLayout.AttachTo(this, false);
-            _scoreLabel.DisplayText = Score.ToString();
+            _scoreLabel.DisplayText = Score.ToString("000000");
 		    _roundLabel.DisplayText = Round.ToString();
 
             _duckTypes = new List<DuckDisplayType>();

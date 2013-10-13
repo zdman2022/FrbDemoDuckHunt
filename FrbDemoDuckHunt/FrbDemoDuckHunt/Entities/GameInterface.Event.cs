@@ -16,7 +16,7 @@ namespace FrbDemoDuckHunt.Entities
         {
             // __scoreLabel will be null when the score's default value is set
             if (_scoreLabel != null)
-                _scoreLabel.DisplayText = Score.ToString();
+                _scoreLabel.DisplayText = Score.ToString("000000");
         }
 
         void OnAfterAvailableShotsSet(object sender, EventArgs e)
