@@ -183,6 +183,28 @@ namespace FrbDemoDuckHunt.Entities
             GlobalContent.DogLaughingSoundEffect.Play();
         }
 
+        public void EndGame(Action finishedCallback)
+        {
+            var currentTime = 0.0;
+
+            //Initial
+            Y = DuckStartY;
+            X = 0;
+            Z = -2;
+            XVelocity = 0;
+            YVelocity = DogDuckMoveSpeed;
+            VisibleInstance.Visible = true;
+            CurrentState = VariableState.Laughing;
+
+            //Stop At Top
+            currentTime += .5;
+            this.Set("YVelocity").To(0f).After(currentTime);
+
+            //Callback
+            currentTime += 4;
+            this.Call(finishedCallback).After(currentTime);
+        }
+
 		private void CustomInitialize()
 		{
 

@@ -314,7 +314,6 @@ namespace FrbDemoDuckHunt.Entities
 				}
 				if (!FlatRedBallServices.IsLoaded<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/dog/animationchainlistfile.achx", ContentManagerName))
 				{
-					registerUnload = true;
 				}
 				AnimationChainListFile = FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/dog/animationchainlistfile.achx", ContentManagerName);
 			}

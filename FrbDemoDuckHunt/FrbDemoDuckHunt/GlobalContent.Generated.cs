@@ -35,6 +35,8 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Audio.SoundEffect DuckHittingtheGround { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect DogLaughingSoundEffect { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect DogBarkSoundEffect { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect point { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect lose { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -76,6 +78,10 @@ namespace FrbDemoDuckHunt
 					return DogLaughingSoundEffect;
 				case  "DogBarkSoundEffect":
 					return DogBarkSoundEffect;
+				case  "point":
+					return point;
+				case  "lose":
+					return lose;
 			}
 			return null;
 		}
@@ -119,6 +125,10 @@ namespace FrbDemoDuckHunt
 					return DogLaughingSoundEffect;
 				case  "DogBarkSoundEffect":
 					return DogBarkSoundEffect;
+				case  "point":
+					return point;
+				case  "lose":
+					return lose;
 			}
 			return null;
 		}
@@ -157,6 +167,8 @@ namespace FrbDemoDuckHunt
 			DuckHittingtheGround = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duckhittingtheground", ContentManagerName);
 			DogLaughingSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/doglaughingsoundeffect", ContentManagerName);
 			DogBarkSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/dogbarksoundeffect", ContentManagerName);
+			point = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/point", ContentManagerName);
+			lose = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/lose", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)

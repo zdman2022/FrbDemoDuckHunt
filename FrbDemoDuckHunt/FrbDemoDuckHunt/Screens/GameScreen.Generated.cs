@@ -44,7 +44,12 @@ namespace FrbDemoDuckHunt.Screens
 			DucksEscaping = 5, 
 			PostDucks = 6, 
 			StartIntro = 7, 
-			DogAnimation = 8
+			DogAnimation = 8, 
+			CheckEndOfRound = 9, 
+			AnimateEndOfRound = 10, 
+			AnimatingEndOfRound = 11, 
+			ContinueAnimation = 12, 
+			Lose = 13
 		}
 		protected int mCurrentState = 0;
 		public VariableState CurrentState
@@ -82,6 +87,16 @@ namespace FrbDemoDuckHunt.Screens
 					case  VariableState.StartIntro:
 						break;
 					case  VariableState.DogAnimation:
+						break;
+					case  VariableState.CheckEndOfRound:
+						break;
+					case  VariableState.AnimateEndOfRound:
+						break;
+					case  VariableState.AnimatingEndOfRound:
+						break;
+					case  VariableState.ContinueAnimation:
+						break;
+					case  VariableState.Lose:
 						break;
 				}
 			}
@@ -425,6 +440,16 @@ namespace FrbDemoDuckHunt.Screens
 					break;
 				case  VariableState.DogAnimation:
 					break;
+				case  VariableState.CheckEndOfRound:
+					break;
+				case  VariableState.AnimateEndOfRound:
+					break;
+				case  VariableState.AnimatingEndOfRound:
+					break;
+				case  VariableState.ContinueAnimation:
+					break;
+				case  VariableState.Lose:
+					break;
 			}
 			var instruction = new FlatRedBall.Instructions.DelegateInstruction<VariableState>(StopStateInterpolation, stateToInterpolateTo);
 			instruction.TimeToExecute = FlatRedBall.TimeManager.CurrentTime + secondsToTake;
@@ -448,6 +473,16 @@ namespace FrbDemoDuckHunt.Screens
 				case  VariableState.StartIntro:
 					break;
 				case  VariableState.DogAnimation:
+					break;
+				case  VariableState.CheckEndOfRound:
+					break;
+				case  VariableState.AnimateEndOfRound:
+					break;
+				case  VariableState.AnimatingEndOfRound:
+					break;
+				case  VariableState.ContinueAnimation:
+					break;
+				case  VariableState.Lose:
 					break;
 			}
 			CurrentState = stateToStop;
@@ -476,6 +511,16 @@ namespace FrbDemoDuckHunt.Screens
 					break;
 				case  VariableState.DogAnimation:
 					break;
+				case  VariableState.CheckEndOfRound:
+					break;
+				case  VariableState.AnimateEndOfRound:
+					break;
+				case  VariableState.AnimatingEndOfRound:
+					break;
+				case  VariableState.ContinueAnimation:
+					break;
+				case  VariableState.Lose:
+					break;
 			}
 			switch(secondState)
 			{
@@ -492,6 +537,16 @@ namespace FrbDemoDuckHunt.Screens
 				case  VariableState.StartIntro:
 					break;
 				case  VariableState.DogAnimation:
+					break;
+				case  VariableState.CheckEndOfRound:
+					break;
+				case  VariableState.AnimateEndOfRound:
+					break;
+				case  VariableState.AnimatingEndOfRound:
+					break;
+				case  VariableState.ContinueAnimation:
+					break;
+				case  VariableState.Lose:
 					break;
 			}
 			if (interpolationValue < 1)

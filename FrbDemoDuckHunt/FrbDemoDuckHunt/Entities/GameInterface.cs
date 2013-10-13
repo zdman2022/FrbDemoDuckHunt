@@ -49,6 +49,18 @@ namespace FrbDemoDuckHunt.Entities
 	    private BoxLayout _dialog;
 	    private LayoutableText _dialogText;
 
+        public DuckDisplayType GetDuckDisplay(int duckIndex)
+        {
+            if (duckIndex >= _duckTypes.Count)
+            {
+                throw new IndexOutOfRangeException(
+                    string.Format("Tried to get the type for duck at index {0} but only {1} ducks are in the display",
+                                  duckIndex, _duckTypes.Count));
+            }
+
+            return _duckTypes[duckIndex];
+        }
+
         public void SetDuckDisplay(int duckIndex, DuckDisplayType type)
         {
             if (duckIndex >= _duckTypes.Count)

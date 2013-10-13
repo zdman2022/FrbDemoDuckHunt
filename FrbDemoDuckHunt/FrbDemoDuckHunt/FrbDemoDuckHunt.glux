@@ -35,6 +35,26 @@
           <InstructionSaves />
           <Name>DogAnimation</Name>
         </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>CheckEndOfRound</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>AnimateEndOfRound</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>AnimatingEndOfRound</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>ContinueAnimation</Name>
+        </StateSave>
+        <StateSave>
+          <InstructionSaves />
+          <Name>Lose</Name>
+        </StateSave>
       </States>
       <CustomVariables>
         <CustomVariable>
@@ -1272,6 +1292,18 @@
         </PropertySave>
       </Properties>
       <Name>GlobalContent/DogBarkSoundEffect.wav</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
+    </ReferencedFileSave>
+    <ReferencedFileSave>
+      <Name>GlobalContent/point.wav</Name>
+      <IsSharedStatic>true</IsSharedStatic>
+      <HasPublicProperty>true</HasPublicProperty>
+      <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
+    </ReferencedFileSave>
+    <ReferencedFileSave>
+      <Name>GlobalContent/lose.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
       <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
