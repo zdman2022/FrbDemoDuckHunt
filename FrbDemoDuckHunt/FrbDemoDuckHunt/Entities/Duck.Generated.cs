@@ -237,7 +237,7 @@ namespace FrbDemoDuckHunt.Entities
 				mCollisionCircle.CopyAbsoluteToRelative();
 				mCollisionCircle.AttachTo(this, false);
 			}
-			CollisionCircle.Radius = 16f;
+			CollisionCircle.Radius = 12f;
 			if (VisibleInstance.Parent == null)
 			{
 				VisibleInstance.CopyAbsoluteToRelative();
@@ -275,7 +275,7 @@ namespace FrbDemoDuckHunt.Entities
 			RotationY = 0;
 			RotationZ = 0;
 			ShapeManager.AddToLayer(mCollisionCircle, layerToAddTo);
-			mCollisionCircle.Radius = 16f;
+			mCollisionCircle.Radius = 12f;
 			SpriteManager.AddToLayer(VisibleInstance, layerToAddTo);
 			VisibleInstance.PixelSize = 0.4f;
 			VisibleInstance.AnimationChains = AnimationChainListFileBlue;

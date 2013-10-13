@@ -8,7 +8,19 @@ namespace FrbDemoDuckHunt
     public class GameState
     {
         public int Round { get; set; }
-        public int Score { get; set; }
+        private int _score;
+        public int Score {
+            get
+            {
+                return _score;
+            }
+            set
+            {
+                _score = value;
+                if (HighScoreStorage.HighScore < _score)
+                    HighScoreStorage.HighScore = _score;
+            }
+        }
         public int Ammo { get; set; }
         public float LevelSpeed
         {

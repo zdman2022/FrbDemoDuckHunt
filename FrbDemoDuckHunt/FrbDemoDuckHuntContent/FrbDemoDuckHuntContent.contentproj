@@ -131,6 +131,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>WhiteNumbers</Name>
     </None>
+    <None Include="Screens\GameMenu\AnimationChainListFile.achx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>AnimationChainListFile</Name>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalContent\ClayPigeonFalling.wav">

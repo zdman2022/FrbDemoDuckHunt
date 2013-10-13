@@ -140,6 +140,10 @@
     <Compile Include="Entities\GameInterface.Generated.Event.cs">
       <DependentUpon>GameInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\HighScore.cs" />
+    <Compile Include="Entities\HighScore.Generated.cs">
+      <DependentUpon>HighScore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Score.cs" />
     <Compile Include="Entities\Score.Generated.cs">
       <DependentUpon>Score.cs</DependentUpon>
@@ -150,12 +154,17 @@
     </Compile>
     <Compile Include="GameState.cs" />
     <Compile Include="GlobalContent.Generated.cs" />
+    <Compile Include="HighScore.cs" />
     <Compile Include="Performance\IEntityFactory.Generated.cs" />
     <Compile Include="Performance\IPoolable.Generated.cs" />
     <Compile Include="Performance\PoolList.Generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Screens\GameMenu.cs" />
+    <Compile Include="Screens\GameMenu.Generated.cs">
+      <DependentUpon>GameMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\GameScreen.cs" />
     <Compile Include="Screens\GameScreen.Generated.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>

@@ -158,7 +158,7 @@ namespace FrbDemoDuckHunt.Screens
             CurrentState = VariableState.StartIntro;
             _state.InitialSpeed = InitialDuckSpeed;
             _state.InitialFlightTime = InitialFlightTime;
-            _state.IncludeDuck2 = true;
+            _state.IncludeDuck2 = HighScoreStorage.NumOfDucks == 2;
             _state.Ammo = 3;
             _state.Round = 1;
             _state.DuckFlight = 0;
@@ -386,7 +386,7 @@ namespace FrbDemoDuckHunt.Screens
                         {
                             GlobalContent.DuckHuntThemeSong.Play();
                             DogInstance.EndGame(() => {
-                                MoveToScreen(this.GetType());
+                                MoveToScreen(typeof(GameMenu));
                             });
                         }).After(2);
                     }
