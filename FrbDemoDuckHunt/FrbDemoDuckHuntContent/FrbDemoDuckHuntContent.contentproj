@@ -119,6 +119,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>InterfaceConstants</Name>
     </None>
+    <None Include="GlobalContent\nesfont.fnt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>nesfont</Name>
+    </None>
+    <None Include="GlobalContent\nesfontTexture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>nesfontTexture</Name>
+    </None>
     <None Include="GlobalContent\WhiteNumbers.fnt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>WhiteNumbers</Name>

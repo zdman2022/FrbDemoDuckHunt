@@ -1320,6 +1320,7 @@
       <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
     </ReferencedFileSave>
     <ReferencedFileSave>
+<<<<<<< HEAD
       <Name>GlobalContent/pause.wav</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
@@ -1336,8 +1337,7 @@
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
       <RuntimeType>Microsoft.Xna.Framework.Audio.SoundEffect</RuntimeType>
-    </ReferencedFileSave>
-    <ReferencedFileSave>
+=======
       <Name>GlobalContent/nesfont.fnt</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
@@ -1346,6 +1346,7 @@
       <Name>GlobalContent/nesfontTexture.png</Name>
       <IsSharedStatic>true</IsSharedStatic>
       <HasPublicProperty>true</HasPublicProperty>
+>>>>>>> f60f66ee4f4afd9d312d6dbeb4d94c2470440059
     </ReferencedFileSave>
   </GlobalFiles>
   <GlobalContentSettingsSave>

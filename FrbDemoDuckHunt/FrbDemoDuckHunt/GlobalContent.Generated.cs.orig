@@ -37,11 +37,14 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Audio.SoundEffect DogBarkSoundEffect { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect point { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect lose { get; set; }
+<<<<<<< HEAD
 		public static Microsoft.Xna.Framework.Audio.SoundEffect pause { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect duck { get; set; }
+		public static Microsoft.Xna.Framework.Audio.SoundEffect ClayPigeonFalling { get; set; }
+=======
 		public static FlatRedBall.Graphics.BitmapFont nesfont { get; set; }
 		public static Microsoft.Xna.Framework.Graphics.Texture2D nesfontTexture { get; set; }
-		public static Microsoft.Xna.Framework.Audio.SoundEffect ClayPigeonFalling { get; set; }
+>>>>>>> f60f66ee4f4afd9d312d6dbeb4d94c2470440059
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -87,16 +90,19 @@ namespace FrbDemoDuckHunt
 					return point;
 				case  "lose":
 					return lose;
+<<<<<<< HEAD
 				case  "pause":
 					return pause;
 				case  "duck":
 					return duck;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
+=======
 				case  "nesfont":
 					return nesfont;
 				case  "nesfontTexture":
 					return nesfontTexture;
-				case  "ClayPigeonFalling":
-					return ClayPigeonFalling;
+>>>>>>> f60f66ee4f4afd9d312d6dbeb4d94c2470440059
 			}
 			return null;
 		}
@@ -144,16 +150,19 @@ namespace FrbDemoDuckHunt
 					return point;
 				case  "lose":
 					return lose;
+<<<<<<< HEAD
 				case  "pause":
 					return pause;
 				case  "duck":
 					return duck;
+				case  "ClayPigeonFalling":
+					return ClayPigeonFalling;
+=======
 				case  "nesfont":
 					return nesfont;
 				case  "nesfontTexture":
 					return nesfontTexture;
-				case  "ClayPigeonFalling":
-					return ClayPigeonFalling;
+>>>>>>> f60f66ee4f4afd9d312d6dbeb4d94c2470440059
 			}
 			return null;
 		}
@@ -194,11 +203,14 @@ namespace FrbDemoDuckHunt
 			DogBarkSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/dogbarksoundeffect", ContentManagerName);
 			point = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/point", ContentManagerName);
 			lose = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/lose", ContentManagerName);
+<<<<<<< HEAD
 			pause = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/pause", ContentManagerName);
 			duck = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/duck", ContentManagerName);
+			ClayPigeonFalling = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/claypigeonfalling", ContentManagerName);
+=======
 			nesfont = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/nesfont.fnt", ContentManagerName);
 			nesfontTexture = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/nesfonttexture.png", ContentManagerName);
-			ClayPigeonFalling = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/claypigeonfalling", ContentManagerName);
+>>>>>>> f60f66ee4f4afd9d312d6dbeb4d94c2470440059
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)
