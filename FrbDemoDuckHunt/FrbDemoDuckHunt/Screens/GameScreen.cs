@@ -249,6 +249,7 @@ namespace FrbDemoDuckHunt.Screens
             GameInterfaceInstance.Score = _state.Score;
             GameInterfaceInstance.AvailableShots = _state.Ammo;
             GameInterfaceInstance.Round = _state.Round;
+            GameInterfaceInstance.DucksRequiredForRound = _state.DucksRequiredToAdvance();
 		}
 
 		void CustomDestroy()
