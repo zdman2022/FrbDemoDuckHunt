@@ -156,8 +156,8 @@ namespace FrbDemoDuckHunt.Screens
             _rnd = new Random();
             SpriteManager.Camera.BackgroundColor = _blue;
             CurrentState = VariableState.StartIntro;
-            _state.LevelSpeed = InitialDuckSpeed;
-            _state.FlightTime = InitialFlightTime;
+            _state.InitialSpeed = InitialDuckSpeed;
+            _state.InitialFlightTime = InitialFlightTime;
             _state.IncludeDuck2 = true;
             _state.Ammo = 3;
             _state.Round = 1;
