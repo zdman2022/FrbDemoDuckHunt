@@ -39,7 +39,10 @@ namespace FrbDemoDuckHunt.Entities
 	    private LayoutableSprite _hitDuckTemplate;
 	    private LayoutableSprite _missedDuckTemplate;
 	    private LayoutableSprite _activeDuckTemplate;
+	    private LayoutableSprite _blueBarTemplate;
 	    private BoxLayout _duckContainer;
+	    private BoxLayout _barContainer;
+	    private List<ILayoutable> _barIndicators; 
 	    private List<DuckDisplayType> _duckTypes;
 	    private LayoutableText _roundLabel;
 
@@ -68,6 +71,8 @@ namespace FrbDemoDuckHunt.Entities
 		    var activeDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceActiveDuck].Value;
 		    var duckContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDuckContainer].Value;
 		    var roundLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceRoundLabel].Value;
+		    var blueBarName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBlueBar].Value;
+		    var barContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBarContainer].Value;
 
             var interfacePackage = new UserInterfacePackage(xmlFilePath, ContentManagerName);
             _scoreLabel = interfacePackage.GetNamedControl<LayoutableText>(scoreLabelName);
@@ -78,6 +83,8 @@ namespace FrbDemoDuckHunt.Entities
 		    _missedDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(missedDuckName);
 		    _duckContainer = interfacePackage.GetNamedControl<BoxLayout>(duckContainerName);
 		    _roundLabel = interfacePackage.GetNamedControl<LayoutableText>(roundLabelName);
+		    _blueBarTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(blueBarName);
+		    _barContainer = interfacePackage.GetNamedControl<BoxLayout>(barContainerName);
 
             _shotIndicators = new List<LayoutableSprite>();
 		    var shotSprite = interfacePackage.GetNamedControl<LayoutableSprite>(shotName);
@@ -95,15 +102,21 @@ namespace FrbDemoDuckHunt.Entities
 		    _scoreLabel.DisplayText = Score.ToString();
 		    _roundLabel.DisplayText = Round.ToString();
 
-            // Fill the duck container with missed/inactive duck indicators
             _duckTypes = new List<DuckDisplayType>();
-
 		    for (int x = 0; x < TotalDucks; x++)
 		        _duckTypes.Add(DuckDisplayType.Missed);
 
+            _barIndicators = new List<ILayoutable>();
+            var maxBars = TotalDucks * BarsPerDuck;
+            for (int x = 0; x < maxBars; x++)
+            {
+                var clone = _blueBarTemplate.Clone();
+                _barContainer.AddItem(clone);
+                _barIndicators.Add(clone);
+            }
+
             UpdateDuckDisplay();
-		    //SetDuckDisplay(3, DuckDisplayType.Hit);
-            //SetDuckDisplay(5, DuckDisplayType.Active);
+            UpdateBarDisplay();
 		}
 
 		private void CustomActivity()
@@ -151,6 +164,15 @@ namespace FrbDemoDuckHunt.Entities
 
                 clonedItem.Visible = true;
                 _duckContainer.AddItem(clonedItem);
+            }
+        }
+
+        private void UpdateBarDisplay()
+        {
+            var visibleBarCount = BarsPerDuck * DucksRequiredForRound;
+            for (int x = 0; x < _barIndicators.Count; x++)
+            {
+                _barIndicators[x].Visible = (x < visibleBarCount);
             }
         }
 	}

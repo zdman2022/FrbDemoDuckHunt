@@ -9,3 +9,5 @@ GameInterfaceMissedDuck,MissedDuck
 GameInterfaceActiveDuck,ActiveDuck
 GameInterfaceDuckContainer,DuckContainer
 GameInterfaceRoundLabel,RoundNumberDisplay
+GameInterfaceBlueBar,BlueBar
+GameInterfaceBarContainer,BarContainer

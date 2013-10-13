@@ -4,6 +4,7 @@
     <LayoutableSprite Name="HitDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="HitDuck" Visible="false" />
     <LayoutableSprite Name="MissedDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="MissedDuck" Visible="false" />
     <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" />
+    <LayoutableSprite Name="BlueBar" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="BlueBar" Visible="false"/>
     <SimpleLayout Name="MainLayout" IsFullScreen="true">
       <Children>
         <SimpleLayoutChild VerticalOffsetFromBottom="10" HorizontalOffsetFromRight="-10" Origin="BottomRight">
@@ -44,6 +45,9 @@
                   <Children>
                     <BoxLayoutChild>
                       <BoxLayout Name="DuckContainer" Margin="2" Spacing="2" Direction="Right" />
+                    </BoxLayoutChild>
+                    <BoxLayoutChild>
+                      <BoxLayout Name="BarContainer" Margin="2" Spacing="3" Direction="Right" />
                     </BoxLayoutChild>
                   </Children>
                 </BoxLayout>

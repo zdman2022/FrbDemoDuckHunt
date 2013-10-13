@@ -120,6 +120,8 @@ namespace FrbDemoDuckHunt.Entities
 				return mRound;
 			}
 		}
+		public int BarsPerDuck = 4;
+		public int DucksRequiredForRound = 4;
 		protected Layer LayerProvidedByContainer = null;
 
         public GameInterface(string contentManagerName) :
@@ -217,6 +219,8 @@ namespace FrbDemoDuckHunt.Entities
 			Score = 0;
 			TotalDucks = 10;
 			Round = 0;
+			BarsPerDuck = 4;
+			DucksRequiredForRound = 4;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
