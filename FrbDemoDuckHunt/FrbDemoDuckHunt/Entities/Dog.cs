@@ -37,28 +37,28 @@ namespace FrbDemoDuckHunt.Entities
             VisibleInstance.Visible = true;
             XVelocity = WalkingSpeed;
             this.CurrentState = VariableState.Walking;
+            currentTime += 1.8;
 
             //First Sniff
-            currentTime += 1.8;
             this.Set("XVelocity").To(0f).After(currentTime);
             this.Set("CurrentState").To(VariableState.Sniffing).After(currentTime);
+            currentTime += .9;
 
             //2nd Walk
-            currentTime += 1.8;
             this.Set("XVelocity").To(WalkingSpeed).After(currentTime);
             this.Set("CurrentState").To(VariableState.Walking).After(currentTime);
+            currentTime += 1.8;
 
             //2nd Sniff
-            currentTime += 1.8;
             this.Set("XVelocity").To(0f).After(currentTime);
             this.Set("CurrentState").To(VariableState.Sniffing).After(currentTime);
+            currentTime += .9;
 
             //Happy
-            currentTime += 1.8;
             this.Set("CurrentState").To(VariableState.Happy).After(currentTime);
+            currentTime += .4;
 
             //Jump
-            currentTime += 1;
             this.Set("CurrentState").To(VariableState.Jumping).After(currentTime);
             this.Set("XVelocity").To(JumpingXSpeed).After(currentTime);
             this.Set("YVelocity").To(JumpingYSpeed).After(currentTime);
@@ -67,9 +67,9 @@ namespace FrbDemoDuckHunt.Entities
             this.Set("YAcceleration").To(JumpingYDeceleration).After(currentTime);
             currentTime += .5;
             this.Set("Z").To(-2f).After(currentTime);
+            currentTime += 1.8;
 
             //Stop
-            currentTime += 1.8;
             this.Set("XVelocity").To(0f).After(currentTime);
             this.Set("YVelocity").To(0f).After(currentTime);
             this.Set("YAcceleration").To(0f).After(currentTime);
@@ -90,18 +90,18 @@ namespace FrbDemoDuckHunt.Entities
             VisibleInstance.Visible = true;
             XVelocity = WalkingSpeed;
             this.CurrentState = VariableState.Walking;
+            currentTime += .6;
 
             //First Sniff
-            currentTime += .6;
             this.Set("XVelocity").To(0f).After(currentTime);
             this.Set("CurrentState").To(VariableState.Sniffing).After(currentTime);
+            currentTime += .9;
 
             //Happy
-            currentTime += 1.8;
             this.Set("CurrentState").To(VariableState.Happy).After(currentTime);
+            currentTime += .4;
 
             //Jump
-            currentTime += 1;
             this.Set("CurrentState").To(VariableState.Jumping).After(currentTime);
             this.Set("XVelocity").To(JumpingXSpeed).After(currentTime);
             this.Set("YVelocity").To(JumpingYSpeed).After(currentTime);
@@ -110,9 +110,9 @@ namespace FrbDemoDuckHunt.Entities
             this.Set("YAcceleration").To(JumpingYDeceleration).After(currentTime);
             currentTime += .5;
             this.Set("Z").To(-2f).After(currentTime);
+            currentTime += 1.8;
 
             //Stop
-            currentTime += 1.8;
             this.Set("XVelocity").To(0f).After(currentTime);
             this.Set("YVelocity").To(0f).After(currentTime);
             this.Set("YAcceleration").To(0f).After(currentTime);
