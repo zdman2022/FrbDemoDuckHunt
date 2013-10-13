@@ -37,6 +37,8 @@ namespace FrbDemoDuckHunt
 		public static Microsoft.Xna.Framework.Audio.SoundEffect DogBarkSoundEffect { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect point { get; set; }
 		public static Microsoft.Xna.Framework.Audio.SoundEffect lose { get; set; }
+		public static FlatRedBall.Graphics.BitmapFont nesfont { get; set; }
+		public static Microsoft.Xna.Framework.Graphics.Texture2D nesfontTexture { get; set; }
 		[System.Obsolete("Use GetFile instead")]
 		public static object GetStaticMember (string memberName)
 		{
@@ -82,6 +84,10 @@ namespace FrbDemoDuckHunt
 					return point;
 				case  "lose":
 					return lose;
+				case  "nesfont":
+					return nesfont;
+				case  "nesfontTexture":
+					return nesfontTexture;
 			}
 			return null;
 		}
@@ -129,6 +135,10 @@ namespace FrbDemoDuckHunt
 					return point;
 				case  "lose":
 					return lose;
+				case  "nesfont":
+					return nesfont;
+				case  "nesfontTexture":
+					return nesfontTexture;
 			}
 			return null;
 		}
@@ -169,6 +179,8 @@ namespace FrbDemoDuckHunt
 			DogBarkSoundEffect = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/dogbarksoundeffect", ContentManagerName);
 			point = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/point", ContentManagerName);
 			lose = FlatRedBallServices.Load<Microsoft.Xna.Framework.Audio.SoundEffect>(@"content/globalcontent/lose", ContentManagerName);
+			nesfont = FlatRedBallServices.Load<FlatRedBall.Graphics.BitmapFont>(@"content/globalcontent/nesfont.fnt", ContentManagerName);
+			nesfontTexture = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/nesfonttexture.png", ContentManagerName);
 						IsInitialized = true;
 		}
 		public static void Reload (object whatToReload)
