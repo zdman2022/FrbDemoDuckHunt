@@ -65,6 +65,6 @@
     </SimpleLayout>
   </Controls>
   <BitmapFonts>
-    <BitmapFont Name="NesFont" FontFile="../../GlobalContent/DuckHuntFont.fnt" TextureFile="../../GlobalContent/DuckHuntFontTexture.png"/>
+    <BitmapFont Name="NesFont" FontFile="../../GlobalContent/nesfont.fnt"/>
   </BitmapFonts>
 </UserInterfacePackage>
