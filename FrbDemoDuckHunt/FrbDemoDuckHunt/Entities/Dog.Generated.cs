@@ -133,6 +133,7 @@ namespace FrbDemoDuckHunt.Entities
 		public float DuckStartY = -60f;
 		public float DuckMaxStartX = 40f;
 		public float DuckMinStartX = -50f;
+		public float ShortWalkingLeft = -30f;
 		protected Layer LayerProvidedByContainer = null;
 
         public Dog(string contentManagerName) :
@@ -276,6 +277,7 @@ namespace FrbDemoDuckHunt.Entities
 			DuckStartY = -60f;
 			DuckMaxStartX = 40f;
 			DuckMinStartX = -50f;
+			ShortWalkingLeft = -30f;
 		}
 		public virtual void ConvertToManuallyUpdated ()
 		{
@@ -314,6 +316,7 @@ namespace FrbDemoDuckHunt.Entities
 				}
 				if (!FlatRedBallServices.IsLoaded<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/dog/animationchainlistfile.achx", ContentManagerName))
 				{
+					registerUnload = true;
 				}
 				AnimationChainListFile = FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/dog/animationchainlistfile.achx", ContentManagerName);
 			}

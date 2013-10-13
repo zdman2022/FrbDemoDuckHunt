@@ -79,6 +79,49 @@ namespace FrbDemoDuckHunt.Entities
             this.Call(finishedCallback).After(currentTime);
         }
 
+        public void ShortWalkingSniffingThenDiving(Action finishedCallback)
+        {
+            var currentTime = 0.0;
+
+            //Initial
+            Y = WalkingStartY;
+            X = ShortWalkingLeft;
+            Z = 0;
+            VisibleInstance.Visible = true;
+            XVelocity = WalkingSpeed;
+            this.CurrentState = VariableState.Walking;
+
+            //First Sniff
+            currentTime += .6;
+            this.Set("XVelocity").To(0f).After(currentTime);
+            this.Set("CurrentState").To(VariableState.Sniffing).After(currentTime);
+
+            //Happy
+            currentTime += 1.8;
+            this.Set("CurrentState").To(VariableState.Happy).After(currentTime);
+
+            //Jump
+            currentTime += 1;
+            this.Set("CurrentState").To(VariableState.Jumping).After(currentTime);
+            this.Set("XVelocity").To(JumpingXSpeed).After(currentTime);
+            this.Set("YVelocity").To(JumpingYSpeed).After(currentTime);
+            this.Call(() => GlobalContent.DogBarkSoundEffect.Play()).After(currentTime);
+            currentTime += .5;
+            this.Set("YAcceleration").To(JumpingYDeceleration).After(currentTime);
+            currentTime += .5;
+            this.Set("Z").To(-2f).After(currentTime);
+
+            //Stop
+            currentTime += 1.8;
+            this.Set("XVelocity").To(0f).After(currentTime);
+            this.Set("YVelocity").To(0f).After(currentTime);
+            this.Set("YAcceleration").To(0f).After(currentTime);
+            this.VisibleInstance.Set("Visible").To(false).After(currentTime);
+
+            //Callback
+            this.Call(finishedCallback).After(currentTime);
+        }
+
         public void OneDuck(float position, Action finishedCallback)
         {
             var currentTime = 0.0;

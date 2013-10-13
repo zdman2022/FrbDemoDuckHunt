@@ -183,8 +183,16 @@ namespace FrbDemoDuckHunt.Screens
             switch (CurrentState)
             {
                 case VariableState.StartIntro:
-                    GlobalContent.RoundIntroduction.Play();
-                    DogInstance.WalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
+                    if (_state.Round <= 1)
+                    {
+                        GlobalContent.RoundIntroduction.Play();
+                        DogInstance.WalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
+                    }
+                    else
+                    {
+                        DogInstance.ShortWalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
+                    }
+                    
                     CurrentState = VariableState.Intro;
                     break;
                 case VariableState.Intro:
