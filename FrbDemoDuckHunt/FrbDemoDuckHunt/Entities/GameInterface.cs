@@ -62,67 +62,21 @@ namespace FrbDemoDuckHunt.Entities
 
 		private void CustomInitialize()
 		{
-		    var xmlFilePath = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceXml].Value;
-		    var scoreLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceScoreValue].Value;
-		    var mainLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceMainLayout].Value;
-		    var shotName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceShot].Value;
-		    var shotContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceShotContainer].Value;
-		    var hitDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceHitDuck].Value;
-		    var missedDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceMissedDuck].Value;
-		    var activeDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceActiveDuck].Value;
-		    var duckContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDuckContainer].Value;
-		    var roundLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceRoundLabel].Value;
-		    var blueBarName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBlueBar].Value;
-		    var barContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBarContainer].Value;
+		    LoadUserInterface();
 
-            var interfacePackage = new UserInterfacePackage(xmlFilePath, ContentManagerName);
-            _scoreLabel = interfacePackage.GetNamedControl<LayoutableText>(scoreLabelName);
-            _mainLayout = interfacePackage.GetNamedControl<SimpleLayout>(mainLabelName);
-		    _shotContainer = interfacePackage.GetNamedControl<BoxLayout>(shotContainerName);
-		    _activeDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(activeDuckName);
-		    _hitDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(hitDuckName);
-		    _missedDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(missedDuckName);
-		    _duckContainer = interfacePackage.GetNamedControl<BoxLayout>(duckContainerName);
-		    _roundLabel = interfacePackage.GetNamedControl<LayoutableText>(roundLabelName);
-		    _blueBarTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(blueBarName);
-		    _barContainer = interfacePackage.GetNamedControl<BoxLayout>(barContainerName);
-
-            _shotIndicators = new List<LayoutableSprite>();
-		    var shotSprite = interfacePackage.GetNamedControl<LayoutableSprite>(shotName);
-            for (int x = 0; x < MaxShots; x++)
-            {
-                var clonedShotSprite = (LayoutableSprite)shotSprite.Clone();
-                _shotIndicators.Add(clonedShotSprite);
-                _shotContainer.AddItem(clonedShotSprite);
-
-                if (x < AvailableShots)
-                    clonedShotSprite.Visible = true;
-            }
-
-            _mainLayout.AttachTo(this, false);
-		    _scoreLabel.DisplayText = Score.ToString();
+		    _mainLayout.AttachTo(this, false);
+            _scoreLabel.DisplayText = Score.ToString();
 		    _roundLabel.DisplayText = Round.ToString();
 
             _duckTypes = new List<DuckDisplayType>();
 		    for (int x = 0; x < TotalDucks; x++)
 		        _duckTypes.Add(DuckDisplayType.Missed);
-
-            _barIndicators = new List<ILayoutable>();
-            var maxBars = TotalDucks * BarsPerDuck;
-            for (int x = 0; x < maxBars; x++)
-            {
-                var clone = _blueBarTemplate.Clone();
-                _barContainer.AddItem(clone);
-                _barIndicators.Add(clone);
-            }
-
-		    _uiIsReady = true;
-
+		    
             UpdateDuckDisplay();
             UpdateBarDisplay();
 		}
 
-		private void CustomActivity()
+	    private void CustomActivity()
 		{
 		}
 
@@ -132,6 +86,66 @@ namespace FrbDemoDuckHunt.Entities
 
         private static void CustomLoadStaticContent(string contentManagerName)
         {
+        }
+
+        private void LoadUserInterface()
+        {
+            var xmlFilePath = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceXml].Value;
+            var scoreLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceScoreValue].Value;
+            var mainLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceMainLayout].Value;
+            var shotName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceShot].Value;
+            var shotContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceShotContainer].Value;
+            var hitDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceHitDuck].Value;
+            var missedDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceMissedDuck].Value;
+            var activeDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceActiveDuck].Value;
+            var duckContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDuckContainer].Value;
+            var roundLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceRoundLabel].Value;
+            var blueBarName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBlueBar].Value;
+            var barContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBarContainer].Value;
+
+            var interfacePackage = new UserInterfacePackage(xmlFilePath, ContentManagerName);
+            _scoreLabel = interfacePackage.GetNamedControl<LayoutableText>(scoreLabelName);
+            _mainLayout = interfacePackage.GetNamedControl<SimpleLayout>(mainLabelName);
+            _shotContainer = interfacePackage.GetNamedControl<BoxLayout>(shotContainerName);
+            _activeDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(activeDuckName);
+            _hitDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(hitDuckName);
+            _missedDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(missedDuckName);
+            _duckContainer = interfacePackage.GetNamedControl<BoxLayout>(duckContainerName);
+            _roundLabel = interfacePackage.GetNamedControl<LayoutableText>(roundLabelName);
+            _blueBarTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(blueBarName);
+            _barContainer = interfacePackage.GetNamedControl<BoxLayout>(barContainerName);
+
+            SetupShotContainer(interfacePackage, shotName);
+            SetupBarContainer();
+
+            _uiIsReady = true;
+        }
+
+        private void SetupBarContainer()
+        {
+            _barIndicators = new List<ILayoutable>();
+            var maxBars = TotalDucks * BarsPerDuck;
+            for (int x = 0; x < maxBars; x++)
+            {
+                var clone = _blueBarTemplate.Clone();
+                _barContainer.AddItem(clone);
+                _barIndicators.Add(clone);
+            }
+        }
+
+        private void SetupShotContainer(UserInterfacePackage interfacePackage, string shotName)
+        {
+            _shotIndicators = new List<LayoutableSprite>();
+            var shotSprite = interfacePackage.GetNamedControl<LayoutableSprite>(shotName);
+            for (int x = 0; x < MaxShots; x++)
+            {
+                var clonedShotSprite = (LayoutableSprite)shotSprite.Clone();
+                _shotIndicators.Add(clonedShotSprite);
+                _shotContainer.AddItem(clonedShotSprite);
+
+                if (x < AvailableShots)
+                    clonedShotSprite.Visible = true;
+            }
         }
 
         private void UpdateDuckDisplay()
