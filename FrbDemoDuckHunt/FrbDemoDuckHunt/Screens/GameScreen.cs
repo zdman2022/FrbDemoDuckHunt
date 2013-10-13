@@ -193,13 +193,13 @@ namespace FrbDemoDuckHunt.Screens
                     if (!_state.IncludeDuck2 || (!DuckInstance.IsShot && !DuckInstance2.IsShot))
                     {
                         SpriteManager.Camera.BackgroundColor = _pink;
-                        FlyAwayInstance.Visible = true;
+                        GameInterfaceInstance.ShowDialog("FLY AWAY");
                     }
                     
                     break;
 
                 case VariableState.PostDucks:
-                    FlyAwayInstance.Visible = false;
+                    GameInterfaceInstance.HideDialog();
                     SpriteManager.Camera.BackgroundColor = _blue;
 
                     DuckInstance.Velocity = Vector3.Zero;

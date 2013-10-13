@@ -62,10 +62,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>AnimationChainListFileRed</Name>
     </None>
-    <None Include="Entities\FlyAway\AnimationChainListFile.achx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Name>AnimationChainListFile</Name>
-    </None>
     <None Include="Entities\GameInterface\Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>Background</Name>
