@@ -130,10 +130,6 @@
     <Compile Include="Entities\Duck.Generated.cs">
       <DependentUpon>Duck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\FlyAway.cs" />
-    <Compile Include="Entities\FlyAway.Generated.cs">
-      <DependentUpon>FlyAway.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\GameInterface.cs" />
     <Compile Include="Entities\GameInterface.Event.cs">
       <DependentUpon>GameInterface.cs</DependentUpon>

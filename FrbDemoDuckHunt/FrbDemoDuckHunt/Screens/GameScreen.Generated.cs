@@ -95,7 +95,6 @@ namespace FrbDemoDuckHunt.Screens
 		private FrbDemoDuckHunt.Entities.Duck DuckInstance2;
 		private FrbDemoDuckHunt.Entities.Score ScoreInstance;
 		private FrbDemoDuckHunt.Entities.Score ScoreInstance2;
-		private FrbDemoDuckHunt.Entities.FlyAway FlyAwayInstance;
 		public int MinDuckY = 0;
 		public int MaxDuckY = 100;
 		public int MinDuckX = -100;
@@ -129,8 +128,6 @@ namespace FrbDemoDuckHunt.Screens
 			ScoreInstance.Name = "ScoreInstance";
 			ScoreInstance2 = new FrbDemoDuckHunt.Entities.Score(ContentManagerName, false);
 			ScoreInstance2.Name = "ScoreInstance2";
-			FlyAwayInstance = new FrbDemoDuckHunt.Entities.FlyAway(ContentManagerName, false);
-			FlyAwayInstance.Name = "FlyAwayInstance";
 			
 			
 			PostInitialize();
@@ -165,7 +162,6 @@ namespace FrbDemoDuckHunt.Screens
 				DuckInstance2.Activity();
 				ScoreInstance.Activity();
 				ScoreInstance2.Activity();
-				FlyAwayInstance.Activity();
 			}
 			else
 			{
@@ -225,11 +221,6 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				ScoreInstance2.Destroy();
 				ScoreInstance2.Detach();
-			}
-			if (FlyAwayInstance != null)
-			{
-				FlyAwayInstance.Destroy();
-				FlyAwayInstance.Detach();
 			}
 
 			base.Destroy();
@@ -295,15 +286,6 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			ScoreInstance.Visible = false;
 			ScoreInstance2.Visible = false;
-			FlyAwayInstance.Visible = false;
-			if (FlyAwayInstance.Parent == null)
-			{
-				FlyAwayInstance.Y = 50f;
-			}
-			else
-			{
-				FlyAwayInstance.RelativeY = 50f;
-			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -370,16 +352,6 @@ namespace FrbDemoDuckHunt.Screens
 			ScoreInstance.Visible = false;
 			ScoreInstance2.AddToManagers(mLayer);
 			ScoreInstance2.Visible = false;
-			FlyAwayInstance.AddToManagers(mLayer);
-			FlyAwayInstance.Visible = false;
-			if (FlyAwayInstance.Parent == null)
-			{
-				FlyAwayInstance.Y = 50f;
-			}
-			else
-			{
-				FlyAwayInstance.RelativeY = 50f;
-			}
 			MinDuckY = 0;
 			MaxDuckY = 100;
 			MinDuckX = -100;
@@ -398,7 +370,6 @@ namespace FrbDemoDuckHunt.Screens
 			DuckInstance2.ConvertToManuallyUpdated();
 			ScoreInstance.ConvertToManuallyUpdated();
 			ScoreInstance2.ConvertToManuallyUpdated();
-			FlyAwayInstance.ConvertToManuallyUpdated();
 		}
 		public static void LoadStaticContent (string contentManagerName)
 		{
@@ -422,7 +393,6 @@ namespace FrbDemoDuckHunt.Screens
 			FrbDemoDuckHunt.Entities.Shot.LoadStaticContent(contentManagerName);
 			FrbDemoDuckHunt.Entities.Duck.LoadStaticContent(contentManagerName);
 			FrbDemoDuckHunt.Entities.Score.LoadStaticContent(contentManagerName);
-			FrbDemoDuckHunt.Entities.FlyAway.LoadStaticContent(contentManagerName);
 			CustomLoadStaticContent(contentManagerName);
 		}
 		static VariableState mLoadingState = VariableState.Uninitialized;
