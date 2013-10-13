@@ -194,7 +194,7 @@ namespace FrbDemoDuckHunt.Screens
                     {
                         DogInstance.ShortWalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
                     }
-                    GameInterfaceInstance.ShowDialog("ROUND \n" + _state.Round);
+                    GameInterfaceInstance.ShowDialog("ROUND \n\n" + _state.Round);
                     
                     CurrentState = VariableState.Intro;
                     break;
@@ -349,14 +349,34 @@ namespace FrbDemoDuckHunt.Screens
                         GlobalContent.DuckHuntEndofRound.Play();
                         DuckInstance.Call(() =>
                         {
-                            CurrentState = VariableState.StartIntro;
-                            _state.Round++;
-                            _state.DuckFlight = 0;
-                            for (var i = 0; i < 10; i++)
+                            var waitTime = 0f;
+
+                            if (hits == 10)
                             {
-                                GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Missed);
+                                waitTime = 1.2f;
+                                GameInterfaceInstance.ShowDialog("PERFECT!! \n\n" + _state.GetBonus());
+                                _state.Score += _state.GetBonus();
+                                GlobalContent.PerfectScoreSoundEffect.Play();
+                                for (var i = 0; i < 10; i++)
+                                {
+                                    GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Hit);
+                                }
                             }
-                        }).After(5);
+
+                            DuckInstance.Call(() =>
+                                {
+                                    GameInterfaceInstance.HideDialog();
+                                    CurrentState = VariableState.StartIntro;
+                                    _state.Round++;
+                                    _state.DuckFlight = 0;
+                                    for (var i = 0; i < 10; i++)
+                                    {
+                                        GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Missed);
+                                    }
+                                }).After(waitTime);
+
+                            
+                        }).After(4.2);
                     }
                     else
                     {
@@ -365,8 +385,8 @@ namespace FrbDemoDuckHunt.Screens
                         DuckInstance.Call(() =>
                         {
                             GlobalContent.DuckHuntThemeSong.Play();
-                            DogInstance.EndGame(() => { 
-                                //Go To Menu 
+                            DogInstance.EndGame(() => {
+                                MoveToScreen(this.GetType());
                             });
                         }).After(2);
                     }
