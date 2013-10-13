@@ -40,7 +40,7 @@
                 <BoxLayout Name="DuckContainer" Margin="2" Spacing="2" Direction="Right" />
               </Child>
               <Child>
-                <BoxLayout Name="BarContainer" Margin="2" Spacing="3" Direction="Right" />
+                <BoxLayout Name="BarContainer" Margin="2" Spacing="3.25" Direction="Right" />
               </Child>
             </BoxLayout>
           </Child>
