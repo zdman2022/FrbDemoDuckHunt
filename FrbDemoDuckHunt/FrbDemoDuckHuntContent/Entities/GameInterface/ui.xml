@@ -50,9 +50,6 @@
         <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"
                    Direction="Right" Margin="2" Spacing="1">
           <Child>
-            <LayoutableText Text="R =" FontName="NesFont"/>
-          </Child>
-          <Child>
             <LayoutableText Name="RoundNumberDisplay" FontName="NesFont"/>
           </Child>
         </BoxLayout>

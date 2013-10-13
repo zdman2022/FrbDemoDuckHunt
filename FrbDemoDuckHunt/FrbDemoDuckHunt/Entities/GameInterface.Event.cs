@@ -33,9 +33,9 @@ namespace FrbDemoDuckHunt.Entities
 
         void OnAfterRoundSet (object sender, EventArgs e)
         {
-            if (_roundLabel != null)
+            if (_uiIsReady)
             {
-                _roundLabel.DisplayText = Round.ToString();
+                _roundLabel.DisplayText = "R = " + Round.ToString();
             }
         }
 
