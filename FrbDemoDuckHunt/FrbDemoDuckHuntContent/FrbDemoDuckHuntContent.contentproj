@@ -79,6 +79,10 @@
       <Name>ui</Name>
       <SubType>Designer</SubType>
     </None>
+    <None Include="Entities\GameInterface\WhiteBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>WhiteBackground</Name>
+    </None>
     <None Include="Entities\Shot\SceneFile.scnx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Name>SceneFile</Name>

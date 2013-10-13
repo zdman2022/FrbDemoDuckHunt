@@ -11,4 +11,5 @@ GameInterfaceDuckContainer,DuckContainer
 GameInterfaceRoundLabel,RoundNumberDisplay
 GameInterfaceBlueBar,BlueBar
 GameInterfaceBarContainer,BarContainer
-TextFontTextureFile,
+GameInterfaceDialog,Dialog
+GameInterfaceDialogText,DialogText

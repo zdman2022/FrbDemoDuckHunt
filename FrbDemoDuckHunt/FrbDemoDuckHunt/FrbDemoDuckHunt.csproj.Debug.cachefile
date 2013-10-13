@@ -18,6 +18,7 @@ Content\Entities\FlyAway\AnimationChainListFile.achx
 Content\Entities\GameInterface\Background.png
 Content\Entities\GameInterface\InterfaceAnimations.achx
 Content\Entities\GameInterface\ui.xml
+Content\Entities\GameInterface\WhiteBackground.png
 Content\Entities\Shot\SceneFile.scnx
 Content\GlobalContent\dhunttitle.png
 Content\GlobalContent\dhunttitlepointer.png

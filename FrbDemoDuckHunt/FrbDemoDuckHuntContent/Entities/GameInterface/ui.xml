@@ -57,6 +57,14 @@
           </Child>
         </BoxLayout>
       </Child>
+      <Child HorizontalPercentFromCenter="0" VerticalPercentFromCenter="25" Origin="Center">
+        <BoxLayout Name="Dialog" BackgroundAchxFile="InterfaceAnimations.achx" 
+                   StandardAnimationChainName="WhiteBackground" Margin="8" Visible="false">
+          <Child>
+            <LayoutableText Name="DialogText" FontName="NesFont"/>
+          </Child>
+        </BoxLayout>
+      </Child>
     </SimpleLayout>
   </Controls>
   <BitmapFonts>

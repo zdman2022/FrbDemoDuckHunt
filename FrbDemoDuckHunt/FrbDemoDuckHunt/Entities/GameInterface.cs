@@ -46,6 +46,8 @@ namespace FrbDemoDuckHunt.Entities
 	    private List<ILayoutable> _barIndicators; 
 	    private List<DuckDisplayType> _duckTypes;
 	    private LayoutableText _roundLabel;
+	    private BoxLayout _dialog;
+	    private LayoutableText _dialogText;
 
         public void SetDuckDisplay(int duckIndex, DuckDisplayType type)
         {
@@ -58,6 +60,17 @@ namespace FrbDemoDuckHunt.Entities
 
             _duckTypes[duckIndex] = type;
             UpdateDuckDisplay();
+        }
+
+        public void ShowDialog(string text)
+        {
+            _dialogText.DisplayText = text;
+            _dialog.Visible = true;
+        }
+
+        public void HideDialog()
+        {
+            _dialog.Visible = false;
         }
 
 		private void CustomInitialize()
@@ -102,6 +115,8 @@ namespace FrbDemoDuckHunt.Entities
             var roundLabelName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceRoundLabel].Value;
             var blueBarName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBlueBar].Value;
             var barContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBarContainer].Value;
+            var dialogName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDialog].Value;
+            var dialogTextName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDialogText].Value;
 
             var interfacePackage = new UserInterfacePackage(xmlFilePath, ContentManagerName);
             _scoreLabel = interfacePackage.GetNamedControl<LayoutableText>(scoreLabelName);
@@ -114,6 +129,8 @@ namespace FrbDemoDuckHunt.Entities
             _roundLabel = interfacePackage.GetNamedControl<LayoutableText>(roundLabelName);
             _blueBarTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(blueBarName);
             _barContainer = interfacePackage.GetNamedControl<BoxLayout>(barContainerName);
+            _dialog = interfacePackage.GetNamedControl<BoxLayout>(dialogName);
+            _dialogText = interfacePackage.GetNamedControl<LayoutableText>(dialogTextName);
 
             SetupShotContainer(interfacePackage, shotName);
             SetupBarContainer();
