@@ -12,10 +12,10 @@
                      Direction="Down" Margin="5">
             <Children>
               <BoxLayoutChild ItemAlignment="Inverse">
-                <LayoutableText Name="ScoreValue" />
+                <LayoutableText Name="ScoreValue" FontName="NesFont" />
               </BoxLayoutChild>
               <BoxLayoutChild ItemAlignment="Inverse">
-                <LayoutableText Text="SCORE" />
+                <LayoutableText Text="SCORE" FontName="NesFont" />
               </BoxLayoutChild>
             </Children>
           </BoxLayout>
@@ -28,7 +28,7 @@
                 <BoxLayout Direction="Right" Name="ShotsContainer"/>
               </BoxLayoutChild>
               <BoxLayoutChild ItemAlignment="Centered">
-                <LayoutableText Text="SHOTS"/>
+                <LayoutableText Text="SHOTS" FontName="NesFont"/>
               </BoxLayoutChild>
             </Children>
           </BoxLayout>
@@ -38,7 +38,7 @@
                      Direction="Right" Margin="2" Spacing="2">
             <Children>
               <BoxLayoutChild>
-                <LayoutableText Text="HIT"/>
+                <LayoutableText Text="HIT" FontName="NesFont"/>
               </BoxLayoutChild>
               <BoxLayoutChild>
                 <BoxLayout Direction="Down" Spacing="2">
@@ -60,10 +60,10 @@
                      Direction="Right" Margin="2" Spacing="1">
             <Children>
               <BoxLayoutChild>
-                <LayoutableText Text="R ="/>
+                <LayoutableText Text="R =" FontName="NesFont"/>
               </BoxLayoutChild>
               <BoxLayoutChild>
-                <LayoutableText Name="RoundNumberDisplay"/>
+                <LayoutableText Name="RoundNumberDisplay" FontName="NesFont"/>
               </BoxLayoutChild>
             </Children>
           </BoxLayout>
@@ -71,4 +71,7 @@
       </Children>
     </SimpleLayout>
   </Controls>
+  <BitmapFonts>
+    <BitmapFont Name="NesFont" FontFile="../../GlobalContent/DuckHuntFont.fnt" TextureFile="../../GlobalContent/DuckHuntFontTexture.png"/>
+  </BitmapFonts>
 </UserInterfacePackage>

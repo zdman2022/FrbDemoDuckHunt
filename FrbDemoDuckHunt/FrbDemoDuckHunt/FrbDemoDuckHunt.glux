@@ -1052,6 +1052,17 @@
           <IsSharedStatic>true</IsSharedStatic>
           <LoadedAtRuntime>false</LoadedAtRuntime>
         </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>GlobalContent/DuckHuntFont.fnt</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <LoadedAtRuntime>false</LoadedAtRuntime>
+          <RuntimeType>FlatRedBall.Graphics.BitmapFont</RuntimeType>
+        </ReferencedFileSave>
+        <ReferencedFileSave>
+          <Name>GlobalContent/DuckHuntFontTexture.png</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>Microsoft.Xna.Framework.Graphics.Texture2D</RuntimeType>
+        </ReferencedFileSave>
       </ReferencedFiles>
       <Events>
         <EventResponseSave>

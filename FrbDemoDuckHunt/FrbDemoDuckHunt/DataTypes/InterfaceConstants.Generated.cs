@@ -17,6 +17,7 @@ namespace FrbDemoDuckHunt.DataTypes
 		public const string GameInterfaceRoundLabel = "GameInterfaceRoundLabel";
 		public const string GameInterfaceBlueBar = "GameInterfaceBlueBar";
 		public const string GameInterfaceBarContainer = "GameInterfaceBarContainer";
+		public const string TextFontTextureFile = "TextFontTextureFile";
 		public static System.Collections.Generic.List<System.String> OrderedList = new System.Collections.Generic.List<System.String>
 		{
 		GameInterfaceXml
@@ -31,6 +32,7 @@ namespace FrbDemoDuckHunt.DataTypes
 		,GameInterfaceRoundLabel
 		,GameInterfaceBlueBar
 		,GameInterfaceBarContainer
+		,TextFontTextureFile
 		};
 		
 		

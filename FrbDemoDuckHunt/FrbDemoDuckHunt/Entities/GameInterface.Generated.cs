@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using FlatRedBall.Graphics.Animation;
+using Microsoft.Xna.Framework.Graphics;
 
 #if XNA4 || WINDOWS_8
 using Color = Microsoft.Xna.Framework.Color;
@@ -51,6 +52,7 @@ namespace FrbDemoDuckHunt.Entities
 		static List<string> mRegisteredUnloads = new List<string>();
 		static List<string> LoadedContentManagers = new List<string>();
 		protected static FlatRedBall.Graphics.Animation.AnimationChainList InterfaceAnimations;
+		protected static Microsoft.Xna.Framework.Graphics.Texture2D DuckHuntFontTexture;
 		
 		public int MaxShots = 3;
 		public event EventHandler BeforeAvailableShotsSet;
@@ -283,6 +285,11 @@ namespace FrbDemoDuckHunt.Entities
 					registerUnload = true;
 				}
 				InterfaceAnimations = FlatRedBallServices.Load<FlatRedBall.Graphics.Animation.AnimationChainList>(@"content/entities/gameinterface/interfaceanimations.achx", ContentManagerName);
+				if (!FlatRedBallServices.IsLoaded<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/duckhuntfonttexture.png", ContentManagerName))
+				{
+					registerUnload = true;
+				}
+				DuckHuntFontTexture = FlatRedBallServices.Load<Microsoft.Xna.Framework.Graphics.Texture2D>(@"content/globalcontent/duckhuntfonttexture.png", ContentManagerName);
 			}
 			if (registerUnload && ContentManagerName != FlatRedBallServices.GlobalContentManager)
 			{
@@ -310,6 +317,10 @@ namespace FrbDemoDuckHunt.Entities
 				{
 					InterfaceAnimations= null;
 				}
+				if (DuckHuntFontTexture != null)
+				{
+					DuckHuntFontTexture= null;
+				}
 			}
 		}
 		[System.Obsolete("Use GetFile instead")]
@@ -319,6 +330,8 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "InterfaceAnimations":
 					return InterfaceAnimations;
+				case  "DuckHuntFontTexture":
+					return DuckHuntFontTexture;
 			}
 			return null;
 		}
@@ -328,6 +341,8 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "InterfaceAnimations":
 					return InterfaceAnimations;
+				case  "DuckHuntFontTexture":
+					return DuckHuntFontTexture;
 			}
 			return null;
 		}
@@ -337,6 +352,8 @@ namespace FrbDemoDuckHunt.Entities
 			{
 				case  "InterfaceAnimations":
 					return InterfaceAnimations;
+				case  "DuckHuntFontTexture":
+					return DuckHuntFontTexture;
 			}
 			return null;
 		}
