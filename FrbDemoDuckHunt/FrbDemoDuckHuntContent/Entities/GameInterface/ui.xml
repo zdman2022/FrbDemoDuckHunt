@@ -5,6 +5,7 @@
     <LayoutableSprite Name="MissedDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="MissedDuck" Visible="false" />
     <LayoutableSprite Name="ActiveDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ActiveDuck" Visible="false" />
     <LayoutableSprite Name="BlueBar" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="BlueBar" Visible="false"/>
+    <LayoutableSprite Name="ScoredDuck" AchxName="InterfaceAnimations.achx" InitialAnimationChainName="ScoredDuck" Visible="false"/>
     <SimpleLayout Name="MainLayout" IsFullScreen="true">
       <Child VerticalOffsetFromBottom="10" HorizontalOffsetFromRight="-10" Origin="BottomRight">
         <BoxLayout BackgroundAchxFile="InterfaceAnimations.achx" StandardAnimationChainName="Background"

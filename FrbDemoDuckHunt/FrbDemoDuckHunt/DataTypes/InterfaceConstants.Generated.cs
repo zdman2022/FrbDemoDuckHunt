@@ -19,6 +19,7 @@ namespace FrbDemoDuckHunt.DataTypes
 		public const string GameInterfaceBarContainer = "GameInterfaceBarContainer";
 		public const string GameInterfaceDialog = "GameInterfaceDialog";
 		public const string GameInterfaceDialogText = "GameInterfaceDialogText";
+		public const string GameInterfaceScoredDuck = "GameInterfaceScoredDuck";
 		public static System.Collections.Generic.List<System.String> OrderedList = new System.Collections.Generic.List<System.String>
 		{
 		GameInterfaceXml
@@ -35,6 +36,7 @@ namespace FrbDemoDuckHunt.DataTypes
 		,GameInterfaceBarContainer
 		,GameInterfaceDialog
 		,GameInterfaceDialogText
+		,GameInterfaceScoredDuck
 		};
 		
 		

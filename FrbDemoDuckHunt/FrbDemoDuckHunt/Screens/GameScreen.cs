@@ -343,7 +343,7 @@ namespace FrbDemoDuckHunt.Screens
                         {
                             if (GameInterfaceInstance.GetDuckDisplay(i) == GameInterface.DuckDisplayType.Hit)
                             {
-                                GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Active);
+                                GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Scored);
                             }
                         }
                         GlobalContent.DuckHuntEndofRound.Play();

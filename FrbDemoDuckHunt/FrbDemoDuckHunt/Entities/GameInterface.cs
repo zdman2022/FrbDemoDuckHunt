@@ -1,36 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using FlatRedBall;
-using FlatRedBall.Input;
-using FlatRedBall.Instructions;
-using FlatRedBall.AI.Pathfinding;
-using FlatRedBall.Graphics.Animation;
-using FlatRedBall.Graphics.Particle;
-
-#if FRB_XNA || SILVERLIGHT
 using FrbDemoDuckHunt.DataTypes;
 using FrbUi;
 using FrbUi.Controls;
 using FrbUi.Layouts;
 using FrbUi.Xml;
-using Keys = Microsoft.Xna.Framework.Input.Keys;
-using Vector3 = Microsoft.Xna.Framework.Vector3;
-using Texture2D = Microsoft.Xna.Framework.Graphics.Texture2D;
-#endif
-
-using FlatRedBall.Math.Geometry;
-using FlatRedBall.Math.Splines;
-using BitmapFont = FlatRedBall.Graphics.BitmapFont;
-using Cursor = FlatRedBall.Gui.Cursor;
-using GuiManager = FlatRedBall.Gui.GuiManager;
 
 namespace FrbDemoDuckHunt.Entities
 {
 	public partial class GameInterface
 	{
-        public enum DuckDisplayType { Active, Missed, Hit }
+        public enum DuckDisplayType { Active, Missed, Hit, Scored }
 
 	    private bool _uiIsReady;
 	    private LayoutableText _scoreLabel;
@@ -40,6 +21,7 @@ namespace FrbDemoDuckHunt.Entities
 	    private LayoutableSprite _hitDuckTemplate;
 	    private LayoutableSprite _missedDuckTemplate;
 	    private LayoutableSprite _activeDuckTemplate;
+	    private LayoutableSprite _scoredDuckTemplate;
 	    private LayoutableSprite _blueBarTemplate;
 	    private BoxLayout _duckContainer;
 	    private BoxLayout _barContainer;
@@ -129,6 +111,7 @@ namespace FrbDemoDuckHunt.Entities
             var barContainerName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceBarContainer].Value;
             var dialogName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDialog].Value;
             var dialogTextName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceDialogText].Value;
+            var scoredDuckName = GlobalContent.InterfaceConstants[InterfaceConstants.GameInterfaceScoredDuck].Value;
 
             var interfacePackage = new UserInterfacePackage(xmlFilePath, ContentManagerName);
             _scoreLabel = interfacePackage.GetNamedControl<LayoutableText>(scoreLabelName);
@@ -143,6 +126,7 @@ namespace FrbDemoDuckHunt.Entities
             _barContainer = interfacePackage.GetNamedControl<BoxLayout>(barContainerName);
             _dialog = interfacePackage.GetNamedControl<BoxLayout>(dialogName);
             _dialogText = interfacePackage.GetNamedControl<LayoutableText>(dialogTextName);
+            _scoredDuckTemplate = interfacePackage.GetNamedControl<LayoutableSprite>(scoredDuckName);
 
             SetupShotContainer(interfacePackage, shotName);
             SetupBarContainer();
@@ -203,6 +187,10 @@ namespace FrbDemoDuckHunt.Entities
 
                     case DuckDisplayType.Active:
                         clonedItem = _activeDuckTemplate.Clone();
+                        break;
+
+                    case DuckDisplayType.Scored:
+                        clonedItem = _scoredDuckTemplate.Clone();
                         break;
 
                     case DuckDisplayType.Missed:
