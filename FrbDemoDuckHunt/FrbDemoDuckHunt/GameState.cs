@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrbDemoDuckHunt.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,7 @@ namespace FrbDemoDuckHunt
         {
             get
             {
-                float increasePerRound = .1f;
-                return InitialSpeed * (1 + increasePerRound * (Round-1));
+                return InitialSpeed * (1 + Duck.SpeedMultiplierPerLevel * (Round-1));
             }
         }
         public float FlightTime

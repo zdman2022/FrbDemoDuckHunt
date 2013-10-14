@@ -158,6 +158,7 @@ namespace FrbDemoDuckHunt.Entities
 		public bool SetNewPoint;
 		public bool HasEscaped;
 		public bool HasFallen;
+		public static float SpeedMultiplierPerLevel = 0.05f;
 		protected Layer LayerProvidedByContainer = null;
 
         public Duck(string contentManagerName) :

@@ -290,6 +290,14 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				DuckInstance.RelativeZ = -2f;
 			}
+			if (DuckInstance2.Parent == null)
+			{
+				DuckInstance2.X = 50f;
+			}
+			else
+			{
+				DuckInstance2.RelativeX = 50f;
+			}
 			DuckInstance2.Visible = true;
 			if (DuckInstance2.Parent == null)
 			{
@@ -298,14 +306,6 @@ namespace FrbDemoDuckHunt.Screens
 			else
 			{
 				DuckInstance2.RelativeZ = -2f;
-			}
-			if (DuckInstance2.Parent == null)
-			{
-				DuckInstance2.X = 50f;
-			}
-			else
-			{
-				DuckInstance2.RelativeX = 50f;
 			}
 			ScoreInstance.Visible = true;
 			if (ScoreInstance.Parent == null)
@@ -379,6 +379,14 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			DuckInstance2.AddToManagers(mLayer);
 			DuckInstance2.CurrentState = FrbDemoDuckHunt.Entities.Duck.VariableState.FlyUpLeft;
+			if (DuckInstance2.Parent == null)
+			{
+				DuckInstance2.X = 50f;
+			}
+			else
+			{
+				DuckInstance2.RelativeX = 50f;
+			}
 			DuckInstance2.Visible = true;
 			if (DuckInstance2.Parent == null)
 			{
@@ -387,14 +395,6 @@ namespace FrbDemoDuckHunt.Screens
 			else
 			{
 				DuckInstance2.RelativeZ = -2f;
-			}
-			if (DuckInstance2.Parent == null)
-			{
-				DuckInstance2.X = 50f;
-			}
-			else
-			{
-				DuckInstance2.RelativeX = 50f;
 			}
 			ScoreInstance.AddToManagers(mLayer);
 			ScoreInstance.Visible = true;

@@ -359,6 +359,15 @@
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
+            <Type>string</Type>
+            <Member>VisibleInstanceCurrentChainName</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>50</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
             <ValueAsBool>true</ValueAsBool>
@@ -367,15 +376,6 @@
             <Type>float</Type>
             <Member>Z</Member>
             <ValueAsFloat>-2</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>float</Type>
-            <Member>X</Member>
-            <ValueAsFloat>50</ValueAsFloat>
-          </CustomProperty>
-          <CustomProperty>
-            <Type>string</Type>
-            <Member>VisibleInstanceCurrentChainName</Member>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
@@ -988,6 +988,18 @@
           </Properties>
           <Name>HasFallen</Name>
           <Type>bool</Type>
+        </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>SpeedMultiplierPerLevel</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0.05</DefaultValue>
+          <IsShared>true</IsShared>
         </CustomVariable>
       </CustomVariables>
       <Name>Entities\Duck</Name>
