@@ -50,7 +50,20 @@ namespace FrbDemoDuckHunt
             this.IsMouseVisible = true;
 			FlatRedBall.Screens.ScreenManager.Start(typeof(FrbDemoDuckHunt.Screens.GameMenu));
 
+
+
             base.Initialize();
+        }
+
+        /// <summary>
+        /// Some gfx cards render improperly when a texel
+        /// falls right inbetween pixels.  This addresses the
+        /// problem.
+        /// </summary>
+        public static void OffsetCameraForPixelPerfectRenering()
+        {
+            Camera.Main.X = .2f;
+            Camera.Main.Y = .2f;
         }
 
 

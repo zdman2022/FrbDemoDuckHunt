@@ -30,6 +30,7 @@ namespace FrbDemoDuckHunt.Screens
 
 		void CustomInitialize()
 		{
+            Game1.OffsetCameraForPixelPerfectRenering();
             CurrentState = VariableState.GameA;
             HighScoreStorage.NumOfDucks = 1;
             _theme.Play();

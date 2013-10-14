@@ -178,6 +178,8 @@ namespace FrbDemoDuckHunt.Screens
             //GameInterfaceInstance.SetDuckDisplay(8, GameInterface.DuckDisplayType.Missed);
             //GameInterfaceInstance.SetDuckDisplay(9, GameInterface.DuckDisplayType.Missed);
             //_state.DuckFlight = 10;
+            Game1.OffsetCameraForPixelPerfectRenering();
+
 		}
 
 		void CustomActivity(bool firstTimeCalled)
