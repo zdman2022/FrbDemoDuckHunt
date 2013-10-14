@@ -26,7 +26,8 @@ namespace FrbDemoDuckHunt
         {
             get
             {
-                return InitialSpeed;
+                float increasePerRound = .1f;
+                return InitialSpeed * (1 + increasePerRound * (Round-1));
             }
         }
         public float FlightTime

@@ -86,12 +86,16 @@ namespace FrbDemoDuckHunt.Screens
         {
             if (!duck.IsShot && duck.CollisionCircle.IsPointInside(InputManager.Mouse.WorldXAt(0), InputManager.Mouse.WorldYAt(0)))
             {
-                score.Position = duck.Position;
+                score.X = duck.X;
+                score.Y = duck.Y;
+                // don't set Z - that's set in Glue
+
                 var val = _state.GetScore(duck.DuckType);
                 score.TextInstanceDisplayText = val.ToString();
                 _state.Score += val;
-                score.Visible = true;
-                score.Set("Visible").To(false).After(score.TimeToShow);
+                score.Set("Visible").To(true).After(score.DelayAfterShotBeforeShowing);
+                score.Set("Visible").To(false).After(score.TimeToShow + score.DelayAfterShotBeforeShowing);
+                
                 duck.IsShot = true;
                 duck.Shot(() => duck.Fall(() => { duck.HasFallen = true; duck.Velocity = Vector3.Zero; }));
                 GameInterfaceInstance.SetDuckDisplay(_state.DuckFlight - offset, GameInterface.DuckDisplayType.Hit);
@@ -153,6 +157,12 @@ namespace FrbDemoDuckHunt.Screens
 
         void CustomInitialize()
 		{
+            DuckInstance.Visible = false;
+            DuckInstance2.Visible = false;
+            ScoreInstance.Visible = false;
+            ScoreInstance2.Visible = false;
+
+
             _rnd = new Random();
             SpriteManager.Camera.BackgroundColor = _blue;
             CurrentState = VariableState.StartIntro;
@@ -446,7 +456,7 @@ namespace FrbDemoDuckHunt.Screens
             {
                 DogInstance.ShortWalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
             }
-            GameInterfaceInstance.ShowDialog("ROUND \n\n" + _state.Round);
+            GameInterfaceInstance.ShowDialog("ROUND \n\n" + _state.Round, 2);
 
             CurrentState = VariableState.Intro;
         }

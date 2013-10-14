@@ -247,14 +247,6 @@ namespace FrbDemoDuckHunt.Entities
 			VisibleInstance.AnimationChains = AnimationChainListFileBlue;
 			VisibleInstance.CurrentChainName = "FlyRight";
 			VisibleInstance.UseAnimationRelativePosition = false;
-			if (VisibleInstance.Parent == null)
-			{
-				VisibleInstance.Z = -1f;
-			}
-			else
-			{
-				VisibleInstance.RelativeZ = -1f;
-			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp (Layer layerToAddTo)
@@ -281,14 +273,6 @@ namespace FrbDemoDuckHunt.Entities
 			VisibleInstance.AnimationChains = AnimationChainListFileBlue;
 			VisibleInstance.CurrentChainName = "FlyRight";
 			VisibleInstance.UseAnimationRelativePosition = false;
-			if (VisibleInstance.Parent == null)
-			{
-				VisibleInstance.Z = -1f;
-			}
-			else
-			{
-				VisibleInstance.RelativeZ = -1f;
-			}
 			X = oldX;
 			Y = oldY;
 			Z = oldZ;

@@ -267,11 +267,11 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			if (DogInstance.Parent == null)
 			{
-				DogInstance.Z = -1f;
+				DogInstance.Z = -0.9f;
 			}
 			else
 			{
-				DogInstance.RelativeZ = -1f;
+				DogInstance.RelativeZ = -0.9f;
 			}
 			if (BackgroundInstance.Parent == null)
 			{
@@ -281,26 +281,50 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				BackgroundInstance.RelativeZ = -1f;
 			}
-			DuckInstance.Visible = false;
+			DuckInstance.Visible = true;
 			if (DuckInstance.Parent == null)
 			{
-				DuckInstance.Z = -1f;
+				DuckInstance.Z = -2f;
 			}
 			else
 			{
-				DuckInstance.RelativeZ = -1f;
+				DuckInstance.RelativeZ = -2f;
 			}
-			DuckInstance2.Visible = false;
+			DuckInstance2.Visible = true;
 			if (DuckInstance2.Parent == null)
 			{
-				DuckInstance2.Z = -1f;
+				DuckInstance2.Z = -2f;
 			}
 			else
 			{
-				DuckInstance2.RelativeZ = -1f;
+				DuckInstance2.RelativeZ = -2f;
 			}
-			ScoreInstance.Visible = false;
+			if (DuckInstance2.Parent == null)
+			{
+				DuckInstance2.X = 50f;
+			}
+			else
+			{
+				DuckInstance2.RelativeX = 50f;
+			}
+			ScoreInstance.Visible = true;
+			if (ScoreInstance.Parent == null)
+			{
+				ScoreInstance.Z = -3f;
+			}
+			else
+			{
+				ScoreInstance.RelativeZ = -3f;
+			}
 			ScoreInstance2.Visible = false;
+			if (ScoreInstance2.Parent == null)
+			{
+				ScoreInstance2.Z = -3f;
+			}
+			else
+			{
+				ScoreInstance2.RelativeZ = -3f;
+			}
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -326,11 +350,11 @@ namespace FrbDemoDuckHunt.Screens
 			}
 			if (DogInstance.Parent == null)
 			{
-				DogInstance.Z = -1f;
+				DogInstance.Z = -0.9f;
 			}
 			else
 			{
-				DogInstance.RelativeZ = -1f;
+				DogInstance.RelativeZ = -0.9f;
 			}
 			BackgroundInstance.AddToManagers(mLayer);
 			if (BackgroundInstance.Parent == null)
@@ -344,29 +368,54 @@ namespace FrbDemoDuckHunt.Screens
 			GameInterfaceInstance.AddToManagers(mLayer);
 			ShotInstance.AddToManagers(mLayer);
 			DuckInstance.AddToManagers(mLayer);
-			DuckInstance.Visible = false;
+			DuckInstance.Visible = true;
 			if (DuckInstance.Parent == null)
 			{
-				DuckInstance.Z = -1f;
+				DuckInstance.Z = -2f;
 			}
 			else
 			{
-				DuckInstance.RelativeZ = -1f;
+				DuckInstance.RelativeZ = -2f;
 			}
 			DuckInstance2.AddToManagers(mLayer);
-			DuckInstance2.Visible = false;
+			DuckInstance2.CurrentState = FrbDemoDuckHunt.Entities.Duck.VariableState.FlyUpLeft;
+			DuckInstance2.Visible = true;
 			if (DuckInstance2.Parent == null)
 			{
-				DuckInstance2.Z = -1f;
+				DuckInstance2.Z = -2f;
 			}
 			else
 			{
-				DuckInstance2.RelativeZ = -1f;
+				DuckInstance2.RelativeZ = -2f;
+			}
+			if (DuckInstance2.Parent == null)
+			{
+				DuckInstance2.X = 50f;
+			}
+			else
+			{
+				DuckInstance2.RelativeX = 50f;
 			}
 			ScoreInstance.AddToManagers(mLayer);
-			ScoreInstance.Visible = false;
+			ScoreInstance.Visible = true;
+			if (ScoreInstance.Parent == null)
+			{
+				ScoreInstance.Z = -3f;
+			}
+			else
+			{
+				ScoreInstance.RelativeZ = -3f;
+			}
 			ScoreInstance2.AddToManagers(mLayer);
 			ScoreInstance2.Visible = false;
+			if (ScoreInstance2.Parent == null)
+			{
+				ScoreInstance2.Z = -3f;
+			}
+			else
+			{
+				ScoreInstance2.RelativeZ = -3f;
+			}
 			MinDuckY = 0;
 			MaxDuckY = 100;
 			MinDuckX = -100;

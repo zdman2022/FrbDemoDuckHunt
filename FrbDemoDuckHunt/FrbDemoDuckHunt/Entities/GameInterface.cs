@@ -6,6 +6,7 @@ using FrbUi;
 using FrbUi.Controls;
 using FrbUi.Layouts;
 using FrbUi.Xml;
+using FlatRedBall.Instructions;
 
 namespace FrbDemoDuckHunt.Entities
 {
@@ -57,10 +58,14 @@ namespace FrbDemoDuckHunt.Entities
             _updateDuckDisplay = true;
         }
 
-        public void ShowDialog(string text)
+        public void ShowDialog(string text, float amountOfTimeToShowFor = -1)
         {
             _dialogText.DisplayText = text;
             _dialog.Visible = true;
+            if (amountOfTimeToShowFor > 0)
+            {
+                this.Call(() => _dialog.Visible = false).After(amountOfTimeToShowFor);
+            }
         }
 
         public void HideDialog()

@@ -291,7 +291,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Z</Member>
-            <ValueAsFloat>-1</ValueAsFloat>
+            <ValueAsFloat>-0.9</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
@@ -343,12 +343,12 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
+            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>Z</Member>
-            <ValueAsFloat>-1</ValueAsFloat>
+            <ValueAsFloat>-2</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
@@ -361,25 +361,40 @@
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
+            <ValueAsBool>true</ValueAsBool>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>Z</Member>
-            <ValueAsFloat>-1</ValueAsFloat>
+            <ValueAsFloat>-2</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>X</Member>
+            <ValueAsFloat>50</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>string</Type>
+            <Member>VisibleInstanceCurrentChainName</Member>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
           <SourceClassType>Entities\Duck</SourceClassType>
           <InstanceName>DuckInstance2</InstanceName>
           <AttachToContainer>true</AttachToContainer>
+          <CurrentState>FlyUpLeft</CurrentState>
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
         <NamedObjectSave>
           <CustomProperty>
             <Type>bool</Type>
             <Member>Visible</Member>
-            <ValueAsBool>false</ValueAsBool>
+            <ValueAsBool>true</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Z</Member>
+            <ValueAsFloat>-3</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
@@ -393,6 +408,11 @@
             <Type>bool</Type>
             <Member>Visible</Member>
             <ValueAsBool>false</ValueAsBool>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Z</Member>
+            <ValueAsFloat>-3</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
@@ -1010,7 +1030,6 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Z</Member>
-            <ValueAsFloat>-1</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile>Entities/Duck/SceneFile.scnx</SourceFile>
@@ -1298,10 +1317,43 @@
           <Type>float</Type>
           <DefaultValue xsi:type="xsd:float">1</DefaultValue>
         </CustomVariable>
+        <CustomVariable>
+          <Properties>
+            <PropertySave>
+              <Name>Type</Name>
+              <ValueAsString>float</ValueAsString>
+            </PropertySave>
+          </Properties>
+          <Name>DelayAfterShotBeforeShowing</Name>
+          <Type>float</Type>
+          <DefaultValue xsi:type="xsd:float">0.7</DefaultValue>
+        </CustomVariable>
       </CustomVariables>
       <Name>Entities\Score</Name>
       <NamedObjects>
         <NamedObjectSave>
+          <CustomProperty>
+            <Type>BitmapFont</Type>
+            <Member>Font</Member>
+            <ValueAsString>nesfont</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Scale</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>Spacing</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>NewLineDistance</Member>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>HorizontalAlignment</Type>
+            <Member>HorizontalAlignment</Member>
+            <ValueAsInt>2</ValueAsInt>
+          </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
           <SourceClassType>Text</SourceClassType>
@@ -1310,6 +1362,13 @@
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>GlobalContent/nesfont.fnt</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Graphics.BitmapFont</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <Is2D>true</Is2D>
     </EntitySave>
     <EntitySave>
