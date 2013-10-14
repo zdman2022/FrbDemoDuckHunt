@@ -30,6 +30,7 @@ namespace FrbDemoDuckHunt.Entities
 	    private LayoutableText _roundLabel;
 	    private BoxLayout _dialog;
 	    private LayoutableText _dialogText;
+	    private bool _updateDuckDisplay;
 
         public DuckDisplayType GetDuckDisplay(int duckIndex)
         {
@@ -53,7 +54,7 @@ namespace FrbDemoDuckHunt.Entities
             }
 
             _duckTypes[duckIndex] = type;
-            UpdateDuckDisplay();
+            _updateDuckDisplay = true;
         }
 
         public void ShowDialog(string text)
@@ -90,6 +91,17 @@ namespace FrbDemoDuckHunt.Entities
 		private void CustomDestroy()
 		{
 		}
+
+        public override void UpdateDependencies(double currentTime)
+        {
+            base.UpdateDependencies(currentTime);
+
+            if (_updateDuckDisplay)
+            {
+                UpdateDuckDisplay();
+                _updateDuckDisplay = false;
+            }
+        }
 
         private static void CustomLoadStaticContent(string contentManagerName)
         {
