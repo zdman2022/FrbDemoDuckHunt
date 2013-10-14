@@ -130,7 +130,7 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Y</Member>
-            <ValueAsFloat>-75</ValueAsFloat>
+            <ValueAsFloat>-76</ValueAsFloat>
           </CustomProperty>
           <SourceType>Entity</SourceType>
           <SourceFile />
@@ -1246,12 +1246,22 @@
           <CustomProperty>
             <Type>float</Type>
             <Member>Scale</Member>
-            <ValueAsFloat>5</ValueAsFloat>
+            <ValueAsFloat>4</ValueAsFloat>
           </CustomProperty>
           <CustomProperty>
             <Type>float</Type>
             <Member>Spacing</Member>
-            <ValueAsFloat>5</ValueAsFloat>
+            <ValueAsFloat>4</ValueAsFloat>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>BitmapFont</Type>
+            <Member>Font</Member>
+            <ValueAsString>nesfont</ValueAsString>
+          </CustomProperty>
+          <CustomProperty>
+            <Type>float</Type>
+            <Member>NewLineDistance</Member>
+            <ValueAsFloat>6</ValueAsFloat>
           </CustomProperty>
           <SourceType>FlatRedBallType</SourceType>
           <SourceFile />
@@ -1261,6 +1271,13 @@
           <IndependentOfCamera>true</IndependentOfCamera>
         </NamedObjectSave>
       </NamedObjects>
+      <ReferencedFiles>
+        <ReferencedFileSave>
+          <Name>GlobalContent/nesfont.fnt</Name>
+          <IsSharedStatic>true</IsSharedStatic>
+          <RuntimeType>FlatRedBall.Graphics.BitmapFont</RuntimeType>
+        </ReferencedFileSave>
+      </ReferencedFiles>
       <Is2D>true</Is2D>
     </EntitySave>
     <EntitySave>
