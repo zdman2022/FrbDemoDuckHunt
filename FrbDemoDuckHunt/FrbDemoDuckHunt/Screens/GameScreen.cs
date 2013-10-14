@@ -187,212 +187,38 @@ namespace FrbDemoDuckHunt.Screens
             switch (CurrentState)
             {
                 case VariableState.StartIntro:
-                    if (_state.Round <= 1)
-                    {
-                        GlobalContent.RoundIntroduction.Play();
-                        DogInstance.WalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
-                    }
-                    else
-                    {
-                        DogInstance.ShortWalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
-                    }
-                    GameInterfaceInstance.ShowDialog("ROUND \n\n" + _state.Round);
-                    
-                    CurrentState = VariableState.Intro;
+                    StartIntroActivity();
                     break;
                 case VariableState.Intro:
                     break;
                 case VariableState.StartDucks:
-                    GameInterfaceInstance.HideDialog();
-                    {
-                        var newGuid = Guid.NewGuid();
-                        SetDuck(DuckInstance);
-                        if (_state.IncludeDuck2) SetDuck(DuckInstance2);
-                    }
-
-                    _doFlyAway = false;
-                    CurrentState = VariableState.DucksFlying;
-                    _state.Ammo = 3;
-
-                    
-                    _wings.Play();
-                    _quake.Play();
+                    StartDucksActivity();
 
                     break;
                 case VariableState.DucksFlying:
-                    bool shot = false;
-                    if(_state.Ammo > 0 && GuiManager.Cursor.PrimaryPush)
-                    {
-                        GlobalContent.ShotSoundEffect.Play();
-                        ShotInstance.Shoot(() => { });
-                        shot = true;
-                        _state.Ammo--;
-                    }
-
-                    if (shot)
-                    {
-                        shot = false;
-                        if (!CheckDuckShot(DuckInstance, ScoreInstance, _state.IncludeDuck2 ? 2 : 1))
-                        {
-                            if (_state.IncludeDuck2)
-                            {
-                                CheckDuckShot(DuckInstance2, ScoreInstance2, 1);
-                            }
-                        }
-
-                        if (DuckInstance.IsShot && (!_state.IncludeDuck2 || DuckInstance2.IsShot))
-                        {
-                            _wings.Stop();
-                            _quake.Stop();
-                        }
-                    }
-
-                    //Duck 1
-                    CheckDuck(DuckInstance, _state.IncludeDuck2 ? 2 : 1);
-
-                    //Duck 2
-                    if (_state.IncludeDuck2)
-                    {
-                        CheckDuck(DuckInstance2, 1);
-                    }
-
-                    if (DuckInstance.HasFallen && (!_state.IncludeDuck2 || DuckInstance2.HasFallen))
-                    {
-                        CurrentState = VariableState.PostDucks;
-                    }
+                    DucksFlyingActivity();
 
                     break;
                 case VariableState.DucksEscaping:
-                    if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (!_state.IncludeDuck2 || (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
-                    {
-                        _wings.Stop();
-                        _quake.Stop();
-                        CurrentState = VariableState.PostDucks;
-                    }
-
-                    if (!_state.IncludeDuck2 || (!DuckInstance.IsShot && !DuckInstance2.IsShot))
-                    {
-                        SpriteManager.Camera.BackgroundColor = _pink;
-                        GameInterfaceInstance.ShowDialog("FLY AWAY");
-                    }
+                    DucksEscapingActivity();
                     
                     break;
 
                 case VariableState.PostDucks:
-                    GameInterfaceInstance.HideDialog();
-                    SpriteManager.Camera.BackgroundColor = _blue;
-
-                    DuckInstance.Velocity = Vector3.Zero;
-                    DuckInstance2.Velocity = Vector3.Zero;
-
-                    if(_state.IncludeDuck2)
-                    {
-                        if(DuckInstance.IsShot && DuckInstance2.IsShot)
-                        {
-                            DogInstance.TwoDucks(DuckInstance.X, () => CurrentState = VariableState.AnimateEndOfRound);
-                        }else if(DuckInstance.IsShot || DuckInstance2.IsShot){
-                            DogInstance.OneDuck(DuckInstance.IsShot 
-                                                        ? DuckInstance.X
-                                                        : DuckInstance2.X,
-                                                () => CurrentState = VariableState.AnimateEndOfRound);
-                        }else{
-                            DogInstance.Laugh(() => CurrentState = VariableState.AnimateEndOfRound);
-                        }
-                    }else{
-                        if(DuckInstance.IsShot)
-                        {
-                            DogInstance.OneDuck(DuckInstance.X, () => CurrentState = VariableState.AnimateEndOfRound);
-                        }else{
-                            DogInstance.Laugh(() => CurrentState = VariableState.AnimateEndOfRound);
-                        }
-                    }
-
-                    CurrentState = VariableState.DogAnimation;
-
+                    PostDucksActivity();
                     break;
 
                 case VariableState.DogAnimation:
                     break;
 
                 case VariableState.AnimateEndOfRound:
-                    if (_state.DuckFlight == 10)
-                    {
-                        CurrentState = VariableState.AnimatingEndOfRound;
-                        MoveHits(() => CurrentState = VariableState.CheckEndOfRound);
-                    }
-                    else
-                    {
-                        CurrentState = VariableState.StartDucks;
-                    }
+                    AnimateEndOfRoundActivity();
 
                     break;
                 case VariableState.AnimatingEndOfRound:
                     break;
                 case VariableState.CheckEndOfRound:
-                    var hits = 0;
-                    for (var i = 0; i < 10; i++)
-                    {
-                        if (GameInterfaceInstance.GetDuckDisplay(i) == GameInterface.DuckDisplayType.Hit)
-                        {
-                            hits++;
-                        }
-                    }
-
-                    if (hits > _state.DucksRequiredToAdvance())
-                    {
-                        CurrentState = VariableState.ContinueAnimation;
-                        for (var i = 0; i < 10; i++)
-                        {
-                            if (GameInterfaceInstance.GetDuckDisplay(i) == GameInterface.DuckDisplayType.Hit)
-                            {
-                                GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Scored);
-                            }
-                        }
-                        GlobalContent.DuckHuntEndofRound.Play();
-                        DuckInstance.Call(() =>
-                        {
-                            var waitTime = 0f;
-
-                            if (hits == 10)
-                            {
-                                waitTime = 1.2f;
-                                GameInterfaceInstance.ShowDialog("PERFECT!! \n\n" + _state.GetBonus());
-                                _state.Score += _state.GetBonus();
-                                GlobalContent.PerfectScoreSoundEffect.Play();
-                                for (var i = 0; i < 10; i++)
-                                {
-                                    GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Hit);
-                                }
-                            }
-
-                            DuckInstance.Call(() =>
-                                {
-                                    GameInterfaceInstance.HideDialog();
-                                    CurrentState = VariableState.StartIntro;
-                                    _state.Round++;
-                                    _state.DuckFlight = 0;
-                                    for (var i = 0; i < 10; i++)
-                                    {
-                                        GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Missed);
-                                    }
-                                }).After(waitTime);
-
-                            
-                        }).After(4.2);
-                    }
-                    else
-                    {
-                        GlobalContent.lose.Play();
-                        CurrentState = VariableState.Lose;
-                        DuckInstance.Call(() =>
-                        {
-                            GlobalContent.DuckHuntThemeSong.Play();
-                            DogInstance.EndGame(() => {
-                                MoveToScreen(typeof(GameMenu));
-                            });
-                        }).After(2);
-                    }
-
+                    CheckEndOfRoundActivity();
                     break;
                 case VariableState.ContinueAnimation:
                     break;
@@ -406,6 +232,224 @@ namespace FrbDemoDuckHunt.Screens
             GameInterfaceInstance.Round = _state.Round;
             GameInterfaceInstance.DucksRequiredForRound = _state.DucksRequiredToAdvance();
 		}
+
+        private void CheckEndOfRoundActivity()
+        {
+            var hits = 0;
+            for (var i = 0; i < 10; i++)
+            {
+                if (GameInterfaceInstance.GetDuckDisplay(i) == GameInterface.DuckDisplayType.Hit)
+                {
+                    hits++;
+                }
+            }
+
+            if (hits > _state.DucksRequiredToAdvance())
+            {
+                CurrentState = VariableState.ContinueAnimation;
+                for (var i = 0; i < 10; i++)
+                {
+                    if (GameInterfaceInstance.GetDuckDisplay(i) == GameInterface.DuckDisplayType.Hit)
+                    {
+                        GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Scored);
+                    }
+                }
+                GlobalContent.DuckHuntEndofRound.Play();
+                DuckInstance.Call(() =>
+                {
+                    var waitTime = 0f;
+
+                    if (hits == 10)
+                    {
+                        waitTime = 1.2f;
+                        GameInterfaceInstance.ShowDialog("PERFECT!! \n\n" + _state.GetBonus());
+                        _state.Score += _state.GetBonus();
+                        GlobalContent.PerfectScoreSoundEffect.Play();
+                        for (var i = 0; i < 10; i++)
+                        {
+                            GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Hit);
+                        }
+                    }
+
+                    DuckInstance.Call(() =>
+                    {
+                        GameInterfaceInstance.HideDialog();
+                        CurrentState = VariableState.StartIntro;
+                        _state.Round++;
+                        _state.DuckFlight = 0;
+                        for (var i = 0; i < 10; i++)
+                        {
+                            GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Missed);
+                        }
+                    }).After(waitTime);
+
+
+                }).After(4.2);
+            }
+            else
+            {
+                GlobalContent.lose.Play();
+                CurrentState = VariableState.Lose;
+                DuckInstance.Call(() =>
+                {
+                    GlobalContent.DuckHuntThemeSong.Play();
+                    DogInstance.EndGame(() =>
+                    {
+                        MoveToScreen(typeof(GameMenu));
+                    });
+                }).After(2);
+            }
+
+        }
+
+        private void AnimateEndOfRoundActivity()
+        {
+            if (_state.DuckFlight == 10)
+            {
+                CurrentState = VariableState.AnimatingEndOfRound;
+                MoveHits(() => CurrentState = VariableState.CheckEndOfRound);
+            }
+            else
+            {
+                CurrentState = VariableState.StartDucks;
+            }
+        }
+
+        private void PostDucksActivity()
+        {
+            GameInterfaceInstance.HideDialog();
+            SpriteManager.Camera.BackgroundColor = _blue;
+
+            DuckInstance.Velocity = Vector3.Zero;
+            DuckInstance2.Velocity = Vector3.Zero;
+
+            if (_state.IncludeDuck2)
+            {
+                if (DuckInstance.IsShot && DuckInstance2.IsShot)
+                {
+                    DogInstance.TwoDucks(DuckInstance.X, () => CurrentState = VariableState.AnimateEndOfRound);
+                }
+                else if (DuckInstance.IsShot || DuckInstance2.IsShot)
+                {
+                    DogInstance.OneDuck(DuckInstance.IsShot
+                                                ? DuckInstance.X
+                                                : DuckInstance2.X,
+                                        () => CurrentState = VariableState.AnimateEndOfRound);
+                }
+                else
+                {
+                    DogInstance.Laugh(() => CurrentState = VariableState.AnimateEndOfRound);
+                }
+            }
+            else
+            {
+                if (DuckInstance.IsShot)
+                {
+                    DogInstance.OneDuck(DuckInstance.X, () => CurrentState = VariableState.AnimateEndOfRound);
+                }
+                else
+                {
+                    DogInstance.Laugh(() => CurrentState = VariableState.AnimateEndOfRound);
+                }
+            }
+
+            CurrentState = VariableState.DogAnimation;
+
+        }
+
+        private void DucksEscapingActivity()
+        {
+            if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (!_state.IncludeDuck2 || (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
+            {
+                _wings.Stop();
+                _quake.Stop();
+                CurrentState = VariableState.PostDucks;
+            }
+
+            if (!_state.IncludeDuck2 || (!DuckInstance.IsShot && !DuckInstance2.IsShot))
+            {
+                SpriteManager.Camera.BackgroundColor = _pink;
+                GameInterfaceInstance.ShowDialog("FLY AWAY");
+            }
+        }
+
+        private void DucksFlyingActivity()
+        {
+            bool shot = false;
+            if (_state.Ammo > 0 && GuiManager.Cursor.PrimaryPush)
+            {
+                GlobalContent.ShotSoundEffect.Play();
+                ShotInstance.Shoot(() => { });
+                shot = true;
+                _state.Ammo--;
+            }
+
+            if (shot)
+            {
+                shot = false;
+                if (!CheckDuckShot(DuckInstance, ScoreInstance, _state.IncludeDuck2 ? 2 : 1))
+                {
+                    if (_state.IncludeDuck2)
+                    {
+                        CheckDuckShot(DuckInstance2, ScoreInstance2, 1);
+                    }
+                }
+
+                if (DuckInstance.IsShot && (!_state.IncludeDuck2 || DuckInstance2.IsShot))
+                {
+                    _wings.Stop();
+                    _quake.Stop();
+                }
+            }
+
+            //Duck 1
+            CheckDuck(DuckInstance, _state.IncludeDuck2 ? 2 : 1);
+
+            //Duck 2
+            if (_state.IncludeDuck2)
+            {
+                CheckDuck(DuckInstance2, 1);
+            }
+
+            if (DuckInstance.HasFallen && (!_state.IncludeDuck2 || DuckInstance2.HasFallen))
+            {
+                CurrentState = VariableState.PostDucks;
+            }
+        }
+
+        private void StartDucksActivity()
+        {
+            GameInterfaceInstance.HideDialog();
+            {
+                var newGuid = Guid.NewGuid();
+                SetDuck(DuckInstance);
+                if (_state.IncludeDuck2) SetDuck(DuckInstance2);
+            }
+
+            _doFlyAway = false;
+            CurrentState = VariableState.DucksFlying;
+            _state.Ammo = 3;
+
+
+            _wings.Play();
+            _quake.Play();
+        }
+
+        private void StartIntroActivity()
+        {
+            if (_state.Round <= 1)
+            {
+                GlobalContent.RoundIntroduction.Play();
+                DogInstance.WalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
+            }
+            else
+            {
+                DogInstance.ShortWalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
+            }
+            GameInterfaceInstance.ShowDialog("ROUND \n\n" + _state.Round);
+
+            CurrentState = VariableState.Intro;
+        }
 
 		void CustomDestroy()
 		{
