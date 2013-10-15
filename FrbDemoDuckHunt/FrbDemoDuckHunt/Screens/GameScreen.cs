@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using FlatRedBall;
 using FlatRedBall.Input;
@@ -11,7 +12,7 @@ using FlatRedBall.Graphics.Particle;
 using FlatRedBall.Graphics.Model;
 using FlatRedBall.Math.Geometry;
 using FlatRedBall.Math.Splines;
-
+using FRBTouch;
 using Cursor = FlatRedBall.Gui.Cursor;
 using GuiManager = FlatRedBall.Gui.GuiManager;
 using FlatRedBall.Localization;
@@ -24,10 +25,14 @@ using FrbDemoDuckHunt.Entities;
 using Microsoft.Xna.Framework;
 #endif
 
+using FRBTouch.FlatRedBall;
+
 namespace FrbDemoDuckHunt.Screens
 {
+    
     public partial class GameScreen
     {
+        private FRBGestureProvider _gestureProvider = new FRBGestureProvider();
         private Random _rnd;
         private bool _doFlyAway = false;
         private Color _blue = new Microsoft.Xna.Framework.Color(63, 191, 255);
@@ -423,7 +428,24 @@ namespace FrbDemoDuckHunt.Screens
         private void DucksFlyingActivity()
         {
             bool shot = false;
-            if (_state.Ammo > 0 && GuiManager.Cursor.PrimaryPush)
+            var gestures = _gestureProvider.GetSamples();
+
+            bool primaryPush = GuiManager.Cursor.PrimaryPush;
+
+            if (_state.Ammo > 0 && !primaryPush && gestures != null)
+            {
+                // ReSharper disable once LoopCanBeConvertedToQuery
+                foreach (var gestureSample in gestures)
+                {
+                    if (gestureSample.GestureType == GestureType.Tap)
+                    {
+                        primaryPush = true;
+                        break;
+                    }
+                }
+            }
+
+            if (_state.Ammo > 0 && primaryPush)
             {
                 switch(_state.Ammo)
                 {
