@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+
+    <!-- Define Icons and other info -->
+    <Icon Id="DeleteIcon.ico" SourceFile="$(sys.SOURCEFILEDIR)/../Resources/Delete.ico"/>
+    <Icon Id="IconFile.ico" SourceFile="$(sys.SOURCEFILEDIR)/../Resources/Icon.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="IconFile.ico" />
+    <Property Id="ARPHELPLINK" Value="http://www.flatredball.com" />
+    
+    <!--
+      Defined in Setup.wxs, the "TARGETDIR" is not actually created, it's just a crutch
+      in WiX to allow the files to share a common root
+    -->
+    <DirectoryRef Id="TARGETDIR">
+
+      
+
+      <!--
+        ProgramFilesFolder is a special name that is resolved to the system's
+        programs folder. This entry makes sure that INSTALLDIR, displayed in
+        directory selection dialog, initially points to "C:\Program files\Duck_HuntInstaller".
+        Note that this does not prevent the user from selecting an entirely
+        different path like "D:\Games\Duck_HuntInstaller".
+      -->
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+ 
+        <!--
+          Target directory you game will be installed to. Create more <Directory />
+          elements below this one to create subdirectories or add <File /> elements
+          to add files to a directory
+        -->
+        
+        <Directory Id="INSTALLDIR" Name="FlatRedBall Duck Hunt Demo">
+            <Component Id="MyComponent" Guid="32d79a95-1300-4222-916e-1506828636bd" DiskId="1">
+                <File Id="id_227379ca_8caf_4782_b657_9987b10bdf89" Name="FlatRedBall.dll" DiskId="1" Source="$(sys.SOURCEFILEDIR)Game\FlatRedBall.dll" />
+                <File Id="id_aa012aea_9cce_41e4_97e5_d5fa0c7c84dd" Name="FlatRedBall.xml" DiskId="1" Source="$(sys.SOURCEFILEDIR)Game\FlatRedBall.xml" />
+                <File Id="GameExecutable" Name="FrbDemoDuckHunt.exe" KeyPath="yes"  Source="$(sys.SOURCEFILEDIR)Game\FrbDemoDuckHunt.exe" >
+                    <Shortcut Id="MyGameShortcut" Name="FrbDemoDuckHunt" Directory="Duck_HuntInstallerProgramMenuFolder" Advertise="yes" WorkingDirectory="INSTALLDIR" Icon="IconFile.ico" />
+                </File>
+                <File Id="id_aaad74a0_de1c_4333_838c_c9f8841f8973" Name="FrbDemoDuckHunt.exe.config" DiskId="1" Source="$(sys.SOURCEFILEDIR)Game\FrbDemoDuckHunt.exe.config" />
+                <File Id="id_09e57afc_12d8_438d_8731_ca6f2e087119" Name="FrbDemoDuckHunt.pdb" DiskId="1" Source="$(sys.SOURCEFILEDIR)Game\FrbDemoDuckHunt.pdb" />
+                <File Id="id_924c87c0_aae4_489b_b7d6_ebe8ba6fda72" Name="FrbUi.dll" DiskId="1" Source="$(sys.SOURCEFILEDIR)Game\FrbUi.dll" />
+                <File Id="id_61a08634_7f78_4035_8926_92393cb94295" Name="redball.BMP" DiskId="1" Source="$(sys.SOURCEFILEDIR)Game\redball.BMP" />
+            </Component>
+            <Directory Id="id_d3ddac4c_2b71_4d83_bac6_b77361fcdf5f" Name="Content">
+                <Directory Id="id_cef1e14e_a6d2_4495_8b94_d4b1dc0fccc3" Name="Entities">
+                    <Directory Id="id_99c8397a_2923_4e49_a411_f9ffb4fee9cb" Name="Background">
+                        <Component Id="c_BackgroundComponent" Guid="cad321e2-be00-4556-b839-8954852ada90" DiskId="1">
+                            <File Id="id_109144e9_a099_4049_9229_307c5ee614fe" Name="SceneFile.scnx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/Background/SceneFile.scnx" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="id_3270f62e_0e9e_47f2_aec7_30607e6acf98" Name="Dog">
+                        <Component Id="c_DogComponent" Guid="65bc556f-b016-460e-8094-a77e46868e6c" DiskId="1">
+                            <File Id="id_54bae1c8_3d78_46f4_bace_cf255b379417" Name="AnimationChainListFile.achx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/Dog/AnimationChainListFile.achx" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="id_8d6f7bbf_298d_4872_a0cc_bf71b5075e0e" Name="Duck">
+                        <Component Id="c_DuckComponent" Guid="541632d9-1d4b-4440-9f3d-eaaeef050201" DiskId="1">
+                            <File Id="id_efcd1e93_d383_452b_bbf2_baaa146b72f1" Name="AnimationChainListFileBlack.achx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/Duck/AnimationChainListFileBlack.achx" />
+                            <File Id="id_3fe99b9b_c726_4284_a0ba_5b7f10fb6d75" Name="AnimationChainListFileBlue.achx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/Duck/AnimationChainListFileBlue.achx" />
+                            <File Id="id_7497e7b5_030d_43ed_aa3f_95250abd7c8b" Name="AnimationChainListFileRed.achx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/Duck/AnimationChainListFileRed.achx" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="id_96e0b16a_f5f9_4a1e_bfc6_83ce3bf42c50" Name="GameInterface">
+                        <Component Id="c_GameInterfaceComponent" Guid="9039c68c-59c2-49b1-8221-10353fe748c0" DiskId="1">
+                            <File Id="id_349cd525_3884_4352_87f9_550900b1ec0d" Name="Background.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/GameInterface/Background.png" />
+                            <File Id="id_7daa2a26_f496_43d4_8ed9_69ec713028de" Name="InterfaceAnimations.achx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/GameInterface/InterfaceAnimations.achx" />
+                            <File Id="id_dc29d765_60ab_43b5_9e8f_f304bcef6e6e" Name="ui.xml" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/GameInterface/ui.xml" />
+                            <File Id="id_edb137a8_412b_4f54_9fd8_e1f14c545c4c" Name="WhiteBackground.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/GameInterface/WhiteBackground.png" />
+                        </Component>
+                    </Directory>
+                    <Directory Id="id_7e6bef8b_755d_47e4_931c_f85429671c70" Name="Shot">
+                        <Component Id="c_ShotComponent" Guid="8a04de50-969c-480a-8640-aecb6320dafd" DiskId="1">
+                            <File Id="id_8f9069ea_0490_4e9d_9e36_5c43d114d138" Name="SceneFile.scnx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Entities/Shot/SceneFile.scnx" />
+                        </Component>
+                    </Directory>
+                </Directory>
+                <Directory Id="id_9b6702a4_3ddb_4816_9823_18bdaeb4c9fc" Name="GlobalContent">
+                    <Component Id="c_GlobalContentComponent" Guid="75439161-a2f8-4007-937f-9a531000fcd3" DiskId="1">
+                        <File Id="id_75ca54b9_ae8b_4982_8a79_bf9ec092e8d9" Name="ClayPigeonFalling.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/ClayPigeonFalling.xnb" />
+                        <File Id="id_0144ec6d_46ad_489b_b24b_2d26e8573b41" Name="dhunttitle.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/dhunttitle.png" />
+                        <File Id="id_3c293600_a08a_48ef_b06d_cc946c83c83d" Name="dhunttitlepointer.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/dhunttitlepointer.png" />
+                        <File Id="id_70e9324b_87f8_4535_8e8d_8724f5bfa4a9" Name="DogBarkSoundEffect.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DogBarkSoundEffect.xnb" />
+                        <File Id="id_0fc6f3ed_1b41_48ff_88fb_c27794e39023" Name="DogHunt.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DogHunt.png" />
+                        <File Id="id_17b6049e_cf62_4f15_b256_478b3df637bd" Name="DogLaughingSoundEffect.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DogLaughingSoundEffect.xnb" />
+                        <File Id="id_0afa5ae0_5339_418f_81c2_ff9a4c9200a7" Name="duck.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/duck.xnb" />
+                        <File Id="id_283abfcd_1e59_43a8_8495_31a469e21e85" Name="DuckHittingtheGround.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DuckHittingtheGround.xnb" />
+                        <File Id="id_a112eefb_80fe_4df5_9b18_acf320108c23" Name="duckhunt2.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/duckhunt2.png" />
+                        <File Id="id_83caf4cb_b87b_4427_9d32_f85731d86aef" Name="DuckHuntEndofRound.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DuckHuntEndofRound.xnb" />
+                        <File Id="id_e1740ec8_aac3_476e_93df_ba733ca6da28" Name="DuckHuntFont.fnt" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DuckHuntFont.fnt" />
+                        <File Id="id_924e3f7f_17bb_49ff_9575_a758e54c84c6" Name="DuckHuntFontTexture.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DuckHuntFontTexture.png" />
+                        <File Id="id_eb1740c8_fa91_4dc2_aa04_5612c0fe0c9b" Name="DuckHuntFont_0.tga" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DuckHuntFont_0.tga" />
+                        <File Id="id_495956ab_3fc2_4183_a7ea_26d3be21c3a6" Name="DuckHuntThemeSong.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DuckHuntThemeSong.xnb" />
+                        <File Id="id_5617592f_874c_44d8_be15_858f19568c5c" Name="DuckRelease.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/DuckRelease.xnb" />
+                        <File Id="id_31ce832b_2a98_4495_8e5d_aca452e53c4e" Name="GreenNumbers.fnt" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/GreenNumbers.fnt" />
+                        <File Id="id_4f8b726f_e723_453f_9044_521fa3a3993a" Name="InterfaceConstants.csv" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/InterfaceConstants.csv" />
+                        <File Id="id_985188e8_fb52_4caa_8170_1603f8c84fd8" Name="lose.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/lose.xnb" />
+                        <File Id="id_b2d597f4_beeb_4157_9f4c_e2d22aed95e7" Name="MainThemeSong.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/MainThemeSong.xnb" />
+                        <File Id="id_2869c420_3be9_4e5d_87b0_d6847dac5708" Name="nesfont.fnt" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/nesfont.fnt" />
+                        <File Id="id_c50158e5_8f72_48c6_af7d_45c358c8039e" Name="nesfontTexture.png" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/nesfontTexture.png" />
+                        <File Id="id_0337ec59_dc50_47b7_b674_65f4985548fb" Name="pause.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/pause.xnb" />
+                        <File Id="id_995cd857_0546_4ae2_adcf_5438d2df4720" Name="PerfectScoreSoundEffect.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/PerfectScoreSoundEffect.xnb" />
+                        <File Id="id_a1a92a59_a160_4eb3_968f_72d5d244d20e" Name="point.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/point.xnb" />
+                        <File Id="id_ad648dbb_8aa2_450a_afc7_a7299b34431c" Name="RoundIntroduction.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/RoundIntroduction.xnb" />
+                        <File Id="id_cb3ad8cd_dd0b_4822_a209_6f2cd4e28af0" Name="ShotSoundEffect.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/ShotSoundEffect.xnb" />
+                        <File Id="id_88183d33_338c_471a_99c4_2b1c2643efc4" Name="WhiteNumbers.fnt" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/WhiteNumbers.fnt" />
+                        <File Id="id_9053d7b9_b367_4f7e_9f6f_16702f70144c" Name="WingFlapSoundEffect.xnb" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/GlobalContent/WingFlapSoundEffect.xnb" />
+                    </Component>
+                </Directory>
+                <Directory Id="id_e5ba1435_d812_4cfc_9e49_63b5d87a43b7" Name="Screens">
+                    <Directory Id="id_8a1aae5a_b655_4b67_9bb8_42a210ca63ee" Name="GameMenu">
+                        <Component Id="c_GameMenuComponent" Guid="bb9b6020-ed43-4d00-8440-6848fbe7380b" DiskId="1">
+                            <File Id="id_d1ecb6a5_54eb_4d15_83cb_9ea3e91f8d67" Name="AnimationChainListFile.achx" DiskId="1" Source="$(sys.SOURCEFILEDIR)/../Content//Content/Screens/GameMenu/AnimationChainListFile.achx" />
+                        </Component>
+                    </Directory>
+                </Directory>
+            </Directory>
+        </Directory>
+
+
+
+        <!--
+        ProgramMenuFolder is a special name that resolves to the start menu folder.
+        The files (see below) can indicate that they want a shortcut created in
+        another folder. By defining this folder, we can make them put a shortcut
+        into the start menu!
+        -->
+        <Directory Id='ProgramMenuFolder' Name='Programs'>
+          <Directory Id='Duck_HuntInstallerProgramMenuFolder' Name='FlatRedBall Duck Hunt Demo'>
+            <Component Id="StartMenuEntriesComponent" Guid="dd8b937e-776d-44ea-9e69-14589eb767bb" DiskId="1">
+              <Shortcut Id="UninstallProduct" Name="Uninstall FlatRedBall Duck Hunt Demo" Description="Uninstalls FlatRedBall Duck Hunt Demo" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" Icon="DeleteIcon.ico"/>
+              <RemoveFolder Id='Duck_HuntInstallerProgramMenuFolder' On='uninstall' />
+              <RemoveFolder Id="INSTALLDIR" On="uninstall" />
+              <RegistryValue
+                Root='HKCU'
+                Key='SOFTWARE\FlatRedBall\FlatRedBall Duck Hunt Demo'
+                Type='string'
+                Value='Installer HKEY - Generated by XNA Installulator'
+                KeyPath='yes'
+            />
+            </Component>
+          </Directory>
+        </Directory>
+
+      </Directory>
+
+    </DirectoryRef>
+
+  </Fragment>
+</Wix>

@@ -1,0 +1,22 @@
+How To use This Installer Generator:
+
+Drag and drop the containing folder of your game with exactly what you want to install in it onto the game folder path box. (The containing folder has the .exe and content folder inside of it).
+
+Fill in the form and generate your GUIDS. It's reccomended you save the ones it generates for you incase you need them later.
+
+Drag and drop in the icons and images - the icon needs to be a .ico and the images need to be .bmp's.
+
+Make it happen!
+
+This will generate an "Output" folder in the install generator's directory. Inside this, open the generated solution folder with SharpDevelop 3.x - later versions will not work!
+
+You can download sharpdevelop for free here:
+http://www.icsharpcode.net/opensource/sd/download/
+
+Set the mode to release, and hit compile (F5).
+
+Your installer should pop up - you'll find the finished installer .msi file inside the release bin folder - rename it to whatever you want and distribute!
+
+Any questions, ask via twitter @Orann, or send me an email : mtrobbia@gmail.com
+
+Good luck!

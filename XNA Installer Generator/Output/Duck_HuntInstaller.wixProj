@@ -1,0 +1,120 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{92D4EEE8-32EC-43B9-87EC-EC9A3416B37F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Package</OutputType>
+    <RootNamespace>MyGame</RootNamespace>
+    <OutputName>MyGame</OutputName>
+    <WixToolPath Condition=" '$(WixToolPath)' == '' ">$(SharpDevelopBinPath)\Tools\Wix</WixToolPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(WixToolPath)\wix.targets</WixTargetsPath>
+    <WixTasksPath Condition=" '$(WixTasksPath)' == '' ">$(WixToolPath)\WixTasks.dll</WixTasksPath>
+    <SupressIces>ICE45</SupressIces>
+    <DefineConstants>DATADIR=$(SharpDevelopBinPath)\..\data\resources\InstallerBitmaps</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+  <Import Project="$(WixToolPath)\wix.targets" />
+  <ItemGroup>
+        <None Include="Content\Content\Entities\Background\SceneFile.scnx" />
+    <None Include="Content\Content\Entities\Dog\AnimationChainListFile.achx" />
+    <None Include="Content\Content\Entities\Duck\AnimationChainListFileBlack.achx" />
+    <None Include="Content\Content\Entities\Duck\AnimationChainListFileBlue.achx" />
+    <None Include="Content\Content\Entities\Duck\AnimationChainListFileRed.achx" />
+    <None Include="Content\Content\Entities\GameInterface\Background.png" />
+    <None Include="Content\Content\Entities\GameInterface\InterfaceAnimations.achx" />
+    <None Include="Content\Content\Entities\GameInterface\ui.xml" />
+    <None Include="Content\Content\Entities\GameInterface\WhiteBackground.png" />
+    <None Include="Content\Content\Entities\Shot\SceneFile.scnx" />
+    <None Include="Content\Content\GlobalContent\ClayPigeonFalling.xnb" />
+    <None Include="Content\Content\GlobalContent\dhunttitle.png" />
+    <None Include="Content\Content\GlobalContent\dhunttitlepointer.png" />
+    <None Include="Content\Content\GlobalContent\DogBarkSoundEffect.xnb" />
+    <None Include="Content\Content\GlobalContent\DogHunt.png" />
+    <None Include="Content\Content\GlobalContent\DogLaughingSoundEffect.xnb" />
+    <None Include="Content\Content\GlobalContent\duck.xnb" />
+    <None Include="Content\Content\GlobalContent\DuckHittingtheGround.xnb" />
+    <None Include="Content\Content\GlobalContent\duckhunt2.png" />
+    <None Include="Content\Content\GlobalContent\DuckHuntEndofRound.xnb" />
+    <None Include="Content\Content\GlobalContent\DuckHuntFont.fnt" />
+    <None Include="Content\Content\GlobalContent\DuckHuntFontTexture.png" />
+    <None Include="Content\Content\GlobalContent\DuckHuntFont_0.tga" />
+    <None Include="Content\Content\GlobalContent\DuckHuntThemeSong.xnb" />
+    <None Include="Content\Content\GlobalContent\DuckRelease.xnb" />
+    <None Include="Content\Content\GlobalContent\GreenNumbers.fnt" />
+    <None Include="Content\Content\GlobalContent\InterfaceConstants.csv" />
+    <None Include="Content\Content\GlobalContent\lose.xnb" />
+    <None Include="Content\Content\GlobalContent\MainThemeSong.xnb" />
+    <None Include="Content\Content\GlobalContent\nesfont.fnt" />
+    <None Include="Content\Content\GlobalContent\nesfontTexture.png" />
+    <None Include="Content\Content\GlobalContent\pause.xnb" />
+    <None Include="Content\Content\GlobalContent\PerfectScoreSoundEffect.xnb" />
+    <None Include="Content\Content\GlobalContent\point.xnb" />
+    <None Include="Content\Content\GlobalContent\RoundIntroduction.xnb" />
+    <None Include="Content\Content\GlobalContent\ShotSoundEffect.xnb" />
+    <None Include="Content\Content\GlobalContent\WhiteNumbers.fnt" />
+    <None Include="Content\Content\GlobalContent\WingFlapSoundEffect.xnb" />
+    <None Include="Content\Content\Screens\GameMenu\AnimationChainListFile.achx" />
+    <None Include="Content\FlatRedBall.dll" />
+    <None Include="Content\FlatRedBall.xml" />
+    <None Include="Content\FrbDemoDuckHunt.exe" />
+    <None Include="Content\FrbDemoDuckHunt.exe.config" />
+    <None Include="Content\FrbDemoDuckHunt.pdb" />
+    <None Include="Content\FrbUi.dll" />
+    <None Include="Content\redball.BMP" />
+    <None Include="Content\Resources\TopBanner.bmp" />
+    <None Include="Content\Resources\SideBanner.bmp" />
+
+    <None Include="Resources\DirectX-64.bmp" />
+    <None Include="Resources\DotNet-64.bmp" />
+    <None Include="Resources\GreenCheck-16.ico" />
+    <None Include="Resources\GreenCheck-24.ico" />
+    <None Include="Resources\RedX-16.ico" />
+    <None Include="Resources\RedX-24.ico" />
+    <None Include="Resources\Xna-64.bmp" />
+    <None Include="Resources\Delete.ico" />
+    <None Include="Resources\Icon.ico" />
+    <None Include="Source\Config.wxi" />
+    <Compile Include="Source\Dialogs\BrowseDialog.wxs" />
+    <Compile Include="Source\Dialogs\CancelDialog.wxs" />
+    <Compile Include="Source\Dialogs\ErrorDialog.wxs" />
+    <Compile Include="Source\Dialogs\ExitDialog.wxs" />
+    <Compile Include="Source\Dialogs\FatalErrorDialog.wxs" />
+    <Compile Include="Source\Dialogs\FilesInUseDialog.wxs" />
+    <Compile Include="Source\Dialogs\PrerequisitesDialog.wxs" />
+    <Compile Include="Source\Dialogs\OutOfDiskSpaceDialog.wxs" />
+    <Compile Include="Source\Dialogs\OutOfRollbackDiskSpaceDialog.wxs" />
+    <Compile Include="Source\Dialogs\ProgressDialog.wxs" />
+    <Compile Include="Source\Dialogs\RequireDotNetDialog.wxs" />
+    <Compile Include="Source\Dialogs\SelectFolderDialog.wxs" />
+    <Compile Include="Source\Dialogs\ShaderWarningDialog.wxs" />
+    <Compile Include="Source\Dialogs\UserExitDialog.wxs" />
+    <Compile Include="Source\Dialogs\VerifyReadyDialog.wxs" />
+    <Compile Include="Source\Dialogs\ViewLicenseAgreementDialog.wxs" />
+    <Compile Include="Source\Dialogs\WelcomeDialog.wxs" />
+    <Compile Include="Source\Dialogs\WrongOperatingSystemDialog.wxs" />
+    <Compile Include="Source\EmbeddedPrerequisites.wxs" />
+    <Compile Include="Source\Files.wxs" />
+    <Compile Include="Source\NuclexSetupDetector.wxs" />
+    <Compile Include="Source\Setup.wxs" />
+    <Compile Include="Source\UserInterface.wxs" />
+    <None Include="Documents\license.rtf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content" />
+    <Folder Include="Documents" />
+    <Folder Include="Resources" />
+    <Folder Include="Source" />
+    <Folder Include="Source\Dialogs" />
+  </ItemGroup>
+</Project>

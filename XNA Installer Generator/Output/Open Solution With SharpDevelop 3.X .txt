@@ -1,0 +1,6 @@
+Open the solution with SharpDevelop 3.x!
+
+Download SharpDevelop 3.x Here:
+http://www.icsharpcode.net/opensource/sd/download/
+
+Later versions will not work - be warned.
