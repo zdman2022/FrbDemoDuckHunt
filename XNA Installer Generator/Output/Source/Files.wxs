@@ -4,7 +4,7 @@
 
     <!-- Define Icons and other info -->
     <Icon Id="DeleteIcon.ico" SourceFile="$(sys.SOURCEFILEDIR)/../Resources/Delete.ico"/>
-    <Icon Id="IconFile.ico" SourceFile="$(sys.SOURCEFILEDIR)/../Resources/Icon.ico"/>
+    <Icon Id="IconFile.ico" SourceFile="$(sys.SOURCEFILEDIR)Icon.ico"/>
     <Property Id="ARPPRODUCTICON" Value="IconFile.ico" />
     <Property Id="ARPHELPLINK" Value="http://www.flatredball.com" />
     
