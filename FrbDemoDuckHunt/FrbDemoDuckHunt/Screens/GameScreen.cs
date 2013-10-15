@@ -26,15 +26,25 @@ using Microsoft.Xna.Framework;
 
 namespace FrbDemoDuckHunt.Screens
 {
-	public partial class GameScreen
-	{
+    public partial class GameScreen
+    {
         private Random _rnd;
         private bool _doFlyAway = false;
         private Color _blue = new Microsoft.Xna.Framework.Color(63, 191, 255);
         private Color _pink = new Microsoft.Xna.Framework.Color(255, 191, 179);
         private GameState _state = new GameState();
         private Microsoft.Xna.Framework.Audio.SoundEffectInstance _wings = GlobalContent.WingFlapSoundEffect.CreateInstance();
-        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _quake = GlobalContent.duck.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _quack = GlobalContent.duck.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _point = GlobalContent.point.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _duckHuntEndofRound = GlobalContent.DuckHuntEndofRound.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _lose = GlobalContent.lose.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _perfectScoreSoundEffect = GlobalContent.PerfectScoreSoundEffect.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _roundIntroduction = GlobalContent.RoundIntroduction.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _shotSoundEffect1 = GlobalContent.ShotSoundEffect.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _shotSoundEffect2 = GlobalContent.ShotSoundEffect.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _shotSoundEffect3 = GlobalContent.ShotSoundEffect.CreateInstance();
+        private Microsoft.Xna.Framework.Audio.SoundEffectInstance _duckHuntThemeSong = GlobalContent.DuckHuntThemeSong.CreateInstance();
+        private List<Microsoft.Xna.Framework.Audio.SoundEffectInstance> _sounds = new List<Microsoft.Xna.Framework.Audio.SoundEffectInstance>();
 
         void SetDuck(Duck duck)
         {
@@ -95,7 +105,7 @@ namespace FrbDemoDuckHunt.Screens
                 _state.Score += val;
                 score.Set("Visible").To(true).After(score.DelayAfterShotBeforeShowing);
                 score.Set("Visible").To(false).After(score.TimeToShow + score.DelayAfterShotBeforeShowing);
-                
+
                 duck.IsShot = true;
                 duck.Shot(() => duck.Fall(() => { duck.HasFallen = true; duck.Velocity = Vector3.Zero; }));
                 GameInterfaceInstance.SetDuckDisplay(_state.DuckFlight - offset, GameInterface.DuckDisplayType.Hit);
@@ -121,7 +131,7 @@ namespace FrbDemoDuckHunt.Screens
                 {
                     missFound = true;
                 }
-                
+
                 if (missFound)
                 {
                     GameInterfaceInstance.SetDuckDisplay(i, GameInterfaceInstance.GetDuckDisplay(i + 1));
@@ -133,7 +143,7 @@ namespace FrbDemoDuckHunt.Screens
                 GameInterfaceInstance.SetDuckDisplay(9, GameInterface.DuckDisplayType.Missed);
             }
 
-            GlobalContent.point.Play();
+            _point.Play();
             DuckInstance.Call(() => MoveHits(finishedCallback)).After(.3);
         }
 
@@ -156,7 +166,7 @@ namespace FrbDemoDuckHunt.Screens
         }
 
         void CustomInitialize()
-		{
+        {
             DuckInstance.Visible = false;
             DuckInstance2.Visible = false;
             ScoreInstance.Visible = false;
@@ -173,75 +183,102 @@ namespace FrbDemoDuckHunt.Screens
             _state.Round = 1;
             _state.DuckFlight = 0;
             _wings.IsLooped = true;
-            _quake.IsLooped = true;
-            
-            //testing
-            //CurrentState = VariableState.AnimateEndOfRound;
-            //GameInterfaceInstance.SetDuckDisplay(0, GameInterface.DuckDisplayType.Missed);
-            //GameInterfaceInstance.SetDuckDisplay(1, GameInterface.DuckDisplayType.Hit);
-            //GameInterfaceInstance.SetDuckDisplay(2, GameInterface.DuckDisplayType.Missed);
-            //GameInterfaceInstance.SetDuckDisplay(3, GameInterface.DuckDisplayType.Hit);
-            //GameInterfaceInstance.SetDuckDisplay(4, GameInterface.DuckDisplayType.Missed);
-            //GameInterfaceInstance.SetDuckDisplay(5, GameInterface.DuckDisplayType.Missed);
-            //GameInterfaceInstance.SetDuckDisplay(6, GameInterface.DuckDisplayType.Hit);
-            //GameInterfaceInstance.SetDuckDisplay(7, GameInterface.DuckDisplayType.Missed);
-            //GameInterfaceInstance.SetDuckDisplay(8, GameInterface.DuckDisplayType.Missed);
-            //GameInterfaceInstance.SetDuckDisplay(9, GameInterface.DuckDisplayType.Missed);
-            //_state.DuckFlight = 10;
+            _quack.IsLooped = true;
+
+            _sounds.Add(_wings);
+            _sounds.Add(_quack);
+            _sounds.Add(_point);
+            _sounds.Add(_duckHuntEndofRound);
+            _sounds.Add(_lose);
+            _sounds.Add(_perfectScoreSoundEffect);
+            _sounds.Add(_roundIntroduction);
+            _sounds.Add(_shotSoundEffect1);
+            _sounds.Add(_shotSoundEffect2);
+            _sounds.Add(_shotSoundEffect3);
+            _sounds.Add(_duckHuntThemeSong);
+            _sounds.Add(DuckInstance.Falling);
+            _sounds.Add(DuckInstance2.Falling);
+
             Game1.OffsetCameraForPixelPerfectRenering();
 
-		}
+        }
 
-		void CustomActivity(bool firstTimeCalled)
-		{
-            switch (CurrentState)
+        void CustomActivity(bool firstTimeCalled)
+        {
+            if (InputManager.Keyboard.KeyPushed(Keys.Escape))
             {
-                case VariableState.StartIntro:
-                    StartIntroActivity();
-                    break;
-                case VariableState.Intro:
-                    break;
-                case VariableState.StartDucks:
-                    StartDucksActivity();
+                if (IsPaused)
+                {
+                    UnpauseThisScreen();
+                    foreach (var snd in _sounds)
+                    {
+                        if (snd.State == Microsoft.Xna.Framework.Audio.SoundState.Paused)
+                            snd.Resume();
+                    }
+                }
+                else
+                {
+                    PauseThisScreen();
+                    foreach (var snd in _sounds)
+                    {
+                        if(snd.State == Microsoft.Xna.Framework.Audio.SoundState.Playing)
+                            snd.Pause();
+                    }
+                    GlobalContent.pause.Play();
+                }
+            }
 
-                    break;
-                case VariableState.DucksFlying:
-                    DucksFlyingActivity();
+            if (!IsPaused)
+            {
+                switch (CurrentState)
+                {
+                    case VariableState.StartIntro:
+                        StartIntroActivity();
+                        break;
+                    case VariableState.Intro:
+                        break;
+                    case VariableState.StartDucks:
+                        StartDucksActivity();
 
-                    break;
-                case VariableState.DucksEscaping:
-                    DucksEscapingActivity();
-                    
-                    break;
+                        break;
+                    case VariableState.DucksFlying:
+                        DucksFlyingActivity();
 
-                case VariableState.PostDucks:
-                    PostDucksActivity();
-                    break;
+                        break;
+                    case VariableState.DucksEscaping:
+                        DucksEscapingActivity();
 
-                case VariableState.DogAnimation:
-                    break;
+                        break;
 
-                case VariableState.AnimateEndOfRound:
-                    AnimateEndOfRoundActivity();
+                    case VariableState.PostDucks:
+                        PostDucksActivity();
+                        break;
 
-                    break;
-                case VariableState.AnimatingEndOfRound:
-                    break;
-                case VariableState.CheckEndOfRound:
-                    CheckEndOfRoundActivity();
-                    break;
-                case VariableState.ContinueAnimation:
-                    break;
-                case VariableState.Lose:
-                    break;
+                    case VariableState.DogAnimation:
+                        break;
 
+                    case VariableState.AnimateEndOfRound:
+                        AnimateEndOfRoundActivity();
+
+                        break;
+                    case VariableState.AnimatingEndOfRound:
+                        break;
+                    case VariableState.CheckEndOfRound:
+                        CheckEndOfRoundActivity();
+                        break;
+                    case VariableState.ContinueAnimation:
+                        break;
+                    case VariableState.Lose:
+                        break;
+
+                }
             }
 
             GameInterfaceInstance.Score = _state.Score;
             GameInterfaceInstance.AvailableShots = _state.Ammo;
             GameInterfaceInstance.Round = _state.Round;
             GameInterfaceInstance.DucksRequiredForRound = _state.DucksRequiredToAdvance();
-		}
+        }
 
         private void CheckEndOfRoundActivity()
         {
@@ -264,7 +301,7 @@ namespace FrbDemoDuckHunt.Screens
                         GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Scored);
                     }
                 }
-                GlobalContent.DuckHuntEndofRound.Play();
+                _duckHuntEndofRound.Play();
                 DuckInstance.Call(() =>
                 {
                     var waitTime = 0f;
@@ -274,7 +311,7 @@ namespace FrbDemoDuckHunt.Screens
                         waitTime = 1.2f;
                         GameInterfaceInstance.ShowDialog("PERFECT!! \n\n" + _state.GetBonus());
                         _state.Score += _state.GetBonus();
-                        GlobalContent.PerfectScoreSoundEffect.Play();
+                        _perfectScoreSoundEffect.Play();
                         for (var i = 0; i < 10; i++)
                         {
                             GameInterfaceInstance.SetDuckDisplay(i, GameInterface.DuckDisplayType.Hit);
@@ -298,11 +335,11 @@ namespace FrbDemoDuckHunt.Screens
             }
             else
             {
-                GlobalContent.lose.Play();
+                _lose.Play();
                 CurrentState = VariableState.Lose;
                 DuckInstance.Call(() =>
                 {
-                    GlobalContent.DuckHuntThemeSong.Play();
+                    _duckHuntThemeSong.Play();
                     DogInstance.EndGame(() =>
                     {
                         MoveToScreen(typeof(GameMenu));
@@ -372,7 +409,7 @@ namespace FrbDemoDuckHunt.Screens
             if ((DuckInstance.HasEscaped || DuckInstance.IsShot) && (!_state.IncludeDuck2 || (DuckInstance2.HasEscaped || DuckInstance2.IsShot)))
             {
                 _wings.Stop();
-                _quake.Stop();
+                _quack.Stop();
                 CurrentState = VariableState.PostDucks;
             }
 
@@ -388,7 +425,18 @@ namespace FrbDemoDuckHunt.Screens
             bool shot = false;
             if (_state.Ammo > 0 && GuiManager.Cursor.PrimaryPush)
             {
-                GlobalContent.ShotSoundEffect.Play();
+                switch(_state.Ammo)
+                {
+                    case 3:
+                        _shotSoundEffect3.Play();
+                        break;
+                    case 2:
+                        _shotSoundEffect2.Play();
+                        break;
+                    case 1:
+                        _shotSoundEffect1.Play();
+                        break;
+                }
                 ShotInstance.Shoot(() => { });
                 shot = true;
                 _state.Ammo--;
@@ -408,7 +456,7 @@ namespace FrbDemoDuckHunt.Screens
                 if (DuckInstance.IsShot && (!_state.IncludeDuck2 || DuckInstance2.IsShot))
                 {
                     _wings.Stop();
-                    _quake.Stop();
+                    _quack.Stop();
                 }
             }
 
@@ -442,14 +490,14 @@ namespace FrbDemoDuckHunt.Screens
 
 
             _wings.Play();
-            _quake.Play();
+            _quack.Play();
         }
 
         private void StartIntroActivity()
         {
             if (_state.Round <= 1)
             {
-                GlobalContent.RoundIntroduction.Play();
+                _roundIntroduction.Play();
                 DogInstance.WalkingSniffingThenDiving(() => CurrentState = VariableState.StartDucks);
             }
             else
@@ -461,11 +509,11 @@ namespace FrbDemoDuckHunt.Screens
             CurrentState = VariableState.Intro;
         }
 
-		void CustomDestroy()
-		{
+        void CustomDestroy()
+        {
 
 
-		}
+        }
 
         static void CustomLoadStaticContent(string contentManagerName)
         {
@@ -473,5 +521,5 @@ namespace FrbDemoDuckHunt.Screens
 
         }
 
-	}
+    }
 }

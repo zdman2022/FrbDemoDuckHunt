@@ -27,6 +27,14 @@ namespace FrbDemoDuckHunt.Entities
 	public partial class Duck
 	{
         private Microsoft.Xna.Framework.Audio.SoundEffectInstance falling = GlobalContent.ClayPigeonFalling.CreateInstance();
+        public Microsoft.Xna.Framework.Audio.SoundEffectInstance Falling
+        {
+            get
+            {
+                return falling;
+            }
+        }
+
         private GameState.DuckTypes _duckType;
         public GameState.DuckTypes DuckType {
             get

@@ -307,7 +307,6 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				DuckInstance2.RelativeZ = -2f;
 			}
-			ScoreInstance.Visible = true;
 			if (ScoreInstance.Parent == null)
 			{
 				ScoreInstance.Z = -3f;
@@ -316,7 +315,7 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				ScoreInstance.RelativeZ = -3f;
 			}
-			ScoreInstance2.Visible = false;
+			ScoreInstance.Visible = true;
 			if (ScoreInstance2.Parent == null)
 			{
 				ScoreInstance2.Z = -3f;
@@ -325,6 +324,7 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				ScoreInstance2.RelativeZ = -3f;
 			}
+			ScoreInstance2.Visible = false;
 			FlatRedBall.Math.Geometry.ShapeManager.SuppressAddingOnVisibilityTrue = oldShapeManagerSuppressAdd;
 		}
 		public virtual void AddToManagersBottomUp ()
@@ -397,7 +397,6 @@ namespace FrbDemoDuckHunt.Screens
 				DuckInstance2.RelativeZ = -2f;
 			}
 			ScoreInstance.AddToManagers(mLayer);
-			ScoreInstance.Visible = true;
 			if (ScoreInstance.Parent == null)
 			{
 				ScoreInstance.Z = -3f;
@@ -406,8 +405,8 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				ScoreInstance.RelativeZ = -3f;
 			}
+			ScoreInstance.Visible = true;
 			ScoreInstance2.AddToManagers(mLayer);
-			ScoreInstance2.Visible = false;
 			if (ScoreInstance2.Parent == null)
 			{
 				ScoreInstance2.Z = -3f;
@@ -416,6 +415,7 @@ namespace FrbDemoDuckHunt.Screens
 			{
 				ScoreInstance2.RelativeZ = -3f;
 			}
+			ScoreInstance2.Visible = false;
 			MinDuckY = 0;
 			MaxDuckY = 100;
 			MinDuckX = -100;
