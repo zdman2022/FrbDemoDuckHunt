@@ -1,0 +1,16 @@
+"Name (string, required)","Value (string, required)"
+GameInterfaceXml,Content\Entities\GameInterface\ui.xml
+GameInterfaceMainLayout,MainLayout
+GameInterfaceScoreValue,ScoreValue
+GameInterfaceShot,Shot
+GameInterfaceShotContainer,ShotsContainer
+GameInterfaceHitDuck,HitDuck
+GameInterfaceMissedDuck,MissedDuck
+GameInterfaceActiveDuck,ActiveDuck
+GameInterfaceDuckContainer,DuckContainer
+GameInterfaceRoundLabel,RoundNumberDisplay
+GameInterfaceBlueBar,BlueBar
+GameInterfaceBarContainer,BarContainer
+GameInterfaceDialog,Dialog
+GameInterfaceDialogText,DialogText
+GameInterfaceScoredDuck,ScoredDuck
